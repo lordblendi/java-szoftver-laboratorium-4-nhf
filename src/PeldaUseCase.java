@@ -1,8 +1,8 @@
-public class ToronyTuzelese implements UseCase {
+public class PeldaUseCase implements UseCase {
 
 	@Override
 	public String getNev() {
-		return "Torony tüzelése egy emberre";
+		return "Példa use-case";
 	}
 
 	@Override

@@ -147,7 +147,7 @@ public class KonzolSeged {
 	}
 	
 	/**
-	 * Beolvasás a bemenetrõl
+	 * Választási lehetõség kiírása, válasz beolvasása
 	 * @see java.util.regex.Pattern
 	 * 
 	 * @param kerdes Felhasználónak feltett kérdés
