@@ -1,5 +1,17 @@
+/**
+ * A program fõ osztálya
+ * 
+ * @author sebokmarton
+ */
 public class Main {
+	/**
+	 * Program indulása
+	 * 
+	 * @param args Parancssori argumentumok
+	 */
 	public static void main(String[] args) {
-        System.out.println("Hello World!");
+        KonzolSeged.start(new UseCase[] {
+    		new ToronyTuzelese()
+        });
     }
 }
