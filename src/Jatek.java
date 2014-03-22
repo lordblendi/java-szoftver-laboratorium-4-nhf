@@ -8,6 +8,9 @@ public class Jatek {
     Collection<Torony> tornyok;
     int varazsero;
 
+    /**
+     * Játék konstruktora
+     */
     public Jatek() {
         KonzolSeged.kiirKonstruktor("Jatek");
     }
@@ -28,11 +31,18 @@ public class Jatek {
 
     }
 
+    /**
+     * Kapott akadálykő elhelyezése a kapott cellán
+     * @param cella ezen a cellán akarjuk elhelyezni a sárgakövet
+     * @param sargaKo ezt a sárgakövet akarjuk rátenni a cellára
+     */
     public void lerakAkadalyKo(Cella cella, SargaKo sargaKo) {
-
+        KonzolSeged.kiirFuggvenyHivas("Jatek", "larakAkadalyKo", "cella: Cella, sargaKo: SargaKo");
+        cella.lerakAkadalyKo(sargaKo);
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
-    public void leraktorony(Cella cella, Torony torony) {
+    public void lerakTorony(Cella cella, Torony torony) {
 
     }
 

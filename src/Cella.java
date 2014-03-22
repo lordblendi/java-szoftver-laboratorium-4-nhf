@@ -1,9 +1,11 @@
 public abstract class Cella {
     Pont pozicio;
 
-
+    /**
+     * Cella konstruktora
+     */
     protected Cella() {
-
+        KonzolSeged.kiirKonstruktor("Cella");
     }
 
     public void setPozicio(Pont pozicio) {
@@ -22,8 +24,14 @@ public abstract class Cella {
 
     }
 
+    /**
+     * Sárgakő elhelyezése a cellán
+     * @param sargaKo elhelyezendő sárgakő
+     */
     public void lerakAkadalyKo(SargaKo sargaKo) {
-
+        KonzolSeged.kiirFuggvenyHivas("Cella", "lerakAkadaly", "akadaly: Akadaly");
+        KonzolSeged.kiirMegjegyzes("Ez a cella nem út, így nem rakhatsz ra akadalyt.");
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     public void lerakTorony(Torony torony) {

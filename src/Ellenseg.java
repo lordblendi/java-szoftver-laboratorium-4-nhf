@@ -6,7 +6,10 @@ public abstract class Ellenseg {
     Ut pozicio;
     double sebesseg;
 
-
+    /**
+     * Ellenség konstruktora
+     * @param jatek játék, melyben az ellenség részt vesz.
+     */
     public Ellenseg(Jatek jatek) {
         KonzolSeged.kiirKonstruktor("Ellenseg", "jatek: Jatek");
         this.jatek = jatek;
@@ -28,6 +31,10 @@ public abstract class Ellenseg {
 
     }
 
+    /**
+     * Ellenség sebességének a beállítása a kapott értékre
+     * @param sebesseg beállítandó sebesség
+     */
     public void setSebesseg(double sebesseg) {
         KonzolSeged.kiirFuggvenyHivas("Ellenseg", "setSebesseg", "sebesseg: double");
         this.sebesseg = sebesseg;
