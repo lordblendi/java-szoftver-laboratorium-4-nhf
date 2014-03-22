@@ -10,7 +10,7 @@ public class Akadaly {
     }
 
     public void lerakAkadalyKo(SargaKo sargaKo) {
-        KonzolSeged.kiirFuggvenyHivas("Akadaly", "lerakAkadalyKo", "sargaKo: SargaKo");
+
         String valasz = KonzolSeged.beolvas("Van az akadalyon SargaKo?","[in]");
         if("n".equals(valasz)){
             KonzolSeged.kiirMegjegyzes("SargaKo rakerult az akadalyra.");
@@ -23,14 +23,19 @@ public class Akadaly {
     }
 
     public void ralep(Ellenseg ellenseg) {
-        KonzolSeged.kiirFuggvenyHivas("Akadaly", "ralep", "ellenseg: Ellenseg");
-        if(sargaKo == null){
-            KonzolSeged.kiirMegjegyzes("Az akadalyon nincs sargaKo.");
+        if(KonzolSeged.getAktualisUseCase().equals("SargaKo lerakasa use-case")){
+            if(sargaKo == null){
+                KonzolSeged.kiirMegjegyzes("Az akadalyon nincs sargaKo.");
+                KonzolSeged.kiirFuggvenyHivas("ellenseg", "setSebesseg", "0.9");
+                ellenseg.setSebesseg(0.9);
+            }
+            else{
+                KonzolSeged.kiirFuggvenyHivas("sargaKo", "ralep", "ellenseg");
+                sargaKo.ralep(ellenseg);
+            }
+            KonzolSeged.kiirFuggvenyVisszateres();
         }
-        else{
-            sargaKo.ralep(ellenseg);
-        }
-        KonzolSeged.kiirFuggvenyVisszateres();
+
     }
 
 }

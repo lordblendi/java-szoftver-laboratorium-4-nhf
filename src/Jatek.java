@@ -37,7 +37,7 @@ public class Jatek {
      * @param sargaKo ezt a sárgakövet akarjuk rátenni a cellára
      */
     public void lerakAkadalyKo(Cella cella, SargaKo sargaKo) {
-        KonzolSeged.kiirFuggvenyHivas("Jatek", "larakAkadalyKo", "cella: Cella, sargaKo: SargaKo");
+        KonzolSeged.kiirFuggvenyHivas("cella", "lerakAkadaly", "sargaKo");
         cella.lerakAkadalyKo(sargaKo);
         KonzolSeged.kiirFuggvenyVisszateres();
     }
@@ -59,7 +59,7 @@ public class Jatek {
      * @param nyertunk egy bool, mely alapján el lehet dönteni, ki nyerte a játékot.
      */
     public void vege(boolean nyertunk) {
-        KonzolSeged.kiirFuggvenyHivas("Jatek", "vege", "nyertunk: boolean");
+//        KonzolSeged.kiirFuggvenyHivas("Jatek", "vege", "nyertunk: boolean");
         if(nyertunk){
             KonzolSeged.kiirMegjegyzes("A jateknak vege. A jatekos nyert.");
         }

@@ -20,9 +20,10 @@ public class Ut extends Cella {
      */
     @Override
     public void lerakAkadalyKo(SargaKo sargaKo) {
-        KonzolSeged.kiirFuggvenyHivas("Ut", "lerakAkadalyKo", "sargaKo: SargaKo");
+//        KonzolSeged.kiirFuggvenyHivas("Ut", "lerakAkadalyKo", "sargaKo: SargaKo");
         String valasz = KonzolSeged.beolvas("Van az uton akadaly?", "[in]");
         if ("i".equals(valasz)) {
+            KonzolSeged.kiirFuggvenyHivas("akadaly", "lerakAkadalyKo", "sargaKo");
             akadaly.lerakAkadalyKo(sargaKo);
         } else if ("n".equals(valasz)) {
             KonzolSeged.kiirMegjegyzes("SargaKovet csak olyan utra lehet rakni, amin mar van akadaly.");
@@ -43,16 +44,18 @@ public class Ut extends Cella {
      * @param ellenseg aki rálép az útra
      */
     public void ralep(Ellenseg ellenseg) {
-        KonzolSeged.kiirFuggvenyHivas("Ut", "ralep", "ellenseg: Ellenseg");
         if (akadaly == null) {
             KonzolSeged.kiirMegjegyzes("Az uton nincs akadaly, igy az ellenseg lassitas nelkul halad.");
         } else {
+            KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "ellenseg");
             akadaly.ralep(ellenseg);
         }
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     public void lelep(Ellenseg ellenseg) {
+        KonzolSeged.kiirMegjegyzes("Az ellenseg lelep errol az utrol.");
+        KonzolSeged.kiirFuggvenyVisszateres();
 
     }
 
@@ -62,7 +65,7 @@ public class Ut extends Cella {
      * * @return
      */
     public Ut getKovetkezoLepes() {
-        KonzolSeged.kiirFuggvenyHivas("Ut", "getKovetkezoLepes");
+//        KonzolSeged.kiirFuggvenyHivas("Ut", "getKovetkezoLepes");
         KonzolSeged.kiirFuggvenyVisszateres("");
         return kovetkezoLepes;
     }
