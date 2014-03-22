@@ -10,10 +10,12 @@ public class Main {
      * @param args Parancssori argumentumok
      */
     public static void main(String[] args) {
-        KonzolSeged.start(new UseCase[]{
+        KonzolSeged.start(new UseCase[] {
+        		new ToronyTuzeleseUseCase(),
                 new SargaKoLerakUseCase(),
-                new HobbitRalepVegzetHegyereUseCase(),
-                new ToronyTuzeleseUseCase()
+                new ToronyLerakUseCase(),
+                new AkadalyLerakUseCase(),
+                new HobbitRalepVegzetHegyereUseCase()
         });
     }
 }
