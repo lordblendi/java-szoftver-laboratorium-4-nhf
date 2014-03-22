@@ -11,7 +11,7 @@ public class Main {
 	 */
 	public static void main(String[] args) {
         KonzolSeged.start(new UseCase[] {
-    		new SargaKoLerakUseCase()
+    		new SargaKoLerakUseCase(), new HobbitRalepVegzetHegyereUseCase()
         });
     }
 }

@@ -30,7 +30,7 @@ public abstract class Cella {
      */
     public void lerakAkadalyKo(SargaKo sargaKo) {
         KonzolSeged.kiirFuggvenyHivas("Cella", "lerakAkadaly", "akadaly: Akadaly");
-        KonzolSeged.kiirMegjegyzes("Ez a cella nem út, így nem rakhatsz ra akadalyt.");
+        KonzolSeged.kiirMegjegyzes("Ez a cella nem út, így nem rakhatsz ra akadalykovet.");
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 

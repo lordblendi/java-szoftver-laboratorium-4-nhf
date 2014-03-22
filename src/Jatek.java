@@ -54,7 +54,18 @@ public class Jatek {
 
     }
 
+    /**
+     * Ha a Játéknak vége, akkor meghívódik ez a függvény.
+     * @param nyertunk egy bool, mely alapján el lehet dönteni, ki nyerte a játékot.
+     */
     public void vege(boolean nyertunk) {
-
+        KonzolSeged.kiirFuggvenyHivas("Jatek", "vege", "nyertunk: boolean");
+        if(nyertunk){
+            KonzolSeged.kiirMegjegyzes("A jateknak vege. A jatekos nyert.");
+        }
+        else{
+            KonzolSeged.kiirMegjegyzes("A jateknak vege. A jatekos vesztett.");
+        }
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 }

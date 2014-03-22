@@ -83,7 +83,7 @@ public class KonzolSeged {
      * @see KonzolSeged#kiirFuggvenyHivas(String, String, String)
      */
     static public void kiirFuggvenyHivas(String objektum, String fuggveny) {
-		kiirFuggvenyHivas(fuggveny, objektum, "");
+		kiirFuggvenyHivas(objektum, fuggveny, "");
     }
 
     /**

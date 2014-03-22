@@ -30,14 +30,15 @@ public class Ut extends Cella {
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
-
-    @Override
+     @Override
     public void lerakAkadaly(Akadaly akadaly) {
         super.lerakAkadaly(akadaly);
     }
 
     /**
-     * Ellenség rálép az útra. Ha van rajta akadály akkor az lelassítja, különben az ellenség áthalad rajta lassítás nélkül.
+     * Ellenség rálép az útra.
+     * Ha van rajta akadály akkor az lelassítja,
+     * különben az ellenség áthalad rajta lassítás nélkül.
      *
      * @param ellenseg aki rálép az útra
      */
@@ -55,7 +56,14 @@ public class Ut extends Cella {
 
     }
 
+    /**
+     * Visszaadja a következő cellát,
+     * amelyre rá tud lépni az ellenség
+     * * @return
+     */
     public Ut getKovetkezoLepes() {
+        KonzolSeged.kiirFuggvenyHivas("Ut", "getKovetkezoLepes");
+        KonzolSeged.kiirFuggvenyVisszateres("");
         return kovetkezoLepes;
     }
 
