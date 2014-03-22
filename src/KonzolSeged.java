@@ -30,10 +30,10 @@ public class KonzolSeged {
 	 * @param useCasek Választható use-case-ek listája
 	 */
 	static void start(UseCase[] useCasek) {
-		System.out.println("52 - Nagymama lekvárjai szkeleton");
+		System.out.println("52 - Nagymama lekvarjai szkeleton");
 		
 		while (true) {
-			System.out.println("Választható use-casek (vagy kilépés):\n");
+			System.out.println("Valaszthato use-casek (vagy kilepes):\n");
 			
 			int i = 1;
 			
@@ -41,14 +41,14 @@ public class KonzolSeged {
 				System.out.println(i + ". " + useCase.getNev());
 				i++;
 			}
-			System.out.print(i + ". Kilépés\n\n");
+			System.out.print(i + ". Kilepes\n\n");
 			
-			int c = Integer.parseInt(beolvas("Kérlek, add meg a választott sorszámot", "[1-" + i + "]"));
+			int c = Integer.parseInt(beolvas("Kerlek, add meg a valasztott sorszamot", "[1-" + i + "]"));
 			
 			if (c == i) {
 				return;
 			} else {
-				System.out.println("\n" + c + ". " + useCasek[c - 1].getNev() + " futtatása...\n");
+				System.out.println("\n" + c + ". " + useCasek[c - 1].getNev() + " futtatasa...\n");
 				useCasek[c - 1].start();
 				System.out.println();
 			}
@@ -96,7 +96,7 @@ public class KonzolSeged {
 	static public void kiirFuggvenyHivas(String objektum, String fuggveny, String parameterek) {
 		String call = objektum + "." + fuggveny;
 		
-		println(call + " hívás (" + parameterek + ")");
+		println(call + " hivas (" + parameterek + ")");
 		behuzas++;
 		hivasok.push(call);
 	}
@@ -117,7 +117,7 @@ public class KonzolSeged {
 		String call = hivasok.pop();
 		
 		behuzas--;
-		println(call + " visszatérés" + (ertekek.length() > 0 ? " (" + ertekek + ")" : ""));
+		println(call + " visszateres" + (ertekek.length() > 0 ? " (" + ertekek + ")" : ""));
 	}
 	
 	/**
@@ -143,7 +143,7 @@ public class KonzolSeged {
 	 * @param parameterek Konstruktor paraméterei típusukkal együtt, vesszővel elválasztva (Java szintaxis)
 	 */
 	static public void kiirKonstruktor(String objektum, String parameterek) {
-		println(objektum + " létrehozása (" + parameterek + ")");
+		println(objektum + " letrehozasa (" + parameterek + ")");
 	}
 	
 	/**
@@ -164,7 +164,7 @@ public class KonzolSeged {
 			try {
 				r = in.next(p);
 			} catch (NoSuchElementException e) {
-				print("Hibás válasz, kérlek, adj meg egy helyeset: ");
+				print("Hibas valasz, kerlek, adj meg egy helyeset: ");
 			} finally {
 				in.nextLine();
 			}
