@@ -26,9 +26,27 @@ public class Jatek {
     public void leptet(int ido) {
 
     }
-
+    /**
+     * Kapott akadály elhelyezése a kapott cellán, ha van elég varázserőnk.
+     * @param cella ezen a cellán akarjuk elhelyezni az akadályt
+     * @param akadaly ezt az akadályt akarjuk elhelyezni
+     */
     public void lerakAkadaly(Cella cella, Akadaly akadaly) {
-
+    	KonzolSeged.kiirFuggvenyHivas("akadaly", "getAr");
+    	akadaly.getAr();
+    	String s = KonzolSeged.beolvas("van elegendo varazsero az akadaly letetelehez?", "[in]");
+    	if (s.equals("i")){
+    	KonzolSeged.kiirFuggvenyHivas("ut", "lerakAkadaly", "akadaly: Akadaly");	
+    	cella.lerakAkadaly(akadaly);
+    	}
+    	else if (s.equals("n")){
+    	akadaly = null;	    
+    	}
+    	else{
+    	KonzolSeged.kiirMegjegyzes("hibas valasz");
+    	}
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**
@@ -42,8 +60,27 @@ public class Jatek {
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
+    /**
+     * Kapott torony elhelyezése a kapott cellán, ha van elég varázserőnk.
+     * @param cella ezen a cellán akarjuk elhelyezni a tornyot
+     * @param torony ezt a tornyot akarjuk elhelyezni
+     */
     public void lerakTorony(Cella cella, Torony torony) {
-
+    	KonzolSeged.kiirFuggvenyHivas("Torony", "getAr");
+    	torony.getAr();
+    	
+    	String s = KonzolSeged.beolvas("van elegendo varazsero a torony letetelehez?", "[in]");
+    	if (s.equals("i")){
+    	KonzolSeged.kiirFuggvenyHivas("d", "lerakTorony", "torony: Torony");	
+    	cella.lerakTorony(torony);
+    	}
+    	else if (s.equals("n")){
+    	torony = null;	    
+    	}
+    	else{
+    	KonzolSeged.kiirMegjegyzes("hibas valasz");
+    	}
+    	KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     public void lerakToronyKo(Cella cella, ToronyKo toronyKo) {

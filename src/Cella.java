@@ -21,7 +21,8 @@ public abstract class Cella {
     }
 
     public void lerakAkadaly(Akadaly akadaly) {
-
+      	KonzolSeged.kiirMegjegyzes("Ez a cella nem ut, igy nem rakhatsz ra akadalyt.");
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**
@@ -30,12 +31,14 @@ public abstract class Cella {
      */
     public void lerakAkadalyKo(SargaKo sargaKo) {
         KonzolSeged.kiirFuggvenyHivas("Cella", "lerakAkadaly", "akadaly: Akadaly");
-        KonzolSeged.kiirMegjegyzes("Ez a cella nem út, így nem rakhatsz ra akadalykovet.");
+        KonzolSeged.kiirMegjegyzes("Ez a cella nem ut, igy nem rakhatsz ra akadalykovet.");
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
-    public void lerakTorony(Torony torony) {
-
+    public boolean lerakTorony(Torony torony) {
+    	KonzolSeged.kiirMegjegyzes("Ez a cella nem domborzat, így nem rakhatsz ra tornyot.");
+        KonzolSeged.kiirFuggvenyVisszateres();
+        return false;
     }
 
     public void lerakToronyKo(ToronyKo toronyKo) {

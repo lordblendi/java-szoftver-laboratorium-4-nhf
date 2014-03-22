@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Ut extends Cella {
@@ -10,6 +11,7 @@ public class Ut extends Cella {
      */
     public Ut() {
         super();
+        ellensegek = new ArrayList<Ellenseg>();
         KonzolSeged.kiirKonstruktor("Ut");
     }
 
@@ -32,7 +34,14 @@ public class Ut extends Cella {
 
      @Override
     public void lerakAkadaly(Akadaly akadaly) {
-        super.lerakAkadaly(akadaly);
+    	String s = KonzolSeged.beolvas("Van mar akadaly a cellan?", "[in]");
+     	if (s.equals("i")){
+     		for (Ellenseg e: ellensegek){
+     			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "ember: Ember");
+     			akadaly.ralep(e);   	
+     		}
+     	}
+    	 KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**

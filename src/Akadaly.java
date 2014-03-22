@@ -6,7 +6,8 @@ public class Akadaly {
     }
 
     public int getAr() {
-        return 0;
+    	KonzolSeged.kiirFuggvenyVisszateres();
+    	return 0;
     }
 
     public void lerakAkadalyKo(SargaKo sargaKo) {

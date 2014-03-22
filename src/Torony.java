@@ -23,6 +23,7 @@ public class Torony {
 
     public void setPozicio(Domborzat domborzat) {
         this.pozicio = domborzat;
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     public void setHatotavolsag(int hatotavolsag) {
