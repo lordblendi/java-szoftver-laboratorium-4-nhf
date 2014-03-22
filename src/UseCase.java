@@ -1,18 +1,18 @@
 /**
- * Use-case interfész
+ * Use-case interfÃ©sz
  * 
  * @author sebokmarton
  */
 public interface UseCase {
 	/**
-	 * Név lekérése
+	 * NÃ©v lekÃ©rÃ©se
 	 * 
-	 * @return Név
+	 * @return NÃ©v
 	 */
 	String getNev();
 	
 	/**
-	 * Futtatás 
+	 * FuttatÃ¡s 
 	 */
 	void start();
 }

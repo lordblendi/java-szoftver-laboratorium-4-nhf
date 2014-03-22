@@ -2,7 +2,7 @@ public class PeldaUseCase implements UseCase {
 
 	@Override
 	public String getNev() {
-		return "Példa use-case";
+		return "PÃ©lda use-case";
 	}
 
 	@Override

@@ -1,11 +1,11 @@
 /**
- * A program fı oszt·lya
+ * A program f≈ë oszt√°lya
  * 
  * @author sebokmarton
  */
 public class Main {
 	/**
-	 * Program indul·sa
+	 * Program indul√°sa
 	 * 
 	 * @param args Parancssori argumentumok
 	 */

@@ -4,36 +4,36 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 /**
- * Segédosztály a konzol kezeléséhez
+ * SegÃ©dosztÃ¡ly a konzol kezelÃ©sÃ©hez
  * 
  * @author sebokmarton
  */
 public class KonzolSeged {
 	/**
-	 * Behúzás mértéke 
+	 * BehÃºzÃ¡s mÃ©rtÃ©ke 
 	 */
 	private static int behuzas = 0;
 	
 	/**
-	 * Hívásokat tároló verem
+	 * HÃ­vÃ¡sokat tÃ¡rolÃ³ verem
 	 */
 	private static Stack<String> hivasok = new Stack<String>();
 	
 	/**
-	 * Scanner a beolvasáshoz
+	 * Scanner a beolvasÃ¡shoz
 	 */
 	private static Scanner in = new Scanner(System.in);
 	
 	/**
-	 * Szkeleton kezelõi felületének elindítása
+	 * Szkeleton kezelÅ‘i felÃ¼letÃ©nek elindÃ­tÃ¡sa
 	 * 
-	 * @param useCasek Választható use-case-ek listája
+	 * @param useCasek VÃ¡laszthatÃ³ use-case-ek listÃ¡ja
 	 */
 	static void start(UseCase[] useCasek) {
-		System.out.println("52 - Nagymama lekvárjai szkeleton");
+		System.out.println("52 - Nagymama lekvÃ¡rjai szkeleton");
 		
 		while (true) {
-			System.out.println("Választható use-casek (vagy kilépés):\n");
+			System.out.println("VÃ¡laszthatÃ³ use-casek (vagy kilÃ©pÃ©s):\n");
 			
 			int i = 1;
 			
@@ -41,14 +41,14 @@ public class KonzolSeged {
 				System.out.println(i + ". " + useCase.getNev());
 				i++;
 			}
-			System.out.print(i + ". Kilépés\n\n");
+			System.out.print(i + ". KilÃ©pÃ©s\n\n");
 			
-			int c = Integer.parseInt(beolvas("Kérlek, add meg a választott sorszámot", "[1-" + i + "]"));
+			int c = Integer.parseInt(beolvas("KÃ©rlek, add meg a vÃ¡lasztott sorszÃ¡mot", "[1-" + i + "]"));
 			
 			if (c == i) {
 				return;
 			} else {
-				System.out.println("\n" + c + ". " + useCasek[c - 1].getNev() + " futtatása...\n");
+				System.out.println("\n" + c + ". " + useCasek[c - 1].getNev() + " futtatÃ¡sa...\n");
 				useCasek[c - 1].start();
 				System.out.println();
 			}
@@ -56,9 +56,9 @@ public class KonzolSeged {
 	}
 	
 	/**
-	 * Kiírás behúzással
+	 * KiÃ­rÃ¡s behÃºzÃ¡ssal
 	 * 
-	 * @param x Szöveg
+	 * @param x SzÃ¶veg
 	 */
 	private static void print(String x) {
 		for (int i = 0; i < behuzas; i++) {
@@ -69,9 +69,9 @@ public class KonzolSeged {
 	}
 	
 	/**
-	 * Kiírás behúzással új sorba
+	 * KiÃ­rÃ¡s behÃºzÃ¡ssal Ãºj sorba
 	 * 
-	 * @param x Szöveg
+	 * @param x SzÃ¶veg
 	 */
 	private static void println(String x) {
 		print(x);
@@ -87,16 +87,16 @@ public class KonzolSeged {
 	}
 	
 	/**
-	 * Függvényhívás kezdetének kiírása
+	 * FÃ¼ggvÃ©nyhÃ­vÃ¡s kezdetÃ©nek kiÃ­rÃ¡sa
 	 * 
-	 * @param objektum Hívott függvényhez tartozó objektum neve
-	 * @param fuggveny Hívott függvény neve
-	 * @param parameterek Hívott függvény paraméterei típusukkal együtt, vesszõvel elválasztva (Java szintaxis)
+	 * @param objektum HÃ­vott fÃ¼ggvÃ©nyhez tartozÃ³ objektum neve
+	 * @param fuggveny HÃ­vott fÃ¼ggvÃ©ny neve
+	 * @param parameterek HÃ­vott fÃ¼ggvÃ©ny paramÃ©terei tÃ­pusukkal egyÃ¼tt, vesszÅ‘vel elvÃ¡lasztva (Java szintaxis)
 	 */
 	static public void kiirFuggvenyHivas(String objektum, String fuggveny, String parameterek) {
 		String call = objektum + "." + fuggveny;
 		
-		println(call + " hívás (" + parameterek + ")");
+		println(call + " hÃ­vÃ¡s (" + parameterek + ")");
 		behuzas++;
 		hivasok.push(call);
 	}
@@ -109,21 +109,21 @@ public class KonzolSeged {
 	}
 	
 	/**
-	 * Függvényhívás végének kiírása
+	 * FÃ¼ggvÃ©nyhÃ­vÃ¡s vÃ©gÃ©nek kiÃ­rÃ¡sa
 	 * 
-	 * @param ertekek Visszatérési értékek típusukkal együtt, vesszõvel elválasztva (Java szintaxis)
+	 * @param ertekek VisszatÃ©rÃ©si Ã©rtÃ©kek tÃ­pusukkal egyÃ¼tt, vesszÅ‘vel elvÃ¡lasztva (Java szintaxis)
 	 */
 	static public void kiirFuggvenyVisszateres(String ertekek) {
 		String call = hivasok.pop();
 		
 		behuzas--;
-		println(call + " visszatérés" + (ertekek.length() > 0 ? " (" + ertekek + ")" : ""));
+		println(call + " visszatÃ©rÃ©s" + (ertekek.length() > 0 ? " (" + ertekek + ")" : ""));
 	}
 	
 	/**
-	 * Megjegyzés kiírása
+	 * MegjegyzÃ©s kiÃ­rÃ¡sa
 	 * 
-	 * @param megj Megjegyzés
+	 * @param megj MegjegyzÃ©s
 	 */
 	static public void kiirMegjegyzes(String megj) {
 		println(megj);
@@ -137,22 +137,22 @@ public class KonzolSeged {
 	}
 	
 	/**
-	 * Objektum létrehozásának kiírása
+	 * Objektum lÃ©trehozÃ¡sÃ¡nak kiÃ­rÃ¡sa
 	 * 
-	 * @param objektum Létrehozandó objektum neve
-	 * @param parameterek Konstruktor paraméterei típusukkal együtt, vesszõvel elválasztva (Java szintaxis)
+	 * @param objektum LÃ©trehozandÃ³ objektum neve
+	 * @param parameterek Konstruktor paramÃ©terei tÃ­pusukkal egyÃ¼tt, vesszÅ‘vel elvÃ¡lasztva (Java szintaxis)
 	 */
 	static public void kiirKonstruktor(String objektum, String parameterek) {
-		println(objektum + " létrehozása (" + parameterek + ")");
+		println(objektum + " lÃ©trehozÃ¡sa (" + parameterek + ")");
 	}
 	
 	/**
-	 * Választási lehetõség kiírása, válasz beolvasása
+	 * VÃ¡lasztÃ¡si lehetÅ‘sÃ©g kiÃ­rÃ¡sa, vÃ¡lasz beolvasÃ¡sa
 	 * @see java.util.regex.Pattern
 	 * 
-	 * @param kerdes Felhasználónak feltett kérdés
-	 * @param minta Választ illesztõ minta (Pattern szintaxis)
-	 * @return Érvényes felhasználói válasz
+	 * @param kerdes FelhasznÃ¡lÃ³nak feltett kÃ©rdÃ©s
+	 * @param minta VÃ¡laszt illesztÅ‘ minta (Pattern szintaxis)
+	 * @return Ã‰rvÃ©nyes felhasznÃ¡lÃ³i vÃ¡lasz
 	 */
 	static public String beolvas(String kerdes, String minta) {
 		String r = null;
@@ -164,7 +164,7 @@ public class KonzolSeged {
 			try {
 				r = in.next(p);
 			} catch (NoSuchElementException e) {
-				print("Hibás válasz, kérlek, adj meg egy helyeset: ");
+				print("HibÃ¡s vÃ¡lasz, kÃ©rlek, adj meg egy helyeset: ");
 			} finally {
 				in.nextLine();
 			}
