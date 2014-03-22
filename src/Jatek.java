@@ -9,6 +9,7 @@ public class Jatek {
     int varazsero;
 
     public Jatek() {
+        KonzolSeged.kiirKonstruktor("Jatek");
     }
 
     public Collection<Ellenseg> getEllensegek() {

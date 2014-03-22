@@ -8,6 +8,7 @@ public abstract class Ellenseg {
 
 
     public Ellenseg(Jatek jatek) {
+        KonzolSeged.kiirKonstruktor("Ellenseg", "jatek: Jatek");
         this.jatek = jatek;
     }
 
@@ -28,7 +29,9 @@ public abstract class Ellenseg {
     }
 
     public void setSebesseg(double sebesseg) {
+        KonzolSeged.kiirFuggvenyHivas("Ellenseg", "setSebesseg", "sebesseg: double");
         this.sebesseg = sebesseg;
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     public void leptet() {

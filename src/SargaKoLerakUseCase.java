@@ -1,23 +1,34 @@
 /**
- * Created by Nóra on 2014.03.22..
+ * Created by Szepes Nóra on 2014.03.22.
  */
-public class SargaKoLerakUseCase implements  UseCase {
+public class SargaKoLerakUseCase implements UseCase {
     @Override
     public String getNev() {
-        return "SárgaKő lerakása use-case";
+        return "SargaKo lerakasa use-case";
     }
 
     @Override
     public void start() {
         KonzolSeged.kiirFuggvenyHivas("SargaKoLerakUseCase", "start");
+        Jatek jatek = new Jatek();
         SargaKo sargaKo = new SargaKo();
+        Akadaly akadaly = new Akadaly();
+        Ut ut = new Ut();
+        ut.akadaly = akadaly;
+        Ember ember = new Ember(jatek);
         sargaKo.getAr();
-        String valasz = KonzolSeged.beolvas("Van eleg varazsero?","[in]");
-        if("i".equals(valasz)){
-
-        }
-        else if("n".equals(valasz)){
-           KonzolSeged.kiirMegjegyzes("Nincs eleg varazsero a SargaKo vasarlashoz.");
+        String valasz = KonzolSeged.beolvas("Van eleg varazsero?", "[in]");
+        if ("i".equals(valasz)) {
+            valasz = KonzolSeged.beolvas("A SargaKovet utra raknad?", "[in]");
+            if ("i".equals(valasz)) {
+                ut.lerakAkadalyKo(sargaKo);
+                KonzolSeged.kiirMegjegyzes("Jelenleg egy Ember faju ellenseg tartozkodik ezen uton.");
+                ut.ralep(ember);
+            } else if ("n".equals(valasz)) {
+                KonzolSeged.kiirMegjegyzes("SargaKovet csak utra lehet elhelyezni.");
+            }
+        } else if ("n".equals(valasz)) {
+            KonzolSeged.kiirMegjegyzes("Nincs eleg varazsero a SargaKo vasarlashoz.");
         }
         KonzolSeged.kiirFuggvenyVisszateres();
     }
