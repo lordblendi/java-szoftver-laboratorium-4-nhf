@@ -3,7 +3,6 @@ public class SargaKo {
      *  Sárgakő konstruktora
      */
     public SargaKo() {
-        KonzolSeged.kiirKonstruktor("SargaKo");
     }
 
     /**
@@ -21,7 +20,7 @@ public class SargaKo {
      * @param ellenseg
      */
     public void ralep(Ellenseg ellenseg) {
-        KonzolSeged.kiirFuggvenyHivas("ellenseg", "setSebesseg", "0.5");
+        KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "sebesseg");
         ellenseg.setSebesseg(0.5);
         KonzolSeged.kiirFuggvenyVisszateres();
     }

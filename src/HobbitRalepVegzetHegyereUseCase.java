@@ -9,6 +9,11 @@ public class HobbitRalepVegzetHegyereUseCase implements UseCase{
 
     @Override
     public void start() {
+        KonzolSeged.kiirKonstruktor("hobbit");
+        KonzolSeged.kiirKonstruktor("pozicio");
+        KonzolSeged.kiirKonstruktor("kovetkezoPozicio");
+        KonzolSeged.kiirKonstruktor("jatek");
+
         Jatek jatek = new Jatek();
         Hobbit hobbit = new Hobbit(jatek);
         Ut ut = new Ut();

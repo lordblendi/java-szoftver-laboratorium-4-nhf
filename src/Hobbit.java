@@ -6,7 +6,15 @@ public class Hobbit extends Ellenseg {
      */
     public Hobbit(Jatek jatek) {
         super(jatek);
-        KonzolSeged.kiirKonstruktor("Hobbit", "jatek: Jatek");
+    }
+
+    /**
+     * Toronykő segítségével sebzi az ellenséget
+     * @param toronyKo
+     */
+    @Override
+    public void acceptToronyKoSebez(ToronyKo toronyKo) {
+        super.acceptToronyKoSebez(toronyKo);
     }
 
     @Override
@@ -14,6 +22,10 @@ public class Hobbit extends Ellenseg {
         super.initElet();
     }
 
+    /**
+     * Kapott értékkel sebződik.
+     * @param sebzes
+     */
     @Override
     public void sebzodik(int sebzes) {
         super.sebzodik(sebzes);

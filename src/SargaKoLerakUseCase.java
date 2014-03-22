@@ -10,22 +10,25 @@ public class SargaKoLerakUseCase implements UseCase {
 
     @Override
     public void start() {
+        KonzolSeged.kiirKonstruktor("jatek");
+        KonzolSeged.kiirKonstruktor("s");
+        KonzolSeged.kiirKonstruktor("u");
+        KonzolSeged.kiirKonstruktor("a");
+        KonzolSeged.kiirKonstruktor("e");
+
         Jatek jatek = new Jatek();
-        SargaKo sargaKo = new SargaKo();
-        Akadaly akadaly = new Akadaly();
-        Ut ut = new Ut();
-        ut.akadaly = akadaly;
-        Ellenseg ember = new Ember(jatek);
+        SargaKo s = new SargaKo();
+        Akadaly a = new Akadaly();
+        Ut u = new Ut();
+        u.akadaly = a;
+        Ellenseg e = new Ember(jatek);
 
-        KonzolSeged.kiirFuggvenyHivas("sargaKo", "getAr");
-        sargaKo.getAr();
 
-        KonzolSeged.kiirFuggvenyHivas("jatek", "lerakAkadalyKo", "ut, sargaKo");
-        jatek.lerakAkadalyKo(ut,sargaKo);
 
-        KonzolSeged.kiirMegjegyzes("Jelenleg egy Ember faju ellenseg tartozkodik ezen az uton.");
-        KonzolSeged.kiirFuggvenyHivas("ut", "ralep", "ember");
-        ut.ralep(ember);
+        KonzolSeged.kiirFuggvenyHivas("jatek", "lerakAkadalyKo", "ut, s");
+        jatek.lerakAkadalyKo(u,s);
+        KonzolSeged.kiirFuggvenyHivas("u", "ralep", "e");
+        u.ralep(e);
 
     }
 }
