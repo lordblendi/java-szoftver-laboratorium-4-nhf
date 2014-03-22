@@ -11,6 +11,8 @@ public class Ut extends Cella {
      */
     public Ut() {
         super();
+        ellensegek = new ArrayList<Ellenseg>();
+        KonzolSeged.kiirKonstruktor("Ut");
     }
 
     /**
