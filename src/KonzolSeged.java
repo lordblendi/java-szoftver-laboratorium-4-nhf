@@ -12,17 +12,31 @@ public class KonzolSeged {
     /**
      * Behúzás mértéke
      */
-    private static int behuzas = 0;
+    static private int behuzas = 0;
 
     /**
      * Hívásokat tároló verem
      */
-    private static Stack<String> hivasok = new Stack<String>();
+    static private Stack<String> hivasok = new Stack<String>();
 
     /**
      * Scanner a beolvasáshoz
      */
-    private static Scanner in = new Scanner(System.in);
+    static private Scanner in = new Scanner(System.in);
+    
+    /**
+     * Aktuálisan futó use-case neve
+     */
+    static private String aktualisUseCase = null;
+    
+    /**
+     * Aktuálisan futó use-case nevének lekérdezése
+     * 
+     * @return Név
+     */
+    static public String getAktualisUseCase() {
+    	return aktualisUseCase;
+    }
 
     /**
      * Szkeleton kezelői felületének elindítása
@@ -49,6 +63,7 @@ public class KonzolSeged {
                 return;
             } else {
 				System.out.println("\n" + c + ". " + useCasek[c - 1].getNev() + " futtatasa...\n");
+				aktualisUseCase = useCasek[c - 1].getNev();
                 useCasek[c - 1].start();
                 System.out.println();
             }
@@ -60,7 +75,7 @@ public class KonzolSeged {
      *
      * @param x Szöveg
      */
-    private static void print(String x) {
+    static private void print(String x) {
         for (int i = 0; i < behuzas; i++) {
             System.out.print("    ");
         }
@@ -73,7 +88,7 @@ public class KonzolSeged {
      *
      * @param x Szöveg
      */
-    private static void println(String x) {
+    static private void println(String x) {
         print(x);
         System.out.println();
     }
