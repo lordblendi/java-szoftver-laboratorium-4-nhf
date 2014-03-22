@@ -35,9 +35,13 @@ public class Akadaly {
      * @param ellenseg
      */
     public void ralep(Ellenseg ellenseg) {
-        if(KonzolSeged.getAktualisUseCase().equals("SargaKo lerakasa use-case")){
+    	if(KonzolSeged.getAktualisUseCase().equals("Akadaly lerakasa use-case")){
+    		 KonzolSeged.kiirFuggvenyHivas("ember", "setSebesseg", "sebesseg: int");
+             ellenseg.setSebesseg(0.9);
+    	}
+    	if(KonzolSeged.getAktualisUseCase().equals("SargaKo lerakasa use-case")){
             if(sargaKo == null){
-                KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "sebesseg");
+                KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "sebesseg: int");
                 ellenseg.setSebesseg(0.9);
             }
             else{
