@@ -8,31 +8,46 @@ public abstract class Ellenseg {
 
     /**
      * Ellenség konstruktora
+     *
      * @param jatek játék, melyben az ellenség részt vesz.
      */
     public Ellenseg(Jatek jatek) {
-        KonzolSeged.kiirKonstruktor("Ellenseg", "jatek: Jatek");
         this.jatek = jatek;
     }
 
+    /**
+     * Toronykő segítségével sebzi az ellenséget
+     * @param toronyKo
+     */
     public void acceptToronyKoSebez(ToronyKo toronyKo) {
 
     }
 
+    /**
+     * aktuális pozíció visszaadása
+     * @return aktuális pozíció
+     */
     public Ut getPozicio() {
+        KonzolSeged.kiirFuggvenyVisszateres("ut");
         return pozicio;
     }
 
     /**
      * Beállítja az új pozíciót,
      * valamit az új következő pozíciót.
+     *
      * @param pozicio kovetkezo pozicio
      */
     public void setPozicio(Ut pozicio) {
-        KonzolSeged.kiirFuggvenyHivas("Ellenseg", "setPozicio", "pozicio: Ut");
-        KonzolSeged.kiirMegjegyzes("Beallitodik az uj pozicio, es a kovetkezo pozicio.");
+//        KonzolSeged.kiirFuggvenyHivas("Ellenseg", "setPozicio", "pozicio: Ut");
+//        KonzolSeged.kiirMegjegyzes("Beallitodik az uj pozicio, es a kovetkezo pozicio.");
+        KonzolSeged.kiirFuggvenyHivas("ut", "getKovetkezoLepes");
         kovetkezoPozicio = pozicio.getKovetkezoLepes();
         this.pozicio = pozicio;
+
+        KonzolSeged.kiirFuggvenyHivas("kovetkezoPozicio", "ralep", "hobbit");
+        pozicio.ralep(this);
+
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
@@ -42,11 +57,10 @@ public abstract class Ellenseg {
 
     /**
      * Ellenség sebességének a beállítása a kapott értékre
+     *
      * @param sebesseg beállítandó sebesség
      */
     public void setSebesseg(double sebesseg) {
-        KonzolSeged.kiirFuggvenyHivas("Ellenseg", "setSebesseg", "sebesseg: double");
-        KonzolSeged.kiirMegjegyzes("A sebesseg beallitasa sikeres.");
         this.sebesseg = sebesseg;
         KonzolSeged.kiirFuggvenyVisszateres();
     }
@@ -58,16 +72,21 @@ public abstract class Ellenseg {
      * Rálép az új pocícióra.
      */
     public void leptet() {
-        KonzolSeged.kiirFuggvenyHivas("Ellenseg", "leptet");
-        KonzolSeged.kiirMegjegyzes("Az ellenseg vegighaladt az uton. Ralep a kovetkezo cellara");
+        KonzolSeged.kiirFuggvenyHivas("ut", "lelep", "hobbit");
         pozicio.lelep(this);
+
+        KonzolSeged.kiirFuggvenyHivas("hobbit", "setPozicio", "kovetkezoPozicio");
         setPozicio(kovetkezoPozicio);
-        pozicio.ralep(this);
+
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
+    /**
+     * ennyivel sebződik az ellenség
+     * @param sebzes
+     */
     public void sebzodik(int sebzes) {
-
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
 }

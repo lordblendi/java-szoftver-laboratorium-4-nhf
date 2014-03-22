@@ -5,19 +5,38 @@ public abstract class Cella {
      * Cella konstruktora
      */
     protected Cella() {
-        KonzolSeged.kiirKonstruktor("Cella");
+
     }
 
     public void setPozicio(Pont pozicio) {
         this.pozicio = pozicio;
     }
 
+
+    /**
+     * visszaadja az aktuális pozíciót
+     *
+     * @return aktuális pozíció
+     */
     public Pont getPozicio() {
-        return pozicio;
+        KonzolSeged.kiirFuggvenyVisszateres("pont");
+        return new Pont(1,1);
+//        return pozicio;
     }
 
+    /**
+     * Ezen cella és a kapott cella közötti
+     * távolságot adja vissza
+     * @param cella ettől mért távolságot adja vissza
+     * @return távolság
+     */
     public double getTavolsag(Cella cella) {
-    	return 0;
+        KonzolSeged.kiirFuggvenyHivas("domborzat", "getPozicio");
+        Pont pozicio = cella.getPozicio();
+        KonzolSeged.kiirFuggvenyHivas("pozicio", "getTavolsag", "pont");
+        double d = pozicio.getTavolsag(new Pont(1,1));
+        KonzolSeged.kiirFuggvenyVisszateres("tavolsag");
+        return d;
     }
 
     public void lerakAkadaly(Akadaly akadaly) {
@@ -27,6 +46,7 @@ public abstract class Cella {
 
     /**
      * Sárgakő elhelyezése a cellán
+     *
      * @param sargaKo elhelyezendő sárgakő
      */
     public void lerakAkadalyKo(SargaKo sargaKo) {

@@ -10,32 +10,25 @@ public class SargaKoLerakUseCase implements UseCase {
 
     @Override
     public void start() {
-        KonzolSeged.kiirFuggvenyHivas("SargaKoLerakUseCase", "start");
-        Jatek jatek = new Jatek();
-        SargaKo sargaKo = new SargaKo();
-        Akadaly akadaly = new Akadaly();
-        Ut ut = new Ut();
-        ut.akadaly = akadaly;
-        Ember ember = new Ember(jatek);
-        sargaKo.getAr();
+        KonzolSeged.kiirKonstruktor("jatek");
+        KonzolSeged.kiirKonstruktor("s");
+        KonzolSeged.kiirKonstruktor("u");
+        KonzolSeged.kiirKonstruktor("a");
+        KonzolSeged.kiirKonstruktor("e");
 
-        jatek.lerakAkadalyKo(ut,sargaKo);
-        KonzolSeged.kiirMegjegyzes("Jelenleg egy Ember faju ellenseg tartozkodik ezen az uton.");
-        ut.ralep(ember);
-//        String valasz = KonzolSeged.beolvas("Van eleg varazsero?", "[in]");
-//        if ("i".equals(valasz)) {
-//            valasz = KonzolSeged.beolvas("A SargaKovet utra raknad?", "[in]");
-//            if ("i".equals(valasz)) {
-//                jatek.lerakAkadalyKo(ut,sargaKo);
-////                ut.lerakAkadalyKo(sargaKo);
-//                KonzolSeged.kiirMegjegyzes("Jelenleg egy Ember faju ellenseg tartozkodik ezen az uton.");
-//                ut.ralep(ember);
-//            } else if ("n".equals(valasz)) {
-//                KonzolSeged.kiirMegjegyzes("SargaKovet csak utra lehet elhelyezni.");
-//            }
-//        } else if ("n".equals(valasz)) {
-//            KonzolSeged.kiirMegjegyzes("Nincs eleg varazsero a SargaKo vasarlashoz.");
-//        }
-        KonzolSeged.kiirFuggvenyVisszateres();
+        Jatek jatek = new Jatek();
+        SargaKo s = new SargaKo();
+        Akadaly a = new Akadaly();
+        Ut u = new Ut();
+        u.akadaly = a;
+        Ellenseg e = new Ember(jatek);
+
+
+
+        KonzolSeged.kiirFuggvenyHivas("jatek", "lerakAkadalyKo", "ut, s");
+        jatek.lerakAkadalyKo(u,s);
+        KonzolSeged.kiirFuggvenyHivas("u", "ralep", "e");
+        u.ralep(e);
+
     }
 }
