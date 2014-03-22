@@ -72,12 +72,15 @@ public abstract class Ellenseg {
      * Rálép az új pocícióra.
      */
     public void leptet() {
-        KonzolSeged.kiirFuggvenyHivas("ut", "lelep", "hobbit");
-        pozicio.lelep(this);
+        String valasz = KonzolSeged.beolvas("helyzet >= 1.0?", "[in]");
+        if("i".equals(valasz)){
+            KonzolSeged.kiirFuggvenyHivas("ut", "lelep", "hobbit");
+            pozicio.lelep(this);
 
-        KonzolSeged.kiirFuggvenyHivas("hobbit", "setPozicio", "kovetkezoPozicio");
-        setPozicio(kovetkezoPozicio);
+            KonzolSeged.kiirFuggvenyHivas("hobbit", "setPozicio", "kovetkezoPozicio");
+            setPozicio(kovetkezoPozicio);
 
+        }
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
@@ -86,6 +89,14 @@ public abstract class Ellenseg {
      * @param sebzes
      */
     public void sebzodik(int sebzes) {
+
+        String valasz = KonzolSeged.beolvas("Meghalt az ellenseg?", "[in]");
+        if("n".equals(valasz)){
+        }
+        else{
+            KonzolSeged.kiirFuggvenyHivas("jatek", "meghalEllenseg", "legkozelebbi");
+            jatek.meghalEllenseg(this,100);
+        }
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 

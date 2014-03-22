@@ -48,44 +48,38 @@ public class Torony {
      * különben a saját sebez függvényét hívja meg.
      */
     public void tuzel() {
-        ToronyKo toronyKo = new EmberPirosKo();
-        Ut ut = new Ut();
-        Jatek jatek = new Jatek();
-        Domborzat domborzat = new Domborzat();
-        Ellenseg ember = new Ember(jatek);
-        ember.pozicio = ut;
+        String valasz = KonzolSeged.beolvas("varakozas == 0?", "[in]");
+        if("i".equals(valasz)){
+            ToronyKo toronyKo = new EmberPirosKo();
+            Ut ut = new Ut();
+            Jatek jatek = new Jatek();
+            Domborzat domborzat = new Domborzat();
+            Ellenseg ember = new Ember(jatek);
+            ember.pozicio = ut;
 
-        KonzolSeged.kiirFuggvenyHivas("jatek", "getEllensegek");
-        jatek.getEllensegek();
+            KonzolSeged.kiirFuggvenyHivas("jatek", "getEllensegek");
+            jatek.getEllensegek();
 
-        KonzolSeged.kiirFuggvenyHivas("ember", "getPozicio");
-        ember.getPozicio();
+            KonzolSeged.kiirFuggvenyHivas("ember", "getPozicio");
+            ember.getPozicio();
 
-        KonzolSeged.kiirFuggvenyHivas("ut", "getTavolsag", "domborzat");
-        double d = ut.getTavolsag(domborzat);
+            KonzolSeged.kiirFuggvenyHivas("ut", "getTavolsag", "domborzat");
+            double d = ut.getTavolsag(domborzat);
 
-        String valasz = KonzolSeged.beolvas("Az ellenseg hatotavolsagon belul van?", "[in]");
+            valasz = KonzolSeged.beolvas("hatotavolsag <= tavolsag?", "[in]");
 
-        if ("i".equals(valasz)) {
-            valasz = KonzolSeged.beolvas("Van ToronyKo a tornyon?", "[in]");
-            if("n".equals(valasz)){
-                KonzolSeged.kiirFuggvenyHivas("torony", "sebez", "legkozelebbi");
-                sebez(ember);
+            if ("i".equals(valasz)) {
+                valasz = KonzolSeged.beolvas("toronyKo == null?", "[in]");
+                if("i".equals(valasz)){
+                    KonzolSeged.kiirFuggvenyHivas("torony", "sebez", "legkozelebbi");
+                    sebez(ember);
+                }
+                else{
+                    KonzolSeged.kiirFuggvenyHivas("legkozelebbi", "acceptToronyKoSebez", "toronyKo");
+                    ember.acceptToronyKoSebez(toronyKo);
+                }
+
             }
-            else{
-                KonzolSeged.kiirFuggvenyHivas("legkozelebbi", "acceptToronyKoSebez", "toronyKo");
-                ember.acceptToronyKoSebez(toronyKo);
-            }
-
-
-            valasz = KonzolSeged.beolvas("Meghalt az ellenseg?", "[in]");
-            if("n".equals(valasz)){
-            }
-            else{
-                KonzolSeged.kiirFuggvenyHivas("jatek", "meghalEllenseg", "legkozelebbi");
-                jatek.meghalEllenseg(ember,100);
-            }
-
         }
         KonzolSeged.kiirFuggvenyVisszateres();
     }

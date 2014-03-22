@@ -10,12 +10,6 @@ public class SargaKoLerakUseCase implements UseCase {
 
     @Override
     public void start() {
-        KonzolSeged.kiirKonstruktor("jatek");
-        KonzolSeged.kiirKonstruktor("s");
-        KonzolSeged.kiirKonstruktor("u");
-        KonzolSeged.kiirKonstruktor("a");
-        KonzolSeged.kiirKonstruktor("e");
-
         Jatek jatek = new Jatek();
         SargaKo s = new SargaKo();
         Akadaly a = new Akadaly();
@@ -27,8 +21,7 @@ public class SargaKoLerakUseCase implements UseCase {
 
         KonzolSeged.kiirFuggvenyHivas("jatek", "lerakAkadalyKo", "ut, s");
         jatek.lerakAkadalyKo(u,s);
-        KonzolSeged.kiirFuggvenyHivas("u", "ralep", "e");
-        u.ralep(e);
+
 
     }
 }

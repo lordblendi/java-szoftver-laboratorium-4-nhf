@@ -12,7 +12,6 @@ public class Ut extends Cella {
     public Ut() {
         super();
         ellensegek = new ArrayList<Ellenseg>();
-        KonzolSeged.kiirKonstruktor("Ut");
     }
 
     /**
@@ -26,7 +25,12 @@ public class Ut extends Cella {
         String valasz = KonzolSeged.beolvas("Van az uton akadaly?", "[in]");
         if ("i".equals(valasz)) {
             KonzolSeged.kiirFuggvenyHivas("u", "lerakAkadalyKo", "s");
-            akadaly.lerakAkadalyKo(sargaKo);
+            boolean b = akadaly.lerakAkadalyKo(sargaKo);
+            if(b){
+                Ember ember = new Ember(new Jatek());
+                KonzolSeged.kiirFuggvenyHivas("u", "ralep", "e");
+                ralep(ember);
+            }
         } else if ("n".equals(valasz)) {
         }
         KonzolSeged.kiirFuggvenyVisszateres();

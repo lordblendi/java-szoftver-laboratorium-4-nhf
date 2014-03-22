@@ -30,6 +30,13 @@ public class Ember extends Ellenseg {
      */
     @Override
     public void sebzodik(int sebzes) {
-       KonzolSeged.kiirFuggvenyVisszateres();
+        String valasz = KonzolSeged.beolvas("Meghalt az ellenseg?", "[in]");
+        if("n".equals(valasz)){
+        }
+        else{
+            KonzolSeged.kiirFuggvenyHivas("jatek", "meghalEllenseg", "legkozelebbi");
+            jatek.meghalEllenseg(this,100);
+        }
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 }

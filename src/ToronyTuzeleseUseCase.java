@@ -9,13 +9,6 @@ public class ToronyTuzeleseUseCase implements UseCase {
 
     @Override
     public void start() {
-        KonzolSeged.kiirKonstruktor("torony");
-        KonzolSeged.kiirKonstruktor("jatek");
-        KonzolSeged.kiirKonstruktor("ember");
-        KonzolSeged.kiirKonstruktor("ut");
-        KonzolSeged.kiirKonstruktor("domborzat");
-        KonzolSeged.kiirKonstruktor("pont");
-
         Jatek jatek = new Jatek();
 
         Torony torony = new Torony(jatek);

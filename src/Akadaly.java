@@ -21,13 +21,15 @@ public class Akadaly {
      * A kapott akadálykő lerakása az akadályra
      * @param sargaKo
      */
-    public void lerakAkadalyKo(SargaKo sargaKo) {
+    public boolean lerakAkadalyKo(SargaKo sargaKo) {
         String valasz = KonzolSeged.beolvas("Van az akadalyon SargaKo?","[in]");
         if("n".equals(valasz)){
-            KonzolSeged.kiirMegjegyzes("SargaKo rakerult az akadalyra.");
             this.sargaKo = sargaKo;
+            KonzolSeged.kiirFuggvenyVisszateres("true");
+            return true;
         }
-        KonzolSeged.kiirFuggvenyVisszateres();
+        KonzolSeged.kiirFuggvenyVisszateres("false");
+        return false;
     }
 
     /**

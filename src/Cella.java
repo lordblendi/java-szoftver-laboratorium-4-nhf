@@ -51,6 +51,7 @@ public abstract class Cella {
      */
     public void lerakAkadalyKo(SargaKo sargaKo) {
         KonzolSeged.kiirFuggvenyVisszateres();
+
     }
 
     public boolean lerakTorony(Torony torony) {
