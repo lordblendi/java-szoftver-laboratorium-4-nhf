@@ -30,8 +30,6 @@ public abstract class Cella {
      * @param sargaKo elhelyezendő sárgakő
      */
     public void lerakAkadalyKo(SargaKo sargaKo) {
-        KonzolSeged.kiirFuggvenyHivas("Cella", "lerakAkadaly", "akadaly: Akadaly");
-        KonzolSeged.kiirMegjegyzes("Ez a cella nem ut, igy nem rakhatsz ra akadalykovet.");
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
