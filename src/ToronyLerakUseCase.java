@@ -17,7 +17,5 @@ public class ToronyLerakUseCase implements UseCase{
         
         KonzolSeged.kiirFuggvenyHivas("jatek", "lerakTorony","d: Domborzat, torony: Torony");
         jatek.lerakTorony(d, torony);
-       
-        KonzolSeged.kiirFuggvenyVisszateres();
 	}
 }

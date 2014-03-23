@@ -19,7 +19,5 @@ public class AkadalyLerakUseCase  implements UseCase{
         
         KonzolSeged.kiirFuggvenyHivas("jatek", "lerakAkadaly","ut: Ut, akadaly: Akadaly");
         jatek.lerakAkadaly(ut, akadaly);
-       
-        KonzolSeged.kiirFuggvenyVisszateres();
 	}
 }
