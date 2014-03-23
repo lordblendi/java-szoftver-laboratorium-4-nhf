@@ -62,8 +62,8 @@ public class KonzolSeged {
             if (c == i) {
                 return;
             } else {
-				System.out.println("\n" + c + ". " + useCasek[c].getNev() + " futtatasa...\n");
-				aktualisUseCase = useCasek[c].getNev();
+				System.out.println("\n" + c + ". " + useCasek[c ].getNev() + " futtatasa...\n");
+				aktualisUseCase = useCasek[c ].getNev();
                 useCasek[c ].start();
                 System.out.println();
             }

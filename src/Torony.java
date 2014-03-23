@@ -39,7 +39,7 @@ public class Torony {
      * @param ellenseg
      */
     public void sebez(Ellenseg ellenseg) {
-        KonzolSeged.kiirFuggvenyHivas("ellenseg", "sebzodik", "sebzes");
+        KonzolSeged.kiirFuggvenyHivas("legkozelebbi", "sebzodik", "1000");
         ellenseg.sebzodik(10);
         KonzolSeged.kiirFuggvenyVisszateres();
     }
@@ -107,7 +107,7 @@ public class Torony {
             KonzolSeged.kiirFuggvenyHivas("ut", "getTavolsag", "domborzat");
             double d = ut.getTavolsag(domborzat);
 
-            valasz = KonzolSeged.beolvas("hatotavolsag <= tavolsag?", "[in]");
+            valasz = KonzolSeged.beolvas("hatotavolsag <= 2.0?", "[in]");
 
             if ("i".equals(valasz)) {
                 valasz = KonzolSeged.beolvas("toronyKo == null?", "[in]");

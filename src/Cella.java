@@ -36,7 +36,7 @@ public abstract class Cella {
         Pont pozicio = cella.getPozicio();
         KonzolSeged.kiirFuggvenyHivas("pozicio", "getTavolsag", "pont");
         double d = pozicio.getTavolsag(new Pont(1,1));
-        KonzolSeged.kiirFuggvenyVisszateres("tavolsag");
+        KonzolSeged.kiirFuggvenyVisszateres("2.0");
         return d;
     }
 

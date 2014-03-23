@@ -117,7 +117,7 @@ public class Jatek {
         KonzolSeged.kiirFuggvenyHivas("s", "getAr");
         sargaKo.getAr();
 
-        String valasz = KonzolSeged.beolvas("varazsero >= ar?", "[in]");
+        String valasz = KonzolSeged.beolvas("varazsero >= 1000?", "[in]");
         if ("i".equals(valasz)) {
             KonzolSeged.kiirFuggvenyHivas("u", "lerakAkadaly", "s");
             cella.lerakAkadalyKo(sargaKo);
