@@ -38,8 +38,8 @@ public class Ut extends Cella {
 
      @Override
     public void lerakAkadaly(Akadaly akadaly) {
-    	String s = KonzolSeged.beolvas("Van mar akadaly a cellan?", "[in]");
-     	if (s.equals("i")){
+    	String s = KonzolSeged.beolvas("Van mar akadaly az uton?", "[in]");
+     	if (s.equals("n")){
      		for (Ellenseg e: ellensegek){
      			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "ember: Ember");
      			akadaly.ralep(e);   	

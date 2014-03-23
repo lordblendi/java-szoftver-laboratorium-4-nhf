@@ -10,7 +10,7 @@ public class Domborzat extends Cella {
      */
     @Override
     public boolean  lerakTorony(Torony torony) {
-    	String s = KonzolSeged.beolvas("Van mar torony a cellan?", "[in]");
+    	String s = KonzolSeged.beolvas("Van mar torony a Domborzaton?", "[in]");
     	if (s.equals("i")){
 	    	KonzolSeged.kiirFuggvenyVisszateres("false: boolean");	
 	    	return false;    	

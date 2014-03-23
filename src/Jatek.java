@@ -140,7 +140,7 @@ public class Jatek {
             KonzolSeged.kiirFuggvenyHivas("d", "lerakTorony", "torony: Torony");
             cella.lerakTorony(torony);
         } else if (s.equals("n")) {
-            torony = null;
+        	torony = null;
         } else {
             KonzolSeged.kiirMegjegyzes("hibas valasz");
         }
