@@ -14,7 +14,7 @@ public class Akadaly {
      */
     public int getAr() {
     	KonzolSeged.kiirFuggvenyVisszateres("1500: int");
-    	return 0;
+    	return 1500;
     }
 
     /**
