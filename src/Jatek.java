@@ -132,7 +132,7 @@ public class Jatek {
      * @param torony ezt a tornyot akarjuk elhelyezni
      */
     public void lerakTorony(Cella cella, Torony torony) {
-        KonzolSeged.kiirFuggvenyHivas("Torony", "getAr");
+        KonzolSeged.kiirFuggvenyHivas("torony", "getAr");
         torony.getAr();
 
         String s = KonzolSeged.beolvas("van elegendo varazsero a torony letetelehez?", "[in]");

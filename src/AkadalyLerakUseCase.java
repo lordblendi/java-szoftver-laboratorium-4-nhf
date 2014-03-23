@@ -11,8 +11,6 @@ public class AkadalyLerakUseCase  implements UseCase{
 
 	@Override
 	public void start() {
-		KonzolSeged.kiirFuggvenyHivas("AkadalyLerakUseCase", "start");
-	
 		Jatek jatek = new Jatek();
 		Akadaly akadaly = new Akadaly();
         Ut ut = new Ut();

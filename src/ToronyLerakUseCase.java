@@ -10,9 +10,7 @@ public class ToronyLerakUseCase implements UseCase{
 	}
 
 	@Override
-	public void start() {
-		KonzolSeged.kiirFuggvenyHivas("ToronyLerakUseCase", "start");
-	
+	public void start() {	
 		Jatek jatek = new Jatek();
 		Torony torony = new Torony(jatek);
         Domborzat d = new Domborzat();

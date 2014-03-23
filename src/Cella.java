@@ -39,7 +39,13 @@ public abstract class Cella {
         KonzolSeged.kiirFuggvenyVisszateres("2.0");
         return d;
     }
-
+    
+    
+    /**
+     * Akadály elhelyezése a cellán
+     *
+     * @param akadaly az elhelyezendő Akadály
+     */
     public void lerakAkadaly(Akadaly akadaly) {
       	KonzolSeged.kiirMegjegyzes("Ez a cella nem ut, igy nem rakhatsz ra akadalyt.");
         KonzolSeged.kiirFuggvenyVisszateres();
@@ -54,7 +60,11 @@ public abstract class Cella {
         KonzolSeged.kiirFuggvenyVisszateres();
 
     }
-
+    /**
+     * Toronx elhelyezése a cellán
+     *
+     * @param torony az elhelyezendő torony
+     */
     public boolean lerakTorony(Torony torony) {
     	KonzolSeged.kiirMegjegyzes("Ez a cella nem domborzat, így nem rakhatsz ra tornyot.");
         KonzolSeged.kiirFuggvenyVisszateres();

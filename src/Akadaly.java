@@ -13,7 +13,7 @@ public class Akadaly {
      * @return ára
      */
     public int getAr() {
-    	KonzolSeged.kiirFuggvenyVisszateres("ar: int");
+    	KonzolSeged.kiirFuggvenyVisszateres("1500: int");
     	return 0;
     }
 
