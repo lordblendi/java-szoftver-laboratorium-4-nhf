@@ -52,7 +52,7 @@ public abstract class Ellenseg {
     }
 
     public void initElet() {
-
+    	
     }
 
     /**

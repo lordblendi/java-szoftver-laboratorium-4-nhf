@@ -50,7 +50,8 @@ public class Hobbit extends Ellenseg {
     	this.pozicio = pozicio;
     	KonzolSeged.kiirFuggvenyHivas("kovetkezoPozicio", "getKovetkezoLepes");
     	kovetkezoPozicio = pozicio.getKovetkezoLepes();
-    	KonzolSeged.kiirFuggvenyHivas("kovetkezoPozicio", "ralep", "hobbit");    	
+    	KonzolSeged.kiirFuggvenyHivas("kovetkezoPozicio", "ralep", "hobbit");
+    	pozicio.ralep(this);
     	
     	KonzolSeged.kiirFuggvenyVisszateres();
     }

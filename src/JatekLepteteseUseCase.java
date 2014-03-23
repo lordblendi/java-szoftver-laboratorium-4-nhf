@@ -23,6 +23,7 @@ public class JatekLepteteseUseCase implements UseCase {
 		jatek.tornyok = new java.util.ArrayList<Torony>();
 		jatek.tornyok.add(torony);
 		
+		KonzolSeged.kiirFuggvenyHivas("jatek", "leptet", "ido");
 		jatek.leptet(100);
 	}
 }

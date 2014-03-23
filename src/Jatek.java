@@ -77,10 +77,13 @@ public class Jatek {
     			Ut kezdoPozicio = kezdoPoziciok.iterator().next();
     			KonzolSeged.kiirFuggvenyHivas("uj", "setPozicio", "kezdoPozicio");
     			uj.setPozicio(kezdoPozicio);
+    			KonzolSeged.kiirFuggvenyHivas("uj", "initElet");
+    			uj.initElet();
     		}
+    		KonzolSeged.kiirFuggvenyVisszateres();
     	}
     	
-    	KonzolSeged.kiirFuggvenyVisszateres();
+    	//KonzolSeged.kiirFuggvenyVisszateres();
     }
     /**
      * Kapott akadály elhelyezése a kapott cellán, ha van elég varázserőnk.
