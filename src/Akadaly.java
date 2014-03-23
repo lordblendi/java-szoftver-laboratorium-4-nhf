@@ -43,7 +43,7 @@ public class Akadaly {
     	}
         if(KonzolSeged.getAktualisUseCase().equals("SargaKo lerakasa use-case")){
             if(sargaKo == null){
-            	KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "sebesseg: int");
+            	KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "0.7");
                 ellenseg.setSebesseg(0.9);
             }
             else{

@@ -18,7 +18,7 @@ public class Pont {
      * @return két pont távolsága
      */
     public double getTavolsag(Pont pont) {
-        KonzolSeged.kiirFuggvenyVisszateres("tavolsag");
+        KonzolSeged.kiirFuggvenyVisszateres("2.0");
         return 100.0;
     }
 }

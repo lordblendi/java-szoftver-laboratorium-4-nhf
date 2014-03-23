@@ -72,7 +72,7 @@ public class Ut extends Cella {
     			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
     			akadaly.ralep(ellenseg);
     		} else {
-    			KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "sebesseg");
+    			KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "0.7");
     			ellenseg.setSebesseg(1.0);
     		}
     		
