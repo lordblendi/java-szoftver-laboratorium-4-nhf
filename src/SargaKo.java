@@ -20,8 +20,15 @@ public class SargaKo {
      * @param ellenseg
      */
     public void ralep(Ellenseg ellenseg) {
-        KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "sebesseg");
-        ellenseg.setSebesseg(0.5);
-        KonzolSeged.kiirFuggvenyVisszateres();
+    	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
+    	
+    	if (jelenlegiUseCase.equals("Hobbit leptetese use-case")) {
+    		KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "sebesseg");
+    	} else {
+	        KonzolSeged.kiirFuggvenyHivas("ellenseg", "setSebesseg", "0.5");
+    	}
+	    ellenseg.setSebesseg(0.5);
+	    
+	    KonzolSeged.kiirFuggvenyVisszateres();    	
     }
 }

@@ -28,9 +28,21 @@ public class Domborzat extends Cella {
     	}
     	
     }
-
+    
+    /**
+     * Ha a domborzaton van torony,
+     * akkor lerakja rá a toronykövet.
+     * 
+     * @param toronyKo ezt rakja rá a toronyra
+     */
     @Override
     public void lerakToronyKo(ToronyKo toronyKo) {
-
+    	String valasz = KonzolSeged.beolvas("Van a domborzaton torony?", "[in]");
+    	if (valasz.equals("i")) {
+    		KonzolSeged.kiirFuggvenyHivas("torony", "lerakToronyKo", "zold");
+    		torony.lerakToronyKo(toronyKo);
+    	}
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
     }
 }

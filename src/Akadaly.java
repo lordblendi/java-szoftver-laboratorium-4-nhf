@@ -1,13 +1,13 @@
 public class Akadaly {
     SargaKo sargaKo;
-
+    
     /**
      * Konstruktor
      */
     public Akadaly() {
-
+        
     }
-
+    
     /**
      * Visszaadja az árat
      * @return ára
@@ -31,28 +31,35 @@ public class Akadaly {
         KonzolSeged.kiirFuggvenyVisszateres("false");
         return false;
     }
-
+    
     /**
      * Ellenség rálép az akadályra.
      * @param ellenseg
      */
     public void ralep(Ellenseg ellenseg) {
     	if(KonzolSeged.getAktualisUseCase().equals("Akadaly lerakasa use-case")){
-    		 KonzolSeged.kiirFuggvenyHivas("ember", "setSebesseg", "sebesseg: int");
-             ellenseg.setSebesseg(0.9);
+   		 KonzolSeged.kiirFuggvenyHivas("ember", "setSebesseg", "sebesseg: int");
+            ellenseg.setSebesseg(0.9);
     	}
-    	if(KonzolSeged.getAktualisUseCase().equals("SargaKo lerakasa use-case")){
+        if(KonzolSeged.getAktualisUseCase().equals("SargaKo lerakasa use-case")){
             if(sargaKo == null){
-                KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "sebesseg: int");
+            	KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "sebesseg: int");
                 ellenseg.setSebesseg(0.9);
             }
             else{
-                KonzolSeged.kiirFuggvenyHivas("s", "ralep", "e");
+            	KonzolSeged.kiirFuggvenyHivas("s", "ralep", "e");
                 sargaKo.ralep(ellenseg);
             }
-            KonzolSeged.kiirFuggvenyVisszateres();
         }
-
+        if (KonzolSeged.getAktualisUseCase().equals("Hobbit leptetese use-case")) {
+        	if (sargaKo != null) {
+        		KonzolSeged.kiirFuggvenyHivas("sargaKo", "ralep", "hobbit");
+        		sargaKo.ralep(ellenseg);
+        	} else {
+        		KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "sebesseg");
+        		ellenseg.setSebesseg(0.6);
+        	}
+        }
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
-
 }

@@ -39,4 +39,12 @@ public class Ember extends Ellenseg {
         }
         KonzolSeged.kiirFuggvenyVisszateres();
     }
+    
+    @Override
+    public void setPozicio(Ut pozicio) {
+    	KonzolSeged.kiirFuggvenyHivas("kezdoPozicio", "ralep", "uj");
+    	pozicio.ralep(this);
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
+    }
 }

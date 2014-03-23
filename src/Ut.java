@@ -56,14 +56,41 @@ public class Ut extends Cella {
      * @param ellenseg aki rálép az útra
      */
     public void ralep(Ellenseg ellenseg) {
-        if (akadaly == null) {
-        } else {
-            KonzolSeged.kiirFuggvenyHivas("a", "ralep", "e");
-            akadaly.ralep(ellenseg);
-        }
+    	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
+    	
+    	if (jelenlegiUseCase.equals("Hobbit leptetese use-case")) {
+    		String kerdes = "Az alabbiak kozul melyik jatszodjon le:\n" +
+    								"\tkovetkezoPozicio-n van akadaly es ko is (1)\n" +
+    								"\tvan akadaly, ko nincs (2)\n" +
+    								"\tnincs akadaly (3)";
+    		String valasz = KonzolSeged.beolvas(kerdes, "[123]");
+    		if (valasz.equals("1")) {
+    			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
+    			akadaly.ralep(ellenseg);
+    		} else if (valasz.equals("2")) {
+    			akadaly.sargaKo = null;
+    			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
+    			akadaly.ralep(ellenseg);
+    		} else {
+    			KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "sebesseg");
+    			ellenseg.setSebesseg(1.0);
+    		}
+    		
+    	} else if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {  
+    		KonzolSeged.kiirFuggvenyHivas("uj", "setSebesseg", "sebesseg");
+    		ellenseg.setSebesseg(0.8);
+    	} else {
+	        if (akadaly == null) {
+	            
+	        } else {
+	        	KonzolSeged.kiirFuggvenyHivas("a", "ralep", "e");
+	            akadaly.ralep(ellenseg);
+	        }
+    	}
+    	
         KonzolSeged.kiirFuggvenyVisszateres();
     }
-
+    
     /**
      * Ellenség lelép az útról.
      * Kikerül az ellenségek kollekcióból.
@@ -81,12 +108,25 @@ public class Ut extends Cella {
      * * @return
      */
     public Ut getKovetkezoLepes() {
+    	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
+    	
+    	if (jelenlegiUseCase.equals("Hobbit leptetese use-case")) {
+    		KonzolSeged.kiirFuggvenyVisszateres("kovPoz");
+    	} else {
 //        KonzolSeged.kiirFuggvenyHivas("Ut", "getKovetkezoLepes");
-        KonzolSeged.kiirFuggvenyVisszateres("");
+    		KonzolSeged.kiirFuggvenyVisszateres("");
+    	}
+    	
         return kovetkezoLepes;
     }
-
+    
+    /**
+     * Beállítja azt az utat,
+     * amerre majd az ellenség tovább megy.
+     * @param ut következő út
+     */
     public void setKovetkezoLepes(Ut ut) {
         this.kovetkezoLepes = ut;
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 }

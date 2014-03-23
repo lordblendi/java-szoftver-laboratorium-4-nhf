@@ -10,6 +10,7 @@ public abstract class Cella {
 
     public void setPozicio(Pont pozicio) {
         this.pozicio = pozicio;
+        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
 

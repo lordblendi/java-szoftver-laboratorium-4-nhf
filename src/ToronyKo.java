@@ -5,7 +5,10 @@ public abstract class ToronyKo {
      */
     public ToronyKo() {
     }
-
+    
+    /**
+     * Toronykő árának lekérdezése
+     */
     public int getAr() {
         return 0;
     }
@@ -48,10 +51,24 @@ public abstract class ToronyKo {
 
     }
 
+    /**
+     * Torony hatótávolságának beállítása
+     * 
+     * @param torony
+     */
     public void setHatotavolsag(Torony torony) {
-
+    	KonzolSeged.kiirFuggvenyHivas("torony", "setHatotavolsag", "hatotavolsag");
+    	torony.setHatotavolsag(5);
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
     }
 
+    
+    /**
+     * Torony tüzelési gyakoriságának beállítása
+     * 
+     * @param torony
+     */
     public void setVarakozas(Torony torony) {
 
     }

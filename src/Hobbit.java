@@ -30,4 +30,28 @@ public class Hobbit extends Ellenseg {
     public void sebzodik(int sebzes) {
         super.sebzodik(sebzes);
     }
+    
+    @Override
+    public void leptet() {
+    	
+    	String valasz = KonzolSeged.beolvas("helyzet >= 1.0?", "[in]");
+    	if (valasz.equals("i")) {
+    		KonzolSeged.kiirFuggvenyHivas("pozicio", "lelep", "hobbit");
+    		pozicio.lelep(this);
+    		KonzolSeged.kiirFuggvenyHivas("hobbit", "setPozicio", "kovetkezoPozicio");
+    		setPozicio(kovetkezoPozicio);
+    	}
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
+    }
+    
+    @Override
+    public void setPozicio(Ut pozicio) {
+    	this.pozicio = pozicio;
+    	KonzolSeged.kiirFuggvenyHivas("kovetkezoPozicio", "getKovetkezoLepes");
+    	kovetkezoPozicio = pozicio.getKovetkezoLepes();
+    	KonzolSeged.kiirFuggvenyHivas("kovetkezoPozicio", "ralep", "hobbit");    	
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
+    }
 }

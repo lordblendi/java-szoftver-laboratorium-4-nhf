@@ -12,6 +12,7 @@ public class Jatek {
      * Játék konstruktora
      */
     public Jatek() {
+        
     }
 
     /**
@@ -20,18 +21,67 @@ public class Jatek {
      * @return visszaadott ellenségek kollekciója
      */
     public Collection<Ellenseg> getEllensegek() {
-        KonzolSeged.kiirFuggvenyVisszateres("{ember}");
+    	KonzolSeged.kiirFuggvenyVisszateres("{ember}");
         return ellensegek;
     }
-
-    public void indit() {
-
+    
+    /**
+     * Játék indítása
+     */
+    public void indit(){
+		KonzolSeged.kiirKonstruktor("ut1");
+		Ut ut1 = new Ut();
+		KonzolSeged.kiirKonstruktor("pont1", "0, 0");
+		Pont pont1 = new Pont(0, 0);
+		KonzolSeged.kiirKonstruktor("ut2");
+		Ut ut2 = new Ut();
+		KonzolSeged.kiirKonstruktor("pont2", "0, 1");
+		Pont pont2 = new Pont(0, 1);
+		
+		KonzolSeged.kiirFuggvenyHivas("ut1", "setPozicio", "pont1");
+		ut1.setPozicio(pont1);
+		KonzolSeged.kiirFuggvenyHivas("ut2", "setPozicio", "pont2");
+		ut2.setPozicio(pont2);
+		
+		KonzolSeged.kiirFuggvenyHivas("ut1", "setKovetkezoLepes", "ut2");
+		ut1.setKovetkezoLepes(ut2);
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
     }
-
+    
+    /**
+     * A játék lépteti az objektumokat
+     * 
+     * @param ido
+     */
     public void leptet(int ido) {
-
+    	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
+    	
+    	if (jelenlegiUseCase.equals("Hobbit leptetese use-case")) {
+    		java.util.Iterator<Ellenseg> iterator = ellensegek.iterator();
+    		Hobbit hobbit = (Hobbit) iterator.next();
+    		KonzolSeged.kiirFuggvenyHivas("hobbit", "leptet");
+    		hobbit.leptet();
+    	} else if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
+    		KonzolSeged.kiirMegjegyzes("Hobbit léptetése");
+    		
+    		java.util.Iterator<Torony> iterator = tornyok.iterator();
+    		Torony torony = iterator.next();
+    		KonzolSeged.kiirFuggvenyHivas("torony", "tuzel");
+    		torony.tuzel();
+    		
+    		String valasz = KonzolSeged.beolvas("maradekEllenseg > 0? (i/n)", "[in]");
+    		if (valasz.equals("i")) {
+    			KonzolSeged.kiirKonstruktor("uj", "jatek");
+    			Ember uj = new Ember(this);
+    			Ut kezdoPozicio = kezdoPoziciok.iterator().next();
+    			KonzolSeged.kiirFuggvenyHivas("uj", "setPozicio", "kezdoPozicio");
+    			uj.setPozicio(kezdoPozicio);
+    		}
+    	}
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
     }
-
     /**
      * Kapott akadály elhelyezése a kapott cellán, ha van elég varázserőnk.
      *
@@ -93,9 +143,24 @@ public class Jatek {
         }
         KonzolSeged.kiirFuggvenyVisszateres();
     }
-
+    
+    /**
+     * Toronykő lerakása egy adott cellán lévő toronyra
+     * 
+     * @param cella ezen a cellán van a torony
+     * @param toronyKo ezt a toronykövet akarjuk rárakni a cellán lévő toronyra
+     */
     public void lerakToronyKo(Cella cella, ToronyKo toronyKo) {
-
+    	KonzolSeged.kiirFuggvenyHivas("zold", "getAr");
+    	toronyKo.getAr();
+    	
+    	String valasz = KonzolSeged.beolvas("Van eleg varazsero a toronykore? (i/n)", "[in]");    	
+    	if (valasz.equals("i")) {
+    		KonzolSeged.kiirFuggvenyHivas("domb", "lerakToronyKo", "zold");
+    		cella.lerakToronyKo(toronyKo);
+    	}
+    	
+    	KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**
@@ -116,7 +181,6 @@ public class Jatek {
 
     /**
      * Ha a Játéknak vége, akkor meghívódik ez a függvény.
-     *
      * @param nyertunk egy bool, mely alapján el lehet dönteni, ki nyerte a játékot.
      */
     public void vege(boolean nyertunk) {
