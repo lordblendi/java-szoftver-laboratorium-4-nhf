@@ -13,7 +13,8 @@ public class Torony {
      * Torony árának lekérdezése
      */
     public int getAr() {
-        return 0;
+    	KonzolSeged.kiirFuggvenyVisszateres();
+    	return 0;
     }
     
     /**
