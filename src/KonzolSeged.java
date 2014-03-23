@@ -49,7 +49,7 @@ public class KonzolSeged {
         while (true) {
 			System.out.println("Valaszthato use-casek (vagy kilepes):\n");
 
-            int i = 1;
+            int i = 0;
 
             for (UseCase useCase : useCasek) {
                 System.out.println(i + ". " + useCase.getNev());
@@ -57,14 +57,14 @@ public class KonzolSeged {
             }
 			System.out.print(i + ". Kilepes\n\n");
 
-			int c = Integer.parseInt(beolvas("Kerlek, add meg a valasztott sorszamot", "[1-" + i + "]"));
+			int c = Integer.parseInt(beolvas("Kerlek, add meg a valasztott sorszamot", "[0-" + i + "]"));
 
             if (c == i) {
                 return;
             } else {
-				System.out.println("\n" + c + ". " + useCasek[c - 1].getNev() + " futtatasa...\n");
-				aktualisUseCase = useCasek[c - 1].getNev();
-                useCasek[c - 1].start();
+				System.out.println("\n" + c + ". " + useCasek[c].getNev() + " futtatasa...\n");
+				aktualisUseCase = useCasek[c].getNev();
+                useCasek[c ].start();
                 System.out.println();
             }
         }
