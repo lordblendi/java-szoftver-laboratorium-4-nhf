@@ -17,7 +17,6 @@ public class Main {
                 new AkadalyLerakUseCase(),
                 new JatekInditasaUseCase(),
                 new ZoldKoLerakasaDomborzatraUseCase(),
-                new HobbitLepteteseUseCase(),
                 new JatekLepteteseUseCase(),
                 new HobbitRalepVegzetHegyereUseCase()
         });
