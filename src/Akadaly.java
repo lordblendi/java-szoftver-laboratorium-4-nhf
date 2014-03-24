@@ -38,12 +38,12 @@ public class Akadaly {
      */
     public void ralep(Ellenseg ellenseg) {
     	if(KonzolSeged.getAktualisUseCase().equals("Akadaly lerakasa use-case")){
-   		 KonzolSeged.kiirFuggvenyHivas("ember", "setSebesseg", "sebesseg: int");
+   		 KonzolSeged.kiirFuggvenyHivas("ember", "setSebesseg", "0.9");
             ellenseg.setSebesseg(0.9);
     	}
         if(KonzolSeged.getAktualisUseCase().equals("SargaKo lerakasa use-case")){
             if(sargaKo == null){
-            	KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "0.7");
+            	KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "0.9");
                 ellenseg.setSebesseg(0.9);
             }
             else{
@@ -51,12 +51,12 @@ public class Akadaly {
                 sargaKo.ralep(ellenseg);
             }
         }
-        if (KonzolSeged.getAktualisUseCase().equals("Hobbit leptetese use-case")) {
+        if (KonzolSeged.getAktualisUseCase().equals("Jatek leptetese use-case")) {
         	if (sargaKo != null) {
         		KonzolSeged.kiirFuggvenyHivas("sargaKo", "ralep", "hobbit");
         		sargaKo.ralep(ellenseg);
         	} else {
-        		KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "sebesseg");
+        		KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "0.6");
         		ellenseg.setSebesseg(0.6);
         	}
         }

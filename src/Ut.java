@@ -58,27 +58,27 @@ public class Ut extends Cella {
     public void ralep(Ellenseg ellenseg) {
     	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
     	
-    	if (jelenlegiUseCase.equals("Hobbit leptetese use-case")) {
-    		String kerdes = "Az alabbiak kozul melyik jatszodjon le:\n" +
-    								"\tkovetkezoPozicio-n van akadaly es ko is (1)\n" +
-    								"\tvan akadaly, ko nincs (2)\n" +
-    								"\tnincs akadaly (3)";
-    		String valasz = KonzolSeged.beolvas(kerdes, "[123]");
-    		if (valasz.equals("1")) {
-    			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
-    			akadaly.ralep(ellenseg);
-    		} else if (valasz.equals("2")) {
-    			akadaly.sargaKo = null;
-    			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
-    			akadaly.ralep(ellenseg);
+    	if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
+    		if (!JatekLepteteseUseCase.emberLep) {
+	    		KonzolSeged.kiirMegjegyzes("kovetkezoPozicio-n van akadaly es ko is (1)");
+	    		KonzolSeged.kiirMegjegyzes("van akadaly, ko nincs (2)");
+	    		KonzolSeged.kiirMegjegyzes("nincs akadaly (3)");
+	    		String valasz = KonzolSeged.beolvas("A fentiek kozul melyik jatszodjon le?", "[123]");
+	    		if (valasz.equals("1")) {
+	    			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
+	    			akadaly.ralep(ellenseg);
+	    		} else if (valasz.equals("2")) {
+	    			akadaly.sargaKo = null;
+	    			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
+	    			akadaly.ralep(ellenseg);
+	    		} else {
+	    			KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "0.7");
+	    			ellenseg.setSebesseg(1.0);
+	    		}
     		} else {
-    			KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "0.7");
-    			ellenseg.setSebesseg(1.0);
+	        		KonzolSeged.kiirFuggvenyHivas("uj", "setSebesseg", "0.8");
+	        		ellenseg.setSebesseg(0.8);
     		}
-    		
-    	} else if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {  
-    		KonzolSeged.kiirFuggvenyHivas("uj", "setSebesseg", "sebesseg");
-    		ellenseg.setSebesseg(0.8);
     	} else {
 	        if (akadaly == null) {
 	            

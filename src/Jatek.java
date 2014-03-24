@@ -57,13 +57,12 @@ public class Jatek {
     public void leptet(int ido) {
     	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
     	
-    	if (jelenlegiUseCase.equals("Hobbit leptetese use-case")) {
-    		java.util.Iterator<Ellenseg> iterator = ellensegek.iterator();
-    		Hobbit hobbit = (Hobbit) iterator.next();
+    	if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
+    		java.util.Iterator<Ellenseg> ellensegIterator = ellensegek.iterator();
+    		Hobbit hobbit = (Hobbit) ellensegIterator.next();
+    		JatekLepteteseUseCase.emberLep = false;
     		KonzolSeged.kiirFuggvenyHivas("hobbit", "leptet");
     		hobbit.leptet();
-    	} else if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
-    		KonzolSeged.kiirMegjegyzes("Hobbit léptetése");
     		
     		java.util.Iterator<Torony> iterator = tornyok.iterator();
     		Torony torony = iterator.next();
@@ -72,6 +71,7 @@ public class Jatek {
     		
     		String valasz = KonzolSeged.beolvas("maradekEllenseg > 0? (i/n)", "[in]");
     		if (valasz.equals("i")) {
+    			JatekLepteteseUseCase.emberLep = true;
     			KonzolSeged.kiirKonstruktor("uj", "jatek");
     			Ember uj = new Ember(this);
     			Ut kezdoPozicio = kezdoPoziciok.iterator().next();
@@ -82,8 +82,6 @@ public class Jatek {
     		}
     		KonzolSeged.kiirFuggvenyVisszateres();
     	}
-    	
-    	//KonzolSeged.kiirFuggvenyVisszateres();
     }
     /**
      * Kapott akadály elhelyezése a kapott cellán, ha van elég varázserőnk.

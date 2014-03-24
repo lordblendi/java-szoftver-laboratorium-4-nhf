@@ -57,7 +57,7 @@ public abstract class ToronyKo {
      * @param torony
      */
     public void setHatotavolsag(Torony torony) {
-    	KonzolSeged.kiirFuggvenyHivas("torony", "setHatotavolsag", "hatotavolsag");
+    	KonzolSeged.kiirFuggvenyHivas("torony", "setHatotavolsag", "5");
     	torony.setHatotavolsag(5);
     	
     	KonzolSeged.kiirFuggvenyVisszateres();

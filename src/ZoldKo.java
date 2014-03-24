@@ -5,14 +5,14 @@ public class ZoldKo extends ToronyKo {
 
     @Override
     public void setVarakozas(Torony torony) {
-    	KonzolSeged.kiirFuggvenyHivas("torony", "setVarakozas", "varakozas");
+    	KonzolSeged.kiirFuggvenyHivas("torony", "setVarakozas", "100");
     	torony.setVarakozas(100);
         KonzolSeged.kiirFuggvenyVisszateres();
     }
     
     @Override
     public int getAr() {
-    	KonzolSeged.kiirFuggvenyVisszateres("ar");
+    	KonzolSeged.kiirFuggvenyVisszateres("500");
     	return 500;
     }
 }

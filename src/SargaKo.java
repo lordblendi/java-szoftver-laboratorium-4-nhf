@@ -22,7 +22,7 @@ public class SargaKo {
     public void ralep(Ellenseg ellenseg) {
     	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
     	
-    	if (jelenlegiUseCase.equals("Hobbit leptetese use-case")) {
+    	if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
     		KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "0.5");
     	} else {
 	        KonzolSeged.kiirFuggvenyHivas("ellenseg", "setSebesseg", "0.5");
