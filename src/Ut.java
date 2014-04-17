@@ -1,10 +1,11 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class Ut extends Cella {
     Akadaly akadaly = null;
     Collection<Ellenseg> ellensegek;
-    Ut kovetkezoLepes;
+    List<Ut> kovetkezoLepesek;
 
     /**
      * Út konstruktora
@@ -117,16 +118,17 @@ public class Ut extends Cella {
     		KonzolSeged.kiirFuggvenyVisszateres("");
     	}
     	
-        return kovetkezoLepes;
+    	// randomizálást megcsinálni!
+        return kovetkezoLepesek.get(0);
     }
     
     /**
-     * Beállítja azt az utat,
+     * Beállítja azokt az utakat,
      * amerre majd az ellenség tovább megy.
      * @param ut következő út
      */
-    public void setKovetkezoLepes(Ut ut) {
-        this.kovetkezoLepes = ut;
+    public void setKovetkezoLepesek(List<Ut> utak) {
+        this.kovetkezoLepesek = utak;
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 }

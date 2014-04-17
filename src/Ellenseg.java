@@ -100,5 +100,9 @@ public abstract class Ellenseg {
         KonzolSeged.kiirFuggvenyVisszateres();
     }
 
+    // TODO
+    public String getObjektumAzonosito() {
+    	return null;
+    }
 }
 

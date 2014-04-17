@@ -98,6 +98,9 @@ public class KonzolSeged {
      * @see KonzolSeged#kiirFuggvenyHivas(String, String, String)
      */
     static public void kiirFuggvenyHivas(String objektum, String fuggveny) {
+    	if (1 == 1)
+    		return;
+    	
 		kiirFuggvenyHivas(objektum, fuggveny, "");
     }
 
@@ -109,6 +112,9 @@ public class KonzolSeged {
      * @param parameterek Hívott függvény paraméterei típusukkal együtt, vesszővel elválasztva (Java szintaxis)
      */
     static public void kiirFuggvenyHivas(String objektum, String fuggveny, String parameterek) {
+    	if (1 == 1)
+    		return;
+    	
         String call = objektum + "." + fuggveny;
 
 		println(call + " hivas (" + parameterek + ")");
@@ -120,6 +126,9 @@ public class KonzolSeged {
      * @see KonzolSeged#kiirFuggvenyVisszateres(String)
      */
     static public void kiirFuggvenyVisszateres() {
+    	if (1 == 1)
+    		return;
+    	
         kiirFuggvenyVisszateres("");
     }
 
@@ -129,6 +138,9 @@ public class KonzolSeged {
 	 * @param ertekek Visszatérési értékek típusukkal együtt, vesszővel elválasztva (Java szintaxis)
      */
     static public void kiirFuggvenyVisszateres(String ertekek) {
+    	if (1 == 1)
+    		return;
+    	
         String call = hivasok.pop();
 
         behuzas--;
@@ -141,6 +153,9 @@ public class KonzolSeged {
      * @param megj Megjegyzés
      */
     static public void kiirMegjegyzes(String megj) {
+    	if (1 == 1)
+    		return;
+    	
         println(megj);
     }
 
@@ -148,6 +163,9 @@ public class KonzolSeged {
      * @see KonzolSeged#kiirKonstruktor(String, String)
      */
     static public void kiirKonstruktor(String objektum) {
+    	if (1 == 1)
+    		return;
+    	
         kiirKonstruktor(objektum, "");
     }
 
@@ -158,6 +176,9 @@ public class KonzolSeged {
      * @param parameterek Konstruktor paraméterei típusukkal együtt, vesszővel elválasztva (Java szintaxis)
      */
     static public void kiirKonstruktor(String objektum, String parameterek) {
+    	if (1 == 1)
+    		return;
+    	
 		println(objektum + " letrehozasa (" + parameterek + ")");
     }
 
@@ -170,6 +191,9 @@ public class KonzolSeged {
      * @return Érvényes felhasználói válasz
      */
     static public String beolvas(String kerdes, String minta) {
+    	if (1 == 1)
+    		return null;
+    	
         String r = null;
 
         Pattern p = Pattern.compile(minta);

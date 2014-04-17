@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Játék léptetése use-case
  * 
@@ -26,7 +28,8 @@ public class JatekLepteteseUseCase implements UseCase {
 		jatek.ellensegek.add(hobbit);		
 		hobbit.pozicio = pozicio;
 		hobbit.kovetkezoPozicio = kovetkezoPozicio;		
-		pozicio.kovetkezoLepes = kovetkezoPozicio;		
+		pozicio.kovetkezoLepesek = new ArrayList<Ut>();
+		pozicio.kovetkezoLepesek.add(kovetkezoPozicio);			
 		kovetkezoPozicio.akadaly = akadaly;		
 		akadaly.sargaKo = sargaKo;
 		

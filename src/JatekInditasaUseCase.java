@@ -14,6 +14,6 @@ public class JatekInditasaUseCase implements UseCase {
 	public void start() {
 		Jatek jatek = new Jatek();
 		KonzolSeged.kiirFuggvenyHivas("jatek", "indit");
-		jatek.indit();
+		jatek.indit(null);
 	}
 }

@@ -124,4 +124,9 @@ public class Torony {
         }
         KonzolSeged.kiirFuggvenyVisszateres();
     }
+    
+    // TODO
+    public void kodosit() {
+    	return;
+    }
 }
