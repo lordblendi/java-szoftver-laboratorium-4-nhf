@@ -12,8 +12,6 @@ public class Main {
      * @param args Parancssori argumentumok
      */
     public static void main(String[] args) {
-    	String str = System.lineSeparator();
-    	
     	Scanner in = new Scanner(System.in);
     	
     	// játék inicializálása

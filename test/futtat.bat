@@ -45,7 +45,7 @@ echo Nyomj meg egy billentyut miutan megvizsgaltad a kimeneteket! ...
 pause >NUL
 
 echo.
-::call :Takaritas
+call :Takaritas
 goto :End
 
 :Takaritas
