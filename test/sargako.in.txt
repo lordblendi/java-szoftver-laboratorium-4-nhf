@@ -1,0 +1,9 @@
+indit palya.map.txt
+tick 1
+addAkadaly 2 1
+addTorony 6 2
+addSargaKo 1 1
+addSargaKo 6 2
+addSargaKo 2 1
+tick 4
+quit

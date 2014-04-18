@@ -1,0 +1,11 @@
+kekko.map.txt betoltese sikerult, jatek inditasa.
+1000 varazseronk van
+jatek letrehozta Ember1-et
+Ember1 ralepett az (1, 1) cellara
+1000 varazseronk van
+Ember1 ralepett az (2, 1) cellara
+1000 varazseronk van
+Ember1 ralepett az (3, 1) cellara
+1000 varazseronk van
+Ember1 ralepett az (4, 1) cellara
+Ember1 ralepett a Vegzet Hegyere, vesztettunk

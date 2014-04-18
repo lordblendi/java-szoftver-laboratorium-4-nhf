@@ -1,0 +1,27 @@
+pirosko.map.txt betoltese sikerult, jatek inditasa.
+kettevagas veletlenszerusegenek atallitasa.
+1000 varazseronk van
+jatek letrehozta Ember1-et
+Ember1 ralepett az (1, 1) cellara
+Sikerult lerakni az akadalyt az (3, 6) koordinataju cellara.
+Sikerult lerakni a tornyot az (1, 7) koordinataju cellara.
+Az (1, 1) koordinataju cellara nem lehet hobbit piroskovet rakni.
+Az (3, 6) koordinataju cellara nem lehet hobbit piroskovet rakni.
+Sikerult lerakni a hobbit piroskovet az (1, 7) koordinataju cellan levo toronyra.
+200 varazseronk van
+Ember1 ralepett az (1, 2) cellara
+200 varazseronk van
+Ember1 ralepett az (1, 3) cellara
+200 varazseronk van
+Ember1 ralepett az (1, 4) cellara
+200 varazseronk van
+Ember1 ralepett az (1, 5) cellara
+HobbitPirosKo1 megsebezte Ember1-et 250 sebzessel
+200 varazseronk van
+Ember1 ralepett az (2, 5) cellara
+jatek letrehozta Hobbit1-et
+Hobbit1 ralepett az (1, 6) cellara
+200 varazseronk van
+Ember1 ralepett az (3, 5) cellara
+Hobbit1 ralepett az (2, 6) cellara
+HobbitPirosKo1 megsebezte Hobbit1-et 350 sebzessel

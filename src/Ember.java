@@ -21,9 +21,9 @@ public class Ember extends Ellenseg {
 
     @Override
     public void initElet() {
-    	if(KonzolSeged.getAktualisUseCase().equals("Jatek leptetese use-case")) {
+    	/*if(KonzolSeged.getAktualisUseCase().equals("Jatek leptetese use-case")) {
     		KonzolSeged.kiirFuggvenyVisszateres();
-    	}
+    	}*/
     }
 
     /**

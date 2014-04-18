@@ -32,9 +32,9 @@ public class Jatek {
     int maradekEllenseg;
     
     /**
-     * Lerakott ellenségek száma
+     * Hátrelévő idő a következő ellenség létrehozásáig
      */
-    int lerakottEllenseg;
+    int idoLerakasig;
     
     /**
      * Tornyok listája
@@ -121,6 +121,7 @@ public class Jatek {
 							break;
 					}
 					
+					c.setPozicio(new Pont(i + 1, j + 1));
 					cellak[i][j] = c;
 				}
 			}
@@ -177,14 +178,14 @@ public class Jatek {
 			// további attribútumok inicializálása
 			ellensegek = new ArrayList<Ellenseg>();
 			maradekEllenseg = k * 3;
-			lerakottEllenseg = 0;
+			idoLerakasig = 0;
 			tornyok = new ArrayList<Torony>();
 			varazsero = 1000;
 			ido = 1;
 			
-			System.out.format("%s betoltese sikerult, jatek inditasa.\n", terkep);
+			System.out.format("%s betoltese sikerult, jatek inditasa.%n", terkep);
 		} catch (FileNotFoundException e) {
-			System.out.format("%s betoltese nem sikerult.\n", terkep);
+			System.out.format("%s betoltese nem sikerult.%n", terkep);
 			return;
 		}
     }
@@ -196,7 +197,7 @@ public class Jatek {
      */
     public void leptet(int mennyi) {
     	for (int i = 0; i < mennyi; i++) {
-    		System.out.format("%d varazseronk van\n", varazsero);
+    		System.out.format("%d varazseronk van%n", varazsero);
     		
     		// a játék szereplőit a folytonosság biztosítása céljában nagyobb felbontással léptetjük
     		for (int j = 0; j < 10; j++) {
@@ -210,20 +211,61 @@ public class Jatek {
     			
     			// új ellenségek lerakása, ha van még ellenség és eljött az ideje
     			if (maradekEllenseg > 0) {
-    				/*
-    				// a lerakások közötti idő kiszámolása
-    				int 
-    				
-    				Ellenseg e = null;
-    				// ...
-    				e.setPozicio(???);
-    				e.initElet();*/
+    				if (idoLerakasig == 0) {
+    					// minden kezdő pozícióra 3 ellenség kerül, először egyedül, majd párban
+    					int kezdok = kezdoPoziciok.size();
+    					
+    					// lerakott ellenségek számának kiszámítása
+    					int lerakottEllenseg = 3 * kezdok - maradekEllenseg;
+    					
+    					// az ellenség kezdő pozíciójának meghatározása
+    					int melyikKezdoPozicio = lerakottEllenseg < kezdok ? lerakottEllenseg : (int)((lerakottEllenseg - kezdok) / 2);
+    					Ut kezdoPozicio = kezdoPoziciok.get(melyikKezdoPozicio);
+    					
+    					// az ellenség létrehozása
+	    				Ellenseg e = null;
+	    				
+	    				// a típus a kezdő pozíciókon ciklikusan váltakozik
+	    				switch (melyikKezdoPozicio % 4) {
+	    					case 0:
+	    						e = new Ember(this);
+	    						break;
+	    					case 1:
+	    						e = new Hobbit(this);
+	    						break;
+	    					case 2:
+	    						e = new Tunde(this);
+	    						break;
+	    					case 3:
+	    						e = new Torp(this);
+	    						break;
+	    				}
+	    				
+	    				e.setPozicio(kezdoPozicio);
+	    				e.initElet();
+	    				ellensegek.add(e);
+	    				maradekEllenseg--;
+	    				lerakottEllenseg++;
+	    				
+	    				System.out.format("jatek letrehozta %s-et%n", e.getObjektumAzonosito());
+	    				
+	    				// az új ellenség lerakásáig hátralévő idő beállítása
+	    				if (lerakottEllenseg <= kezdok || (lerakottEllenseg % 2) == 1)
+	    					// egyesével
+	    					idoLerakasig = 50 - lerakottEllenseg;
+	    				else
+	    					// párban
+	    					idoLerakasig = 10;
+    				} else
+    					// csökkentjük a következő ellenség lerakásásig hátralévő időt
+    					idoLerakasig--;
     			}
     			
     			// regisztráljuk az idő múlását
     			ido++;
     		}
     		
+    		// köd leeresztése a tornyokra
     		if (ido % 10 == 0) {
     			for (Torony t: tornyok)
     				t.kodosit();
@@ -243,7 +285,7 @@ public class Jatek {
         if (varazsero >= akadaly.getAr())
             cella.lerakAkadaly(akadaly);
         else
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet akadalyt rakni\n", cella.getPozicio().x, cella.getPozicio().y);
+        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet akadalyt rakni%n", cella.getPozicio().x, cella.getPozicio().y);
     }
 
     /**
@@ -256,7 +298,7 @@ public class Jatek {
         if (varazsero >= sargaKo.getAr())
             cella.lerakAkadalyKo(sargaKo);
         else
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet sargakovet rakni\n", cella.getPozicio().x, cella.getPozicio().y);
+        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet sargakovet rakni%n", cella.getPozicio().x, cella.getPozicio().y);
     }
 
     /**
@@ -269,7 +311,7 @@ public class Jatek {
     	if (varazsero >= torony.getAr())
             cella.lerakTorony(torony);
     	else
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet tornyot rakni\n", cella.getPozicio().x, cella.getPozicio().y);
+        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet tornyot rakni%n", cella.getPozicio().x, cella.getPozicio().y);
     }
     
     /**
@@ -284,27 +326,28 @@ public class Jatek {
     	else {
     		// toronykő típusának meghatározása az üzenet kiírásához
     		String ko = null;
-            String s = toronyKo.getClass().getName();
-            if (s.equals("ZoldKo")) {
-                ko = "zoldkovet";
-
-            } else if (s.equals("KekKo")) {
-                ko = "kekkovet";
-
-            } else if (s.equals("TorpPirosKo")) {
-                ko = "torp piroskovet";
-
-            } else if (s.equals("HobbitPirosKo")) {
-                ko = "hobbit piroskovet";
-
-            } else if (s.equals("TundePirosKo")) {
-                ko = "tunde piroskovet";
-
-            } else if (s.equals("EmberPirosKo")) {
-                ko = "ember piroskovet";
-
-            }
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet %s rakni\n", cella.getPozicio().x, cella.getPozicio().y, ko);
+    		switch (toronyKo.getClass().getName()) {
+    			case "ZoldKo":
+    				ko = "zoldkovet";
+    				break;
+    			case "KekKo":
+    				ko = "kekkovet";
+    				break;
+    			case "TorpPirosKo":
+    				ko = "torp piroskovet";
+    				break;
+    			case "HobbitPirosKo":
+    				ko = "hobbit piroskovet";
+    				break;
+    			case "TundePirosKo":
+    				ko = "tunde piroskovet";
+    				break;
+    			case "EmberPirosKo":
+    				ko = "ember piroskovet";
+    				break;
+    		}
+    		
+        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet %s rakni%n", cella.getPozicio().x, cella.getPozicio().y, ko);
     	}
     }
 
@@ -316,7 +359,7 @@ public class Jatek {
      * @param jutalom
      */
     public void meghalEllenseg(Ellenseg ellenseg, int jutalom) {
-    	System.out.format("%s meghalt\n", ellenseg.getObjektumAzonosito());
+    	System.out.format("%s meghalt%n", ellenseg.getObjektumAzonosito());
     	
     	// varázserő növelése
     	varazsero += jutalom;
@@ -336,7 +379,7 @@ public class Jatek {
         if (nyertunk)
         	System.out.println("minden ellenseg meghalt, nyertunk");
         else
-        	System.out.format("%s ralepett a Vegzet Hegyere, vesztettunk\n", ellenseg.getObjektumAzonosito());
+        	System.out.format("%s ralepett a Vegzet Hegyere, vesztettunk%n", ellenseg.getObjektumAzonosito());
     }
     
     /**

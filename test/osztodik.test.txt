@@ -1,0 +1,16 @@
+zoldko.map.txt betoltese sikerult, jatek inditasa.
+kettevagas veletlenszerusegenek atallitasa.
+1000 varazseronk van
+jatek letrehozta Ember1-et
+Ember1 ralepett az (1, 1) cellara
+Sikerult lerakni a tornyot az (4, 2) koordinataju cellara.
+600 varazseronk van
+Ember1 ralepett az (2, 1) cellara
+Torony1 megsebezte Ember1-et 250 sebzessel
+kettevagas veletlenszerusegenek atallitasa.
+600 varazseronk van
+Ember1 ralepett az (3, 1) cellara
+600 varazseronk van
+Ember1 ralepett az (4, 1) cellara
+Torony1 megsebezte Ember1-et 250 sebzessel
+Ember1 kettevagva

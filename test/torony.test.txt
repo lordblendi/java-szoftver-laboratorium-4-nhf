@@ -1,0 +1,23 @@
+torony.map.txt betoltese sikerult, jatek inditasa.
+kettevagas veletlenszerusegenek atallitasa.
+1000 varazseronk van
+jatek letrehozta Ember1-et
+Ember1 ralepett az (1, 1) cellara
+Az (1, 1) koordinataju cellara nem lehet tornyot rakni
+Sikerult lerakni a tornyot az (4, 6) koordinataju cellara.
+600 varazseronk van
+Ember1 ralepett az (1, 2) cellara
+600 varazseronk van
+Ember1 ralepett az (1, 3) cellara
+600 varazseronk van
+Ember1 ralepett az (1, 4) cellara
+600 varazseronk van
+Ember1 ralepett az (1, 5) cellara
+600 varazseronk van
+Ember1 ralepett az (1, 6) cellara
+jatek letrehozta Hobbit1-et
+Hobbit1 ralepett az (1, 7) cellara
+600 varazseronk van
+Ember1 ralepett az (2, 6) cellara
+Hobbit1 ralepett az (2, 7) cellara
+Torony1 megsebezte Ember1-et 250 sebzessel

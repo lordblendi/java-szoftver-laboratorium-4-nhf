@@ -1,0 +1,10 @@
+indit kekko.map.txt
+random kettevagas off
+tick 1
+addAkadaly 3 1
+addTorony 2 4
+addKekKo 1 1
+addKekKo 3 1
+addKekKo 2 4
+tick 1
+quit

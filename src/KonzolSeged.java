@@ -35,6 +35,9 @@ public class KonzolSeged {
      * @return Név
      */
     static public String getAktualisUseCase() {
+    	if (1 == 1)
+    		return "egyik sem";
+    	
     	return aktualisUseCase;
     }
 

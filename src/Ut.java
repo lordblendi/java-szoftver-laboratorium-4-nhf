@@ -59,7 +59,7 @@ public class Ut extends Cella {
     public void ralep(Ellenseg ellenseg) {
     	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
     	
-    	if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
+    	/*if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
     		if (!JatekLepteteseUseCase.emberLep) {
 	    		KonzolSeged.kiirMegjegyzes("kovetkezoPozicio-n van akadaly es ko is (1)");
 	    		KonzolSeged.kiirMegjegyzes("van akadaly, ko nincs (2)");
@@ -87,7 +87,7 @@ public class Ut extends Cella {
 	        	KonzolSeged.kiirFuggvenyHivas("a", "ralep", "e");
 	            akadaly.ralep(ellenseg);
 	        }
-    	}
+    	}*/
     	
         KonzolSeged.kiirFuggvenyVisszateres();
     }

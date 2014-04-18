@@ -1,0 +1,20 @@
+zoldko.map.txt betoltese sikerult, jatek inditasa.
+1000 varazseronk van
+jatek letrehozta Ember1-et
+Ember1 ralepett az (1, 1) cellara
+Sikerult lerakni az akadalyt az (8, 1) koordinataju cellara.
+Sikerult lerakni a tornyot az (4, 2) koordinataju cellara.
+Az (1, 1) koordinataju cellara nem lehet zoldkovet rakni.
+Az (8, 1) koordinataju cellara nem lehet zoldkovet rakni.
+Sikerult lerakni a zoldkovet az (4, 2) koordinataju cellan levo toronyra.
+200 varazseronk van
+Ember1 ralepett az (2, 1) cellara
+ZoldKo1 megsebezte Ember1-et 250 sebzessel
+200 varazseronk van
+Ember1 ralepett az (3, 1) cellara
+200 varazseronk van
+ZoldKo1 megsebezte Ember1-et 250 sebzessel
+Ember1 ralepett az (4, 1) cellara
+200 varazseronk van
+Ember1 ralepett az (5, 1) cellara
+ZoldKo1 megsebezte Ember1-et 250 sebzessel

@@ -1,0 +1,8 @@
+indit zoldko.map.txt
+random kettevagas off
+tick 1
+addTorony 4 2
+tick 1
+random kettevagas on
+tick 2
+quit

@@ -1,0 +1,7 @@
+indit torony.map.txt
+random kettevagas off
+tick 1
+addTorony 1 1
+addTorony 4 6
+tick 6
+quit
