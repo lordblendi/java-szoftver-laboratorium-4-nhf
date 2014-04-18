@@ -1,8 +1,15 @@
 public class EmberPirosKo extends ToronyKo {
+
+    public EmberPirosKo() {
+    }
+
+    /**
+     * Megsebezzük a kapott ellenséget 350-el.
+     * @param tunde sebzendő ellenség
+     */
     @Override
     public void sebez(Ember ember) {
-        KonzolSeged.kiirFuggvenyHivas("legközelebbi", "sebzodik", "2000");
-        ember.sebzodik(100);
-        KonzolSeged.kiirFuggvenyVisszateres();
+        ember.sebzodik(350);
     }
+
 }

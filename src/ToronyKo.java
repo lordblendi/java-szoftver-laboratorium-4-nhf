@@ -10,7 +10,7 @@ public abstract class ToronyKo {
      * Toronykő árának lekérdezése
      */
     public int getAr() {
-        return 0;
+        return 100;
     }
 
     /**
@@ -19,9 +19,7 @@ public abstract class ToronyKo {
      * @param ember sebzendő ellenség
      */
     public void sebez(Ember ember) {
-        KonzolSeged.kiirFuggvenyHivas("legközelebbi", "sebzodik", "2000");
-        ember.sebzodik(100);
-        KonzolSeged.kiirFuggvenyVisszateres();
+        ember.sebzodik(250);
     }
 
     /**
@@ -30,7 +28,7 @@ public abstract class ToronyKo {
      * @param hobbit sebzendő ellenség
      */
     public void sebez(Hobbit hobbit) {
-
+        hobbit.sebzodik(250);
     }
 
     /**
@@ -39,7 +37,7 @@ public abstract class ToronyKo {
      * @param torp sebzendő ellenség
      */
     public void sebez(Torp torp) {
-
+        torp.sebzodik(250);
     }
 
     /**
@@ -48,7 +46,7 @@ public abstract class ToronyKo {
      * @param tunde sebzendő ellenség
      */
     public void sebez(Tunde tunde) {
-
+        tunde.sebzodik(250);
     }
 
     /**
@@ -57,10 +55,7 @@ public abstract class ToronyKo {
      * @param torony
      */
     public void setHatotavolsag(Torony torony) {
-    	KonzolSeged.kiirFuggvenyHivas("torony", "setHatotavolsag", "5");
-    	torony.setHatotavolsag(5);
-    	
-    	KonzolSeged.kiirFuggvenyVisszateres();
+    	torony.setHatotavolsag(2.75);
     }
 
     
@@ -70,6 +65,6 @@ public abstract class ToronyKo {
      * @param torony
      */
     public void setVarakozas(Torony torony) {
-
+       torony.setVarakozas(2.0);
     }
 }

@@ -23,98 +23,95 @@ public class Main {
     	while (!quit && in.hasNext()) {
     		String s = in.nextLine();
     		String[] t = s.split(" ");
-    		
-    		switch (t[0]) {
-    			// torony lerakása
-    			case "addTorony":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakTorony(jatek.cellak[x - 1][y - 1], new Torony(jatek));
-    				break;
-    			// zöld kő lerakása
-    			case "addZoldKo":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new ZoldKo());
-    				break;
-    			// kék kő lerakása
-    			case "addKekKo":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new KekKo());
-    				break;
-    			// törp piros kő lerakása
-    			case "addTorpPirosKo":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new TorpPirosKo());
-    				break;
-    			// hobbit piros kő lerakása
-    			case "addHobbitPirosKo":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new HobbitPirosKo());
-    				break;
-    			// tünde piros kő lerakása
-    			case "addTundePirosKo":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new TundePirosKo());
-    				break;
-    			// ember prios kő lerakása
-    			case "addEmberPirosKo":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new EmberPirosKo());
-    				break;
-    			// akadály lerakása
-    			case "addAkadaly":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakAkadaly(jatek.cellak[x - 1][y - 1], new Akadaly());
-    				break;
-    			// sárga kő lerakása
-    			case "addSargaKo":
-    				x = Integer.parseInt(t[1]);
-    				y = Integer.parseInt(t[2]);
-    				jatek.lerakAkadalyKo(jatek.cellak[x - 1][y - 1], new SargaKo());
-    				break;
-    			// játék léptetése
-    			case "tick":
-    				int ido = Integer.parseInt(t[1]);
-    				jatek.leptet(ido);
-    				break;
-    			// játék indítása
-    			case "indit":
-    				jatek.indit(t[1]);
-    				break;
-    			// véletlenszerű elemek állítása
-    			case "random":
-    				switch (t[1]) {
-    					case "kettevagas":
-							if (t[2] == "on")
-								Jatek.randomKettevagas = Jatek.Random.ON;
-							else if (t[2] == "off")
-								Jatek.randomKettevagas = Jatek.Random.OFF;
-							else
-								Jatek.randomKettevagas = Jatek.Random.AUTO;
-    						break;
-    					case "utvalasztas":
-    						if (t[2] == "on")
-								Jatek.randomUtvalasztas = Jatek.Random.ON;
-							else if (t[2] == "off")
-								Jatek.randomUtvalasztas = Jatek.Random.OFF;
-							else
-								Jatek.randomUtvalasztas = Jatek.Random.AUTO;
-    						break;
-    				}
-    				System.out.format("%s veletlenszerusegenek atallitasa.\n", t[1]);
-    				break;
-    			// kilépés
-    			case "quit":
-    				quit = true;
-    				break;
-    		}
+
+            if (t[0].equals("addTorony")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakTorony(jatek.cellak[x - 1][y - 1], new Torony(jatek));
+
+                // zöld kő lerakása
+            } else if (t[0].equals("addZoldKo")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new ZoldKo());
+
+                // kék kő lerakása
+            } else if (t[0].equals("addKekKo")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new KekKo());
+
+                // törp piros kő lerakása
+            } else if (t[0].equals("addTorpPirosKo")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new TorpPirosKo());
+
+                // hobbit piros kő lerakása
+            } else if (t[0].equals("addHobbitPirosKo")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new HobbitPirosKo());
+
+                // tünde piros kő lerakása
+            } else if (t[0].equals("addTundePirosKo")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new TundePirosKo());
+
+                // ember prios kő lerakása
+            } else if (t[0].equals("addEmberPirosKo")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakToronyKo(jatek.cellak[x - 1][y - 1], new EmberPirosKo());
+
+                // akadály lerakása
+            } else if (t[0].equals("addAkadaly")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakAkadaly(jatek.cellak[x - 1][y - 1], new Akadaly());
+
+                // sárga kő lerakása
+            } else if (t[0].equals("addSargaKo")) {
+                x = Integer.parseInt(t[1]);
+                y = Integer.parseInt(t[2]);
+                jatek.lerakAkadalyKo(jatek.cellak[x - 1][y - 1], new SargaKo());
+
+                // játék léptetése
+            } else if (t[0].equals("tick")) {
+                int ido = Integer.parseInt(t[1]);
+                jatek.leptet(ido);
+
+                // játék indítása
+            } else if (t[0].equals("indit")) {
+                jatek.indit(t[1]);
+
+                // véletlenszerű elemek állítása
+            } else if (t[0].equals("random")) {
+                if (t[1].equals("kettevagas")) {
+                    if (t[2] == "on")
+                        Jatek.randomKettevagas = Jatek.Random.ON;
+                    else if (t[2] == "off")
+                        Jatek.randomKettevagas = Jatek.Random.OFF;
+                    else
+                        Jatek.randomKettevagas = Jatek.Random.AUTO;
+
+                } else if (t[1].equals("utvalasztas")) {
+                    if (t[2] == "on")
+                        Jatek.randomUtvalasztas = Jatek.Random.ON;
+                    else if (t[2] == "off")
+                        Jatek.randomUtvalasztas = Jatek.Random.OFF;
+                    else
+                        Jatek.randomUtvalasztas = Jatek.Random.AUTO;
+
+                }
+                System.out.format("%s veletlenszerusegenek atallitasa.\n", t[1]);
+
+                // kilépés
+            } else if (t[0].equals("quit")) {
+                quit = true;
+
+            }
     	}
     	
     	in.close();

@@ -3,16 +3,14 @@ public class ZoldKo extends ToronyKo {
     public ZoldKo() {
     }
 
+    /**
+     * Beállítjuk a paraméterül kapott torony várakozási idejét 1.5-re
+     * @param torony
+     */
     @Override
     public void setVarakozas(Torony torony) {
-    	KonzolSeged.kiirFuggvenyHivas("torony", "setVarakozas", "100");
-    	torony.setVarakozas(100);
-        KonzolSeged.kiirFuggvenyVisszateres();
+        torony.setVarakozas(1.5);
     }
-    
-    @Override
-    public int getAr() {
-    	KonzolSeged.kiirFuggvenyVisszateres("500");
-    	return 500;
-    }
+
+
 }

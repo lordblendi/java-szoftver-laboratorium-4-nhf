@@ -1,77 +1,70 @@
+import java.util.List;
+
 public class Torony {
-    int hatotavolsag;
+    double hatotavolsag;
     Jatek jatek;
     Domborzat pozicio;
     ToronyKo toronyKo;
-    int varakozas;
+    double varakozas;
 
     public Torony(Jatek jatek) {
         this.jatek = jatek;
+        this.hatotavolsag = 2.75;
+        this.varakozas = 2.0;
     }
-    
+
     /**
      * Torony árának lekérdezése
      */
     public int getAr() {
-    	KonzolSeged.kiirFuggvenyVisszateres("1500: int");
-    	return 1500;
+        return 400;
     }
-    
+
     /**
      * Toronykő lerakása a toronyra.
-     * 
+     *
      * @param toronyKo ezt rakja rá a toronyra
      */
     public void lerakToronyKo(ToronyKo toronyKo) {
-    	String valasz = KonzolSeged.beolvas("A torony meg ko nelkuli?", "[in]");
-    	if (valasz.equals("i")) {
-    		KonzolSeged.kiirFuggvenyHivas("zold", "setVarakozas", "torony");
-    		toronyKo.setVarakozas(this);
-    		KonzolSeged.kiirFuggvenyHivas("zold", "setHatotavolsag", "torony");
-    		toronyKo.setHatotavolsag(this);
-    	}
-    	
-    	KonzolSeged.kiirFuggvenyVisszateres();
+        if (this.toronyKo == null) {
+            this.toronyKo = toronyKo;
+        }
     }
 
     /**
      * A torony sebzi a kapott ellenséget
+     *
      * @param ellenseg
      */
     public void sebez(Ellenseg ellenseg) {
-        KonzolSeged.kiirFuggvenyHivas("legkozelebbi", "sebzodik", "1000");
-        ellenseg.sebzodik(10);
-        KonzolSeged.kiirFuggvenyVisszateres();
+        ellenseg.sebzodik(250);
     }
-    
+
     /**
      * Torony pozíciójának beállítása
-     * 
+     *
      * @param domborzat a torony ezen a Domborzaton lesz
      */
     public void setPozicio(Domborzat domborzat) {
         this.pozicio = domborzat;
-        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**
      * Torony hatótávolságának beállítása
-     * 
+     *
      * @param hatotavolsag torony hatótávolsága
      */
-    public void setHatotavolsag(int hatotavolsag) {
+    public void setHatotavolsag(double hatotavolsag) {
         this.hatotavolsag = hatotavolsag;
-        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**
      * Torony tüzelési gyakoriságának beállítása.
-     * 
+     *
      * @param varakozas tüzelési gyakoriság
      */
-    public void setVarakozas(int varakozas) {
+    public void setVarakozas(double varakozas) {
         this.varakozas = varakozas;
-        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**
@@ -80,53 +73,34 @@ public class Torony {
      * Ha azon belül van, akkor ha van rajta toronykő,
      * akkor annak segítségével sebzi,
      * különben a saját sebez függvényét hívja meg.
-     */    
+     */
     public void tuzel() {
-    	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
-    	
-    	if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
-    		KonzolSeged.kiirFuggvenyVisszateres();
-    		return;
-    	}
-    	
-        String valasz = KonzolSeged.beolvas("varakozas == 0?", "[in]");
-        if("i".equals(valasz)){
-            ToronyKo toronyKo = new EmberPirosKo();
-            Ut ut = new Ut();
-            Jatek jatek = new Jatek();
-            Domborzat domborzat = new Domborzat();
-            Ellenseg ember = new Ember(jatek);
-            ember.pozicio = ut;
-
-            KonzolSeged.kiirFuggvenyHivas("jatek", "getEllensegek");
-            jatek.getEllensegek();
-
-            KonzolSeged.kiirFuggvenyHivas("ember", "getPozicio");
-            ember.getPozicio();
-
-            KonzolSeged.kiirFuggvenyHivas("ut", "getTavolsag", "domborzat");
-            double d = ut.getTavolsag(domborzat);
-
-            valasz = KonzolSeged.beolvas("hatotavolsag <= 2.0?", "[in]");
-
-            if ("i".equals(valasz)) {
-                valasz = KonzolSeged.beolvas("toronyKo == null?", "[in]");
-                if("i".equals(valasz)){
-                    KonzolSeged.kiirFuggvenyHivas("torony", "sebez", "legkozelebbi");
-                    sebez(ember);
-                }
-                else{
-                    KonzolSeged.kiirFuggvenyHivas("legkozelebbi", "acceptToronyKoSebez", "toronyKo");
-                    ember.acceptToronyKoSebez(toronyKo);
-                }
-
+        Ellenseg legkozelebbiEllenseg = null;
+        double legkozelebbi = this.hatotavolsag;
+        for (Ellenseg ellenseg : jatek.getEllensegek()) {
+            double tavolsag = ellenseg.getPozicio().getTavolsag(this.pozicio);
+            if (tavolsag < legkozelebbi) {
+                legkozelebbi = tavolsag;
+                legkozelebbiEllenseg = ellenseg;
             }
         }
-        KonzolSeged.kiirFuggvenyVisszateres();
+
+        if (legkozelebbiEllenseg != null) {
+            if (toronyKo == null) {
+                sebez(legkozelebbiEllenseg);
+            } else {
+                legkozelebbiEllenseg.acceptToronyKoSebez(toronyKo);
+            }
+
+        }
+        if(this.hatotavolsag == 1.375){
+            this.hatotavolsag=2.75;
+        }
+
     }
-    
+
     // TODO
     public void kodosit() {
-    	return;
+        this.hatotavolsag = 1.375;
     }
 }

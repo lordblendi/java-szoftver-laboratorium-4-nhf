@@ -284,26 +284,26 @@ public class Jatek {
     	else {
     		// toronykő típusának meghatározása az üzenet kiírásához
     		String ko = null;
-    		switch (toronyKo.getClass().getName()) {
-    			case "ZoldKo":
-    				ko = "zoldkovet";
-    				break;
-    			case "KekKo":
-    				ko = "kekkovet";
-    				break;
-    			case "TorpPirosKo":
-    				ko = "torp piroskovet";
-    				break;
-    			case "HobbitPirosKo":
-    				ko = "hobbit piroskovet";
-    				break;
-    			case "TundePirosKo":
-    				ko = "tunde piroskovet";
-    				break;
-    			case "EmberPirosKo":
-    				ko = "ember piroskovet";
-    				break;
-    		}
+            String s = toronyKo.getClass().getName();
+            if (s.equals("ZoldKo")) {
+                ko = "zoldkovet";
+
+            } else if (s.equals("KekKo")) {
+                ko = "kekkovet";
+
+            } else if (s.equals("TorpPirosKo")) {
+                ko = "torp piroskovet";
+
+            } else if (s.equals("HobbitPirosKo")) {
+                ko = "hobbit piroskovet";
+
+            } else if (s.equals("TundePirosKo")) {
+                ko = "tunde piroskovet";
+
+            } else if (s.equals("EmberPirosKo")) {
+                ko = "ember piroskovet";
+
+            }
         	System.out.format("Az (%d, %d) koordinataju cellara nem lehet %s rakni\n", cella.getPozicio().x, cella.getPozicio().y, ko);
     	}
     }
