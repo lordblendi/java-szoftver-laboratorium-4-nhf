@@ -50,7 +50,7 @@ for %%f in (*.in.txt) do (
 set /p ".=!sikeres!/!count! " <NUL
 call :Szines 0A SIKERES
 echo  teszteset
-echo Nyomj meg egy billentyut miutan megvizsgaltad a kimeneteket! ...
+echo Nyomj meg egy billentyut miutan megvizsgaltad a kimeneteket...
 
 pause >NUL
 
@@ -70,6 +70,6 @@ goto :EOF
 
 :Szines
 findstr /v /a:%1 /R "^$" "%~2" NUL
-goto :eof
+goto :EOF
 
 :End
