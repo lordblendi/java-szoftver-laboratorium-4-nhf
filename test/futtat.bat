@@ -1,14 +1,8 @@
 @echo off
 setlocal ENABLEDELAYEDEXPANSION
 
-set PATH=%PATH%;C:\Program Files\Java\jdk1.7.0_40\bin
-
 call :Takaritas
 
-::echo Forditas...
-::javac ..\src\*.java -d ..\bin
-
-echo.
 echo Tesztek futtatasa...
 set count=1
 set sikeres=0
@@ -50,8 +44,7 @@ for %%f in (*.in.txt) do (
 set /p ".=!sikeres!/!count! " <NUL
 call :Szines 0A SIKERES
 echo  teszteset
-echo Nyomj meg egy billentyut miutan megvizsgaltad a kimeneteket...
-
+set /p ".=Nyomj meg egy billentyut miutan megvizsgaltad a kimeneteket..." <NUL
 pause >NUL
 
 echo.
@@ -59,13 +52,10 @@ call :Takaritas
 goto :End
 
 :Takaritas
-echo Takaritas...
-::del ..\bin\*.class 2>NUL
 del *.out.txt 2>NUL
 del *.diff.txt 2>NUL
 del SIKERES >NUL 2>&1
 del HIBA >NUL 2>&1
-echo.
 goto :EOF
 
 :Szines
