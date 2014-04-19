@@ -1,3 +1,5 @@
 /bin
 /test/*.out.txt
 /test/*.diff.txt
+/test/SIKERES
+/test/HIBA
