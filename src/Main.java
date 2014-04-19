@@ -108,7 +108,7 @@ public class Main {
 								Jatek.randomUtvalasztas = Jatek.Random.AUTO;
     						break;
     				}
-    				System.out.format("%s veletlenszerusegenek atallitasa.\n", t[1]);
+    				System.out.format("%s veletlenszerusegenek atallitasa.%n", t[1]);
     				break;
     			// kilépés
     			case "quit":
