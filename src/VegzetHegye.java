@@ -15,7 +15,6 @@ public class VegzetHegye extends Ut {
      */
     @Override
     public void lerakAkadalyKo(SargaKo sargaKo) {
-        super.lerakAkadalyKo(sargaKo);
     }
 
     /**
@@ -24,7 +23,6 @@ public class VegzetHegye extends Ut {
      */
     @Override
     public void lerakAkadaly(Akadaly akadaly) {
-    	super.lerakAkadaly(akadaly);
     }
 
     /**
@@ -34,7 +32,6 @@ public class VegzetHegye extends Ut {
      */
     @Override
     public void ralep(Ellenseg ellenseg) {
-        super.ralep(ellenseg);
     }
 
     /**
