@@ -1,18 +1,11 @@
 public class SargaKo {
-    /**
+	private static int  objektumDarabszam;
+	private String objektumAzonosito;
+	
+	/**
      *  Sárgakő konstruktora
      */
     public SargaKo() {
-    }
-
-    /**
-     * Sárgakő árának visszaadása
-     * @return a sárgakő ára
-     */
-    public int getAr() {
-
-        KonzolSeged.kiirFuggvenyVisszateres("1000");
-        return 1000;
     }
 
     /**
@@ -20,15 +13,19 @@ public class SargaKo {
      * @param ellenseg
      */
     public void ralep(Ellenseg ellenseg) {
-    	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
-    	
-    	if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
-    		KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "0.5");
-    	} else {
-	        KonzolSeged.kiirFuggvenyHivas("ellenseg", "setSebesseg", "0.5");
-    	}
-	    ellenseg.setSebesseg(0.5);
-	    
-	    KonzolSeged.kiirFuggvenyVisszateres();    	
+    	ellenseg.setSebesseg(2.1);
+    }
+    
+    /**
+     * Sárgakő árának visszaadása
+     * @return a sárgakő ára
+     */
+    public int getAr() {
+        KonzolSeged.kiirFuggvenyVisszateres("1000");
+        return 100;
+    }
+    
+    public String getObjektumAzonosito(){
+    	return objektumAzonosito;
     }
 }

@@ -1,5 +1,7 @@
 public class Akadaly {
-    SargaKo sargaKo;
+    private static int  objektumDarabszam;
+	private String objektumAzonosito;
+    private SargaKo sargaKo = null;
     
     /**
      * Konstruktor
@@ -8,13 +10,17 @@ public class Akadaly {
         
     }
     
+    
+    public String getObjektumAzonosito(){
+    	return objektumAzonosito;
+    }
     /**
      * Visszaadja az árat
      * @return ára
      */
     public int getAr() {
-    	KonzolSeged.kiirFuggvenyVisszateres("1500: int");
-    	return 1500;
+
+    	return 300;
     }
 
     /**
@@ -22,13 +28,11 @@ public class Akadaly {
      * @param sargaKo
      */
     public boolean lerakAkadalyKo(SargaKo sargaKo) {
-        String valasz = KonzolSeged.beolvas("Van az akadalyon SargaKo?","[in]");
-        if("n".equals(valasz)){
-            this.sargaKo = sargaKo;
-            KonzolSeged.kiirFuggvenyVisszateres("true");
-            return true;
-        }
-        KonzolSeged.kiirFuggvenyVisszateres("false");
+    
+    	if (this.sargaKo == null){
+    		this.sargaKo = sargaKo;
+    		return true;
+    	}
         return false;
     }
     
@@ -37,29 +41,11 @@ public class Akadaly {
      * @param ellenseg
      */
     public void ralep(Ellenseg ellenseg) {
-    	if(KonzolSeged.getAktualisUseCase().equals("Akadaly lerakasa use-case")){
-   		 KonzolSeged.kiirFuggvenyHivas("ember", "setSebesseg", "0.9");
-            ellenseg.setSebesseg(0.9);
+    	if (sargaKo == null){
+    		ellenseg.setSebesseg(1.5);
     	}
-        if(KonzolSeged.getAktualisUseCase().equals("SargaKo lerakasa use-case")){
-            if(sargaKo == null){
-            	KonzolSeged.kiirFuggvenyHivas("e", "setSebesseg", "0.9");
-                ellenseg.setSebesseg(0.9);
-            }
-            else{
-            	KonzolSeged.kiirFuggvenyHivas("s", "ralep", "e");
-                sargaKo.ralep(ellenseg);
-            }
-        }
-        if (KonzolSeged.getAktualisUseCase().equals("Jatek leptetese use-case")) {
-        	if (sargaKo != null) {
-        		KonzolSeged.kiirFuggvenyHivas("sargaKo", "ralep", "hobbit");
-        		sargaKo.ralep(ellenseg);
-        	} else {
-        		KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "0.6");
-        		ellenseg.setSebesseg(0.6);
-        	}
-        }
-        KonzolSeged.kiirFuggvenyVisszateres();
+    	else{
+    		sargaKo.ralep(ellenseg);
+    	}
     }
 }

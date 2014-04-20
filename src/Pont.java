@@ -1,3 +1,5 @@
+import java.lang.*;
+
 public class Pont {
     int x;
     int y;
@@ -18,7 +20,7 @@ public class Pont {
      * @return két pont távolsága
      */
     public double getTavolsag(Pont pont) {
-        KonzolSeged.kiirFuggvenyVisszateres("2.0");
-        return 100.0;
+       return Math.sqrt( Math.pow((pont.x - x), 2)+
+    		   			 Math.pow((pont.y - y), 2));
     }
 }

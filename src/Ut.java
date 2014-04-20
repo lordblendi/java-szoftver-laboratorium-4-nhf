@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class Ut extends Cella {
     Akadaly akadaly = null;
-    Collection<Ellenseg> ellensegek;
+    List<Ellenseg> ellensegek;
     List<Ut> kovetkezoLepesek;
 
     /**
@@ -22,31 +24,20 @@ public class Ut extends Cella {
      */
     @Override
     public void lerakAkadalyKo(SargaKo sargaKo) {
-//        KonzolSeged.kiirFuggvenyHivas("Ut", "lerakAkadalyKo", "sargaKo: SargaKo");
-        String valasz = KonzolSeged.beolvas("Van az uton akadaly?", "[in]");
-        if ("i".equals(valasz)) {
-            KonzolSeged.kiirFuggvenyHivas("u", "lerakAkadalyKo", "s");
-            boolean b = akadaly.lerakAkadalyKo(sargaKo);
-            if(b){
-                Ember ember = new Ember(new Jatek());
-                KonzolSeged.kiirFuggvenyHivas("u", "ralep", "e");
-                ralep(ember);
-            }
-        } else if ("n".equals(valasz)) {
-        }
-        KonzolSeged.kiirFuggvenyVisszateres();
+    	if (akadaly != null){
+    		akadaly.lerakAkadalyKo(sargaKo);
+    	}
     }
 
      @Override
     public void lerakAkadaly(Akadaly akadaly) {
-    	String s = KonzolSeged.beolvas("Van mar akadaly az uton?", "[in]");
-     	if (s.equals("n")){
-     		for (Ellenseg e: ellensegek){
-     			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "ember: Ember");
-     			akadaly.ralep(e);   	
-     		}
-     	}
-    	 KonzolSeged.kiirFuggvenyVisszateres();
+    	 if (this.akadaly == null){
+    		 this.akadaly=akadaly;
+    		 for (Ellenseg ellenseg : ellensegek)
+    		 {
+    			 this.akadaly.ralep(ellenseg);
+    		 }
+    	 }
     }
 
     /**
@@ -57,39 +48,15 @@ public class Ut extends Cella {
      * @param ellenseg aki rálép az útra
      */
     public void ralep(Ellenseg ellenseg) {
-    	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
-    	
-    	/*if (jelenlegiUseCase.equals("Jatek leptetese use-case")) {
-    		if (!JatekLepteteseUseCase.emberLep) {
-	    		KonzolSeged.kiirMegjegyzes("kovetkezoPozicio-n van akadaly es ko is (1)");
-	    		KonzolSeged.kiirMegjegyzes("van akadaly, ko nincs (2)");
-	    		KonzolSeged.kiirMegjegyzes("nincs akadaly (3)");
-	    		String valasz = KonzolSeged.beolvas("A fentiek kozul melyik jatszodjon le?", "[123]");
-	    		if (valasz.equals("1")) {
-	    			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
-	    			akadaly.ralep(ellenseg);
-	    		} else if (valasz.equals("2")) {
-	    			akadaly.sargaKo = null;
-	    			KonzolSeged.kiirFuggvenyHivas("akadaly", "ralep", "hobbit");
-	    			akadaly.ralep(ellenseg);
-	    		} else {
-	    			KonzolSeged.kiirFuggvenyHivas("hobbit", "setSebesseg", "0.7");
-	    			ellenseg.setSebesseg(1.0);
-	    		}
-    		} else {
-	        		KonzolSeged.kiirFuggvenyHivas("uj", "setSebesseg", "0.8");
-	        		ellenseg.setSebesseg(0.8);
+    	if (akadaly != null){
+    		akadaly.ralep(ellenseg);
+    	}
+    	else{
+    		for (Ellenseg e:ellensegek)
+    		{
+    			e.setSebesseg(1);
     		}
-    	} else {
-	        if (akadaly == null) {
-	            
-	        } else {
-	        	KonzolSeged.kiirFuggvenyHivas("a", "ralep", "e");
-	            akadaly.ralep(ellenseg);
-	        }
-    	}*/
-    	
-        KonzolSeged.kiirFuggvenyVisszateres();
+    	}
     }
     
     /**
@@ -99,8 +66,7 @@ public class Ut extends Cella {
      */
 
     public void lelep(Ellenseg ellenseg) {
-        KonzolSeged.kiirFuggvenyVisszateres();
-
+        ellensegek.remove(ellenseg);
     }
 
     /**
@@ -109,17 +75,8 @@ public class Ut extends Cella {
      * * @return
      */
     public Ut getKovetkezoLepes() {
-    	String jelenlegiUseCase = KonzolSeged.getAktualisUseCase();
-    	
-    	if (jelenlegiUseCase.equals("Hobbit leptetese use-case")) {
-    		KonzolSeged.kiirFuggvenyVisszateres("kovPoz");
-    	} else {
-//        KonzolSeged.kiirFuggvenyHivas("Ut", "getKovetkezoLepes");
-    		KonzolSeged.kiirFuggvenyVisszateres("");
-    	}
-    	
-    	// randomizálást megcsinálni!
-        return kovetkezoLepesek.get(0);
+    	Random rand = new Random(System.currentTimeMillis());
+    	return kovetkezoLepesek.get(rand.nextInt(kovetkezoLepesek.size()));
     }
     
     /**
@@ -128,7 +85,7 @@ public class Ut extends Cella {
      * @param ut következő út
      */
     public void setKovetkezoLepesek(List<Ut> utak) {
-        this.kovetkezoLepesek = utak;
-        KonzolSeged.kiirFuggvenyVisszateres();
+    	kovetkezoLepesek = new ArrayList<Ut>(utak.size());
+    	Collections.copy(kovetkezoLepesek,utak);
     }
 }

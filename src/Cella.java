@@ -1,5 +1,5 @@
 public abstract class Cella {
-    Pont pozicio;
+    protected  Pont pozicio;
 
     /**
      * Cella konstruktora
@@ -10,7 +10,6 @@ public abstract class Cella {
 
     public void setPozicio(Pont pozicio) {
         this.pozicio = pozicio;
-        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
 
@@ -20,9 +19,7 @@ public abstract class Cella {
      * @return aktuális pozíció
      */
     public Pont getPozicio() {
-        KonzolSeged.kiirFuggvenyVisszateres("pont");
-        return new Pont(1,1);
-//        return pozicio;
+    	return pozicio;
     }
 
     /**
@@ -32,12 +29,7 @@ public abstract class Cella {
      * @return távolság
      */
     public double getTavolsag(Cella cella) {
-        KonzolSeged.kiirFuggvenyHivas("domborzat", "getPozicio");
-        Pont pozicio = cella.getPozicio();
-        KonzolSeged.kiirFuggvenyHivas("pozicio", "getTavolsag", "pont");
-        double d = pozicio.getTavolsag(new Pont(1,1));
-        KonzolSeged.kiirFuggvenyVisszateres("2.0");
-        return d;
+       return pozicio.getTavolsag(cella.getPozicio());
     }
     
     
@@ -47,8 +39,6 @@ public abstract class Cella {
      * @param akadaly az elhelyezendő Akadály
      */
     public void lerakAkadaly(Akadaly akadaly) {
-      	KonzolSeged.kiirMegjegyzes("Ez a cella nem ut, igy nem rakhatsz ra akadalyt.");
-        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**
@@ -57,8 +47,6 @@ public abstract class Cella {
      * @param sargaKo elhelyezendő sárgakő
      */
     public void lerakAkadalyKo(SargaKo sargaKo) {
-        KonzolSeged.kiirFuggvenyVisszateres();
-
     }
     /**
      * Toronx elhelyezése a cellán
@@ -66,12 +54,9 @@ public abstract class Cella {
      * @param torony az elhelyezendő torony
      */
     public boolean lerakTorony(Torony torony) {
-    	KonzolSeged.kiirMegjegyzes("Ez a cella nem domborzat, így nem rakhatsz ra tornyot.");
-        KonzolSeged.kiirFuggvenyVisszateres();
         return false;
     }
 
     public void lerakToronyKo(ToronyKo toronyKo) {
-
     }
 }

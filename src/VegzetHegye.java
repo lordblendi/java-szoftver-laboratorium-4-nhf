@@ -15,8 +15,7 @@ public class VegzetHegye extends Ut {
      */
     @Override
     public void lerakAkadalyKo(SargaKo sargaKo) {
-        KonzolSeged.kiirFuggvenyHivas("VegzetHegye", "lerakAkadaly", "akadaly: Akadaly");
-        KonzolSeged.kiirFuggvenyVisszateres();
+        super.lerakAkadalyKo(sargaKo);
     }
 
     /**
@@ -25,8 +24,7 @@ public class VegzetHegye extends Ut {
      */
     @Override
     public void lerakAkadaly(Akadaly akadaly) {
-//        KonzolSeged.kiirFuggvenyHivas("VegzetHegye", "lerakAkadaly", "akadaly: Akadaly");
-        KonzolSeged.kiirFuggvenyVisszateres();
+    	super.lerakAkadaly(akadaly);
     }
 
     /**
@@ -36,9 +34,7 @@ public class VegzetHegye extends Ut {
      */
     @Override
     public void ralep(Ellenseg ellenseg) {
-        KonzolSeged.kiirFuggvenyHivas("jatek", "vege", "false");
-        jatek.vege(false);
-        KonzolSeged.kiirFuggvenyVisszateres();
+        super.ralep(ellenseg);
     }
 
     /**
@@ -47,8 +43,6 @@ public class VegzetHegye extends Ut {
      */
     @Override
     public Ut getKovetkezoLepes() {
-//        KonzolSeged.kiirFuggvenyHivas("VegzetHegye", "getKovetkezoLepes");
-        KonzolSeged.kiirFuggvenyVisszateres("null");
         return null;
     }
 }

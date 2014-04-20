@@ -1,5 +1,5 @@
 public class Domborzat extends Cella {
-    Torony torony;
+    private Torony torony = null;
 
     public Domborzat() {
     }
@@ -10,23 +10,15 @@ public class Domborzat extends Cella {
      */
     @Override
     public boolean  lerakTorony(Torony torony) {
-    	String s = KonzolSeged.beolvas("Van mar torony a Domborzaton?", "[in]");
-    	if (s.equals("i")){
-	    	KonzolSeged.kiirFuggvenyVisszateres("false: boolean");	
+    	if (torony != null){
 	    	return false;    	
     	}
-	    else if (s.equals("n")){
-	    	KonzolSeged.kiirFuggvenyHivas("torony", "setPozicio", "d: Domborzat");
-	    	torony.setPozicio(this);
-	    	KonzolSeged.kiirFuggvenyVisszateres("true: boolean");
+	    else{
+	    	this.torony=torony;
+	    	this.torony.setPozicio(this);
+	    	
 	    	return true;
     	}
-    	else{
-    		KonzolSeged.kiirMegjegyzes("hibas valasz");
-    		KonzolSeged.kiirFuggvenyVisszateres("false: boolean");
-    		return false;
-    	}
-    	
     }
     
     /**
@@ -37,12 +29,9 @@ public class Domborzat extends Cella {
      */
     @Override
     public void lerakToronyKo(ToronyKo toronyKo) {
-    	String valasz = KonzolSeged.beolvas("Van a domborzaton torony?", "[in]");
-    	if (valasz.equals("i")) {
-    		KonzolSeged.kiirFuggvenyHivas("torony", "lerakToronyKo", "zold");
+    	if (torony != null)
+    	{
     		torony.lerakToronyKo(toronyKo);
     	}
-    	
-    	KonzolSeged.kiirFuggvenyVisszateres();
     }
 }
