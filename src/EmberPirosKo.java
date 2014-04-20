@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class EmberPirosKo extends ToronyKo {
 
     public EmberPirosKo() {
@@ -5,11 +7,22 @@ public class EmberPirosKo extends ToronyKo {
 
     /**
      * Megsebezzük a kapott ellenséget 350-el.
-     * @param tunde sebzendő ellenség
+     * @param ember sebzendő ellenség
      */
     @Override
     public void sebez(Ember ember) {
-        ember.sebzodik(350);
+        if(Jatek.randomKettevagas == Jatek.Random.ON){
+            ember.sebzodik(350, true);
+            System.out.format("%s megsebezte %s-et 350 sebzessel.%n", this.getClass().getName(), ember.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
+            ember.sebzodik(350, false);
+            System.out.format("%s megsebezte %s-et 350 sebzessel.%n", this.getClass().getName(), ember.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
+            ember.sebzodik(350, ((((new Random()).nextInt(100))%7) == 0));
+            System.out.format("%s megsebezte %s-et 350 sebzessel.%n", this.getClass().getName(), ember.getClass().getName());
+        }
     }
 
 }

@@ -88,7 +88,7 @@ public abstract class Ellenseg {
      * ennyivel sebződik az ellenség
      * @param sebzes
      */
-    public void sebzodik(int sebzes) {
+    public void sebzodik(int sebzes, boolean kettevagas) {
 
         String valasz = KonzolSeged.beolvas("Meghalt az ellenseg?", "[in]");
         if("n".equals(valasz)){

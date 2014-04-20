@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public abstract class ToronyKo {
 
     /**
@@ -19,7 +21,18 @@ public abstract class ToronyKo {
      * @param ember sebzendő ellenség
      */
     public void sebez(Ember ember) {
-        ember.sebzodik(250);
+        if(Jatek.randomKettevagas == Jatek.Random.ON){
+            ember.sebzodik(250, true);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), ember.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
+            ember.sebzodik(250, false);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), ember.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
+            ember.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), ember.getClass().getName());
+        }
     }
 
     /**
@@ -28,7 +41,18 @@ public abstract class ToronyKo {
      * @param hobbit sebzendő ellenség
      */
     public void sebez(Hobbit hobbit) {
-        hobbit.sebzodik(250);
+        if(Jatek.randomKettevagas == Jatek.Random.ON){
+            hobbit.sebzodik(250, true);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), hobbit.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
+            hobbit.sebzodik(250, false);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), hobbit.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
+            hobbit.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), hobbit.getClass().getName());
+        }
     }
 
     /**
@@ -37,7 +61,18 @@ public abstract class ToronyKo {
      * @param torp sebzendő ellenség
      */
     public void sebez(Torp torp) {
-        torp.sebzodik(250);
+        if(Jatek.randomKettevagas == Jatek.Random.ON){
+            torp.sebzodik(250, true);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), torp.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
+            torp.sebzodik(250, false);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), torp.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
+            torp.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), torp.getClass().getName());
+        }
     }
 
     /**
@@ -46,7 +81,18 @@ public abstract class ToronyKo {
      * @param tunde sebzendő ellenség
      */
     public void sebez(Tunde tunde) {
-        tunde.sebzodik(250);
+        if(Jatek.randomKettevagas == Jatek.Random.ON){
+            tunde.sebzodik(250, true);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), tunde.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
+            tunde.sebzodik(250, false);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), tunde.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
+            tunde.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), tunde.getClass().getName());
+        }
     }
 
     /**

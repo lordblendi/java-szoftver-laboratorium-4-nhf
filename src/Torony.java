@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.Random;
 
 public class Torony {
     double hatotavolsag;
@@ -26,8 +27,33 @@ public class Torony {
      * @param toronyKo ezt rakja rá a toronyra
      */
     public void lerakToronyKo(ToronyKo toronyKo) {
+        String ko = null;
+        switch (toronyKo.getClass().getName()) {
+            case "ZoldKo":
+                ko = "zoldkovet";
+                break;
+            case "KekKo":
+                ko = "kekkovet";
+                break;
+            case "TorpPirosKo":
+                ko = "torp piroskovet";
+                break;
+            case "HobbitPirosKo":
+                ko = "hobbit piroskovet";
+                break;
+            case "TundePirosKo":
+                ko = "tunde piroskovet";
+                break;
+            case "EmberPirosKo":
+                ko = "ember piroskovet";
+                break;
+        }
         if (this.toronyKo == null) {
             this.toronyKo = toronyKo;
+            System.out.format("Sikerult lerakni a %s a (%d, %d) koordinataju cellan levo toronyra.%n", ko, pozicio.getPozicio().x, pozicio.getPozicio().y);
+        }
+        else {
+            System.out.format("A (%d, %d) koordinataju cellan levo toronyra nem lehet %s rakni.%n", pozicio.getPozicio().x, pozicio.getPozicio().y, ko);
         }
     }
 
@@ -37,7 +63,18 @@ public class Torony {
      * @param ellenseg
      */
     public void sebez(Ellenseg ellenseg) {
-        ellenseg.sebzodik(250);
+        if(Jatek.randomKettevagas == Jatek.Random.ON){
+            ellenseg.sebzodik(250, true);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), ellenseg.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
+            ellenseg.sebzodik(250, false);
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), ellenseg.getClass().getName());
+        }
+        else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
+            ellenseg.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
+            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", this.getClass().getName(), ellenseg.getClass().getName());
+        }
     }
 
     /**
@@ -75,26 +112,40 @@ public class Torony {
      * különben a saját sebez függvényét hívja meg.
      */
     public void tuzel() {
-        Ellenseg legkozelebbiEllenseg = null;
-        double legkozelebbi = this.hatotavolsag;
-        for (Ellenseg ellenseg : jatek.getEllensegek()) {
-            double tavolsag = ellenseg.getPozicio().getTavolsag(this.pozicio);
-            if (tavolsag < legkozelebbi) {
-                legkozelebbi = tavolsag;
-                legkozelebbiEllenseg = ellenseg;
-            }
-        }
-
-        if (legkozelebbiEllenseg != null) {
-            if (toronyKo == null) {
-                sebez(legkozelebbiEllenseg);
-            } else {
-                legkozelebbiEllenseg.acceptToronyKoSebez(toronyKo);
+        if(varakozas == 0){
+            Ellenseg legkozelebbiEllenseg = null;
+            double legkozelebbi = this.hatotavolsag;
+            for (Ellenseg ellenseg : jatek.getEllensegek()) {
+                double tavolsag = ellenseg.getPozicio().getTavolsag(this.pozicio);
+                if (tavolsag < legkozelebbi) {
+                    legkozelebbi = tavolsag;
+                    legkozelebbiEllenseg = ellenseg;
+                }
             }
 
+            if (legkozelebbiEllenseg != null) {
+                if (toronyKo == null) {
+                    sebez(legkozelebbiEllenseg);
+                } else {
+                    legkozelebbiEllenseg.acceptToronyKoSebez(toronyKo);
+                }
+
+            }
+            if(this.hatotavolsag == 1.375){
+                this.hatotavolsag=2.75;
+                System.out.format("%s-rol a kod felszallt.%n", this.getClass().getName());
+            }
+
+            //varakozas visszaallitasa
+            if(toronyKo == null){
+                this.varakozas=2.0;
+            }
+            else{
+                toronyKo.setVarakozas(this);
+            }
         }
-        if(this.hatotavolsag == 1.375){
-            this.hatotavolsag=2.75;
+        else{
+            varakozas--;
         }
 
     }
