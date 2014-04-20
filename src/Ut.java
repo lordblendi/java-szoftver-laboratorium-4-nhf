@@ -75,8 +75,16 @@ public class Ut extends Cella {
      * * @return
      */
     public Ut getKovetkezoLepes() {
-    	Random rand = new Random(System.currentTimeMillis());
-    	return kovetkezoLepesek.get(rand.nextInt(kovetkezoLepesek.size()));
+    	if (Jatek.randomUtvalasztas == Jatek.Random.AUTO){
+    		Random rand = new Random(System.currentTimeMillis());
+    		return kovetkezoLepesek.get(rand.nextInt(kovetkezoLepesek.size()));
+    	}
+    	else if(Jatek.randomUtvalasztas == Jatek.Random.ON){
+    		return kovetkezoLepesek.get(0);
+    	}
+    	else{
+    		return kovetkezoLepesek.get(kovetkezoLepesek.size()-1);
+    	}
     }
     
     /**
