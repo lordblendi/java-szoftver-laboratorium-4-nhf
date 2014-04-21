@@ -92,17 +92,17 @@ public class Main {
     			case "random":
     				switch (t[1]) {
     					case "kettevagas":
-							if (t[2] == "on")
+							if (t[2].equals("on"))
 								Jatek.randomKettevagas = Jatek.Random.ON;
-							else if (t[2] == "off")
+							else if (t[2].equals("off"))
 								Jatek.randomKettevagas = Jatek.Random.OFF;
 							else
 								Jatek.randomKettevagas = Jatek.Random.AUTO;
     						break;
     					case "utvalasztas":
-    						if (t[2] == "on")
+    						if (t[2].equals("on"))
 								Jatek.randomUtvalasztas = Jatek.Random.ON;
-							else if (t[2] == "off")
+							else if (t[2].equals("off"))
 								Jatek.randomUtvalasztas = Jatek.Random.OFF;
 							else
 								Jatek.randomUtvalasztas = Jatek.Random.AUTO;

@@ -13,7 +13,7 @@ public class ZoldKo extends ToronyKo {
      */
     @Override
     public void setVarakozas(Torony torony) {
-        torony.setVarakozas(1.5);
+        torony.setVarakozas(15);
     }
 
 

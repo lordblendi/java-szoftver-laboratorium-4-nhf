@@ -11,7 +11,7 @@ public class Domborzat extends Cella {
      */
     @Override
     public boolean lerakTorony(Torony torony) {
-    	if (torony != null){
+    	if (this.torony != null){
 	    	return false;    	
     	}
 	    else{

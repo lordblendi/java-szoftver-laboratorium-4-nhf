@@ -113,7 +113,7 @@ public abstract class ToronyKo {
      * @param torony
      */
     public void setVarakozas(Torony torony) {
-       torony.setVarakozas(2.0);
+       torony.setVarakozas(20);
     }
 
     /**

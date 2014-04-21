@@ -16,16 +16,16 @@ public class EmberPirosKo extends ToronyKo {
     @Override
     public void sebez(Ember ember) {
         if(Jatek.randomKettevagas == Jatek.Random.ON){
+            System.out.format("%s megsebezte %s-et 350 sebzessel%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
             ember.sebzodik(350, true);
-            System.out.format("%s megsebezte %s-et 350 sebzessel.%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
+            System.out.format("%s megsebezte %s-et 350 sebzessel%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
             ember.sebzodik(350, false);
-            System.out.format("%s megsebezte %s-et 350 sebzessel.%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
+            System.out.format("%s megsebezte %s-et 350 sebzessel%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
             ember.sebzodik(350, ((((new Random()).nextInt(100))%7) == 0));
-            System.out.format("%s megsebezte %s-et 350 sebzessel.%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
         }
     }
 

@@ -41,6 +41,7 @@ public abstract class Ellenseg {
      */
     public Ellenseg(Jatek jatek) {
         this.jatek = jatek;
+        this.sebesseg = 1;
     }
     
     /**
@@ -50,7 +51,7 @@ public abstract class Ellenseg {
      * @param ellenseg ennek a mintájára jön létre az új ellenség
      */
     public Ellenseg(Jatek jatek, Ellenseg ellenseg) {
-    	this.jatek = jatek;
+    	this(jatek);
     	elet = ellenseg.elet;
     }
 
@@ -103,8 +104,10 @@ public abstract class Ellenseg {
      */
     public void leptet() {
         helyzet += sebesseg;
-    	if (helyzet >= 1.0) {
-    		helyzet -= 1.0;
+        
+        // kerekítési hiba miatt 10 ~ 9.999
+    	if (helyzet >= 9.999) {
+    		helyzet = 0;
     		pozicio.lelep(this);
     		setPozicio(kovetkezoPozicio);
     	}

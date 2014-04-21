@@ -1,5 +1,5 @@
 public class Akadaly {
-    private static int  objektumDarabszam;
+    private static int objektumDarabszam = 0;
 	private String objektumAzonosito;
     private SargaKo sargaKo = null;
     
@@ -7,7 +7,7 @@ public class Akadaly {
      * Konstruktor
      */
     public Akadaly() {
-        
+    	objektumAzonosito = "Akadaly" + objektumDarabszam++;
     }
     
     
@@ -42,7 +42,8 @@ public class Akadaly {
      */
     public void ralep(Ellenseg ellenseg) {
     	if (sargaKo == null){
-    		ellenseg.setSebesseg(1.5);
+    		ellenseg.setSebesseg(1 / 1.5);
+    		System.out.format("%s lelassitotta %s-et 1.5-re%n", objektumAzonosito, ellenseg.getObjektumAzonosito());
     	}
     	else{
     		sargaKo.ralep(ellenseg);
