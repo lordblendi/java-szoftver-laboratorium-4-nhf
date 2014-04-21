@@ -200,18 +200,20 @@ public class Jatek {
     		System.out.format("%d varazseronk van%n", varazsero);
     		
     		// a játék szereplőit a folytonosság biztosítása céljában nagyobb felbontással léptetjük
+    		// először az ellenségek lépnek
     		for (int j = 0; j < 10; j++) {
     			// ellenségek léptetése
     			for (Ellenseg e: ellensegek)
     				e.leptet();
     		}
     		
+    		// majd a tornyok tüzelnek
     		for (int j = 0; j < 10; j++) {
-    			// tornyok tüzelése
     			for (Torony t: tornyok)
     				t.tuzel();
     		}
     		
+    		// ezután új ellenséget rakunk le, ha szükséges
     		for (int j = 0; j < 10; j++) {
     			// új ellenségek lerakása, ha van még ellenség és eljött az ideje
     			if (maradekEllenseg > 0) {
@@ -269,7 +271,7 @@ public class Jatek {
     			ido++;
     		}
     		
-    		// köd leeresztése a tornyokra
+    		// végül ködöt eresztünk el a tornyokra, ha szükséges
     		if (ido % 100 == 1) {
     			for (Torony t: tornyok)
     				t.kodosit();
