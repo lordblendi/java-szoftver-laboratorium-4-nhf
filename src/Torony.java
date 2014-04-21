@@ -132,7 +132,7 @@ public class Torony {
 	                else{
 	                    toronyKo.setHatotavolsag(this);
 	                }
-	                System.out.format("%s-rol a kod felszallt.%n", getObjektumAzonosito());
+	                System.out.format("%s-rol a kod felszallt%n", getObjektumAzonosito());
 	            }
 	            
 	            //varakozas visszaallitasa

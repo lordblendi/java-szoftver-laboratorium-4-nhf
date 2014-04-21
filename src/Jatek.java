@@ -204,11 +204,15 @@ public class Jatek {
     			// ellenségek léptetése
     			for (Ellenseg e: ellensegek)
     				e.leptet();
-    			
+    		}
+    		
+    		for (int j = 0; j < 10; j++) {
     			// tornyok tüzelése
     			for (Torony t: tornyok)
     				t.tuzel();
-    			
+    		}
+    		
+    		for (int j = 0; j < 10; j++) {
     			// új ellenségek lerakása, ha van még ellenség és eljött az ideje
     			if (maradekEllenseg > 0) {
     				if (idoLerakasig == 0) {
@@ -266,7 +270,7 @@ public class Jatek {
     		}
     		
     		// köd leeresztése a tornyokra
-    		if (ido % 10 == 0) {
+    		if (ido % 100 == 1) {
     			for (Torony t: tornyok)
     				t.kodosit();
     			

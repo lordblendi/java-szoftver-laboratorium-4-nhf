@@ -3,7 +3,7 @@ kettevagas veletlenszerusegenek atallitasa.
 1000 varazseronk van
 jatek letrehozta Ember1-et
 Ember1 ralepett az (1, 1) cellara
-Sikerult lerakni a tornyot az (4, 2) koordinataju cellara.
+Sikerult lerakni a tornyot az (6, 2) koordinataju cellara.
 600 varazseronk van
 Ember1 ralepett az (1, 2) cellara
 600 varazseronk van
