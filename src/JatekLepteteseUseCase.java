@@ -31,7 +31,7 @@ public class JatekLepteteseUseCase implements UseCase {
 		pozicio.kovetkezoLepesek = new ArrayList<Ut>();
 		pozicio.kovetkezoLepesek.add(kovetkezoPozicio);			
 		kovetkezoPozicio.akadaly = akadaly;		
-		akadaly.sargaKo = sargaKo;
+		//akadaly.sargaKo = sargaKo;
 		
 		jatek.kezdoPoziciok = new java.util.ArrayList<Ut>();
 		jatek.kezdoPoziciok.add(kezdoPozicio);

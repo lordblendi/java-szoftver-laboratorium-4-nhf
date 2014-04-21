@@ -28,7 +28,7 @@ public class HobbitLepteteseUseCase implements UseCase {
 		pozicio.kovetkezoLepesek = new ArrayList<Ut>();
 		pozicio.kovetkezoLepesek.add(kovetkezoPozicio);		
 		kovetkezoPozicio.akadaly = akadaly;		
-		akadaly.sargaKo = sargaKo;
+		//akadaly.sargaKo = sargaKo;
 
         KonzolSeged.kiirFuggvenyHivas("jatek", "leptet");
 		jatek.leptet(10);

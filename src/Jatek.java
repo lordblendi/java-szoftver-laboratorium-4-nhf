@@ -388,4 +388,13 @@ public class Jatek {
     public void vege(boolean nyertunk) {
     	vege(nyertunk, null);
     }
+    
+    /**
+     * Új ellenség lerakása (kettévágáskor).
+     * 
+     * @param e Az új ellenség
+     */
+    public void addEllenseg(Ellenseg e) {
+    	ellensegek.add(e);
+    }
 }
