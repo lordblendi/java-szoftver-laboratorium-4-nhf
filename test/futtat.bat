@@ -4,7 +4,7 @@ setlocal ENABLEDELAYEDEXPANSION
 call :Takaritas
 
 echo Tesztek futtatasa...
-set count=1
+set count=0
 set sikeres=0
 for /f "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E# & echo on & for %%b in (1) do rem"') do (
   set "DEL=%%a"
@@ -17,6 +17,7 @@ for %%f in (*.in.txt) do (
 	set outfile=!base!.out.txt
 	set testfile=!base!.test.txt
 	set difffile=!base!.diff.txt
+	set /a count=!count! + 1
 	
 	echo !count!. teszteset ^(!base!^)
 	echo 	Bemenet: 	!infile!
@@ -37,9 +38,7 @@ for %%f in (*.in.txt) do (
 		set /a sikeres=!sikeres! + 1
 	)
 	echo.
-	
 	echo.
-	set /a count=!count! + 1
 )
 set /p ".=!sikeres!/!count! " <NUL
 call :Szines 0A SIKERES
