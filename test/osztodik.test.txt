@@ -14,3 +14,4 @@ Ember1 ralepett az (3, 1) cellara
 Ember1 ralepett az (4, 1) cellara
 Torony1 megsebezte Ember1-et 250 sebzessel
 Ember1 kettevagva
+Ember2 ralepett az (4, 1) cellara
