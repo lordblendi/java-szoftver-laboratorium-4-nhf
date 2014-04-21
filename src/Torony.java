@@ -14,6 +14,8 @@ public class Torony {
         this.jatek = jatek;
         this.hatotavolsag = 2.75;
         this.varakozas = 2.0;
+        this.toronyKo = null;
+        pozicio=null;
         objektumAzonosito = "Torony" + ++objektumDarabszam;
     }
 
