@@ -8,5 +8,5 @@ Sikerult lerakni az akadalyt az (2, 1) koordinataju cellara.
 Ember1 ralepett az (2, 1) cellara
 Akadaly1 lelassitotta Ember1-et 1.5-re
 700 varazseronk van
-700 varazseronk van
 Ember1 ralepett az (3, 1) cellara
+700 varazseronk van

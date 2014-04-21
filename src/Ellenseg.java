@@ -93,7 +93,7 @@ public abstract class Ellenseg {
      * @param sebesseg beállítandó sebesség
      */
     public void setSebesseg(double sebesseg) {
-        this.sebesseg = sebesseg;
+        this.sebesseg = 1 / sebesseg;
     }
 
     /**

@@ -7,7 +7,7 @@ public class Akadaly {
      * Konstruktor
      */
     public Akadaly() {
-    	objektumAzonosito = "Akadaly" + objektumDarabszam++;
+    	objektumAzonosito = "Akadaly" + ++objektumDarabszam;
     }
     
     
@@ -42,7 +42,7 @@ public class Akadaly {
      */
     public void ralep(Ellenseg ellenseg) {
     	if (sargaKo == null){
-    		ellenseg.setSebesseg(1 / 1.5);
+    		ellenseg.setSebesseg(1.5);
     		System.out.format("%s lelassitotta %s-et 1.5-re%n", objektumAzonosito, ellenseg.getObjektumAzonosito());
     	}
     	else{
