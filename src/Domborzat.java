@@ -33,8 +33,7 @@ public class Domborzat extends Cella {
     public boolean lerakToronyKo(ToronyKo toronyKo) {
     	if (torony != null)
     	{
-    		torony.lerakToronyKo(toronyKo);
-    		return true;
+    		return torony.lerakToronyKo(toronyKo);
     	}
     	return false;
     }

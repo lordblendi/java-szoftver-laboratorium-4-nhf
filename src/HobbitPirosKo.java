@@ -1,11 +1,8 @@
 import java.util.Random;
 
 public class HobbitPirosKo extends ToronyKo {
-
-    private static int objektumDarabszam = 0;
-    private String objektumAzonosito;
-
-    public HobbitPirosKo() {
+	
+	public HobbitPirosKo() {
         objektumAzonosito = "HobbitPirosKo" + ++objektumDarabszam;
     }
 

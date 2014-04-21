@@ -1,11 +1,8 @@
 import java.util.Random;
 
 public class TundePirosKo extends ToronyKo {
-
-    private static int objektumDarabszam = 0;
-    private String objektumAzonosito;
-
-    public TundePirosKo() {
+	
+	public TundePirosKo() {
         objektumAzonosito = "TundePirosKo" + ++objektumDarabszam;
     }
 

@@ -31,37 +31,17 @@ public class Torony {
      * Toronykő lerakása a toronyra.
      *
      * @param toronyKo ezt rakja rá a toronyra
+     * @return sikeres-e
      */
-    public void lerakToronyKo(ToronyKo toronyKo) {
-        String ko = null;
-        switch (toronyKo.getObjektumAzonosito()) {
-            case "ZoldKo":
-                ko = "zoldkovet";
-                break;
-            case "KekKo":
-                ko = "kekkovet";
-                break;
-            case "TorpPirosKo":
-                ko = "torp piroskovet";
-                break;
-            case "HobbitPirosKo":
-                ko = "hobbit piroskovet";
-                break;
-            case "TundePirosKo":
-                ko = "tunde piroskovet";
-                break;
-            case "EmberPirosKo":
-                ko = "ember piroskovet";
-                break;
-        }
+    public boolean lerakToronyKo(ToronyKo toronyKo) {
         if (this.toronyKo == null) {
             this.toronyKo = toronyKo;
             //Beállítjuk a hatótávolságot, hátha kékkő került ránk.
             this.toronyKo.setHatotavolsag(this);
-            System.out.format("Sikerult lerakni a %s a (%d, %d) koordinataju cellan levo toronyra.%n", ko, pozicio.getPozicio().x, pozicio.getPozicio().y);
+            return true;
         }
         else {
-            System.out.format("A (%d, %d) koordinataju cellan levo toronyra nem lehet %s rakni.%n", pozicio.getPozicio().x, pozicio.getPozicio().y, ko);
+            return false;
         }
     }
 
@@ -144,25 +124,24 @@ public class Torony {
                     legkozelebbiEllenseg.acceptToronyKoSebez(toronyKo);
                 }
 
-            }
-
-            //Köd felszáll, beállítjuk a hatótávolságot a megfelelő értékre
-            if(this.hatotavolsag == 1.375){
-                if(toronyKo == null){
-                    this.hatotavolsag=2.75;
-                }
-                else{
-                    toronyKo.setHatotavolsag(this);
-                }
-                System.out.format("%s-rol a kod felszallt.%n", getObjektumAzonosito());
-            }
-
-            //varakozas visszaallitasa
-            if(toronyKo == null){
-                this.varakozas=20;
-            }
-            else{
-                toronyKo.setVarakozas(this);
+	            //Köd felszáll, beállítjuk a hatótávolságot a megfelelő értékre
+	            if(this.hatotavolsag == 1.375){
+	                if(toronyKo == null){
+	                    this.hatotavolsag=2.75;
+	                }
+	                else{
+	                    toronyKo.setHatotavolsag(this);
+	                }
+	                System.out.format("%s-rol a kod felszallt.%n", getObjektumAzonosito());
+	            }
+	            
+	            //varakozas visszaallitasa
+	            if(toronyKo == null){
+	                this.varakozas=20;
+	            }
+	            else{
+	                toronyKo.setVarakozas(this);
+	            }
             }
         }
     }
@@ -181,5 +160,12 @@ public class Torony {
      */
     public String getObjektumAzonosito() {
         return objektumAzonosito;
+    }
+    
+    /**
+     * Objektum törlése, ha nem sikerült lerakni.
+     */
+    public void dispose() {
+    	objektumDarabszam--;
     }
 }

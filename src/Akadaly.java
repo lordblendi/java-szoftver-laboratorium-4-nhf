@@ -49,4 +49,11 @@ public class Akadaly {
     		sargaKo.ralep(ellenseg);
     	}
     }
+    
+    /**
+     * Objektum törlése, ha nem sikerült lerakni.
+     */
+    public void dispose() {
+    	objektumDarabszam--;
+    }
 }

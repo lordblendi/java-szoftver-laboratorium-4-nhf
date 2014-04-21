@@ -1,11 +1,8 @@
 import java.util.Random;
 
 public class EmberPirosKo extends ToronyKo {
-
-    private static int objektumDarabszam = 0;
-    private String objektumAzonosito;
-
-    public EmberPirosKo() {
+    
+	public EmberPirosKo() {
         objektumAzonosito = "EmberPirosKo" + ++objektumDarabszam;
     }
 

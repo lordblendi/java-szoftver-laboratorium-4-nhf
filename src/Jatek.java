@@ -285,8 +285,10 @@ public class Jatek {
         if (varazsero >= akadaly.getAr() && cella.lerakAkadaly(akadaly)) {
         	varazsero -= 300;
         	System.out.format("Sikerult lerakni az akadalyt az (%d, %d) koordinataju cellara.%n", cella.getPozicio().x, cella.getPozicio().y);
-        } else
+        } else {
+        	akadaly.dispose();
         	System.out.format("Az (%d, %d) koordinataju cellara nem lehet akadalyt rakni.%n", cella.getPozicio().x, cella.getPozicio().y);
+        }
     }
 
     /**
@@ -299,8 +301,10 @@ public class Jatek {
         if (varazsero >= sargaKo.getAr() && cella.lerakAkadalyKo(sargaKo)) {
         	varazsero -= 100;
         	System.out.format("Sikerult lerakni a sargakovet az (%d, %d) koordinataju cellan levo akadalyra.%n", cella.getPozicio().x, cella.getPozicio().y);
-        } else
+        } else {
+        	sargaKo.dispose();
         	System.out.format("Az (%d, %d) koordinataju cellara nem lehet sargakovet rakni.%n", cella.getPozicio().x, cella.getPozicio().y);
+        }
     }
 
     /**
@@ -315,8 +319,10 @@ public class Jatek {
     		tornyok.add(torony);
     		varazsero -= 400;
     		System.out.format("Sikerult lerakni a tornyot az (%d, %d) koordinataju cellara.%n", cella.getPozicio().x, cella.getPozicio().y);
-    	} else
+    	} else {
+    		torony.dispose();
         	System.out.format("Az (%d, %d) koordinataju cellara nem lehet tornyot rakni%n", cella.getPozicio().x, cella.getPozicio().y);
+    	}
     }
     
     /**
@@ -352,8 +358,10 @@ public class Jatek {
     	if (varazsero >= toronyKo.getAr() && cella.lerakToronyKo(toronyKo)) {
     		varazsero -= 100;
     		System.out.format("Sikerult lerakni a %s az (%d, %d) koordinataju cellan levo toronyra.%n", ko, cella.getPozicio().x, cella.getPozicio().y);
-    	} else
+    	} else {
+    		toronyKo.dispose();
         	System.out.format("Az (%d, %d) koordinataju cellara nem lehet %s rakni.%n", cella.getPozicio().x, cella.getPozicio().y, ko);
+    	}
     }
 
     /**

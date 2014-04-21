@@ -28,4 +28,11 @@ public class SargaKo {
     public String getObjektumAzonosito(){
     	return objektumAzonosito;
     }
+    
+    /**
+     * Objektum törlése, ha nem sikerült lerakni.
+     */
+    public void dispose() {
+    	objektumDarabszam--;
+    }
 }

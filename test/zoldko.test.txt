@@ -1,4 +1,5 @@
 zoldko.map.txt betoltese sikerult, jatek inditasa.
+kettevagas veletlenszerusegenek atallitasa.
 1000 varazseronk van
 jatek letrehozta Ember1-et
 Ember1 ralepett az (1, 1) cellara
@@ -12,8 +13,8 @@ Ember1 ralepett az (2, 1) cellara
 ZoldKo1 megsebezte Ember1-et 250 sebzessel
 200 varazseronk van
 Ember1 ralepett az (3, 1) cellara
-200 varazseronk van
 ZoldKo1 megsebezte Ember1-et 250 sebzessel
+200 varazseronk van
 Ember1 ralepett az (4, 1) cellara
 200 varazseronk van
 Ember1 ralepett az (5, 1) cellara

@@ -2,8 +2,8 @@ import java.util.Random;
 
 public abstract class ToronyKo {
 
-    private static int objektumDarabszam = 0;
-    private String objektumAzonosito;
+    protected static int objektumDarabszam = 0;
+    protected String objektumAzonosito;
 
     /**
      * Konstruktor
@@ -26,15 +26,15 @@ public abstract class ToronyKo {
     public void sebez(Ember ember) {
         if(Jatek.randomKettevagas == Jatek.Random.ON){
             ember.sebzodik(250, true);
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
             ember.sebzodik(250, false);
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
             ember.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), ember.getObjektumAzonosito());
         }
     }
 
@@ -46,15 +46,15 @@ public abstract class ToronyKo {
     public void sebez(Hobbit hobbit) {
         if(Jatek.randomKettevagas == Jatek.Random.ON){
             hobbit.sebzodik(250, true);
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), hobbit.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), hobbit.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
             hobbit.sebzodik(250, false);
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), hobbit.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), hobbit.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
             hobbit.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), hobbit.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), hobbit.getObjektumAzonosito());
         }
     }
 
@@ -66,15 +66,15 @@ public abstract class ToronyKo {
     public void sebez(Torp torp) {
         if(Jatek.randomKettevagas == Jatek.Random.ON){
             torp.sebzodik(250, true);
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), torp.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), torp.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
             torp.sebzodik(250, false);
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), torp.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), torp.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
             torp.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), torp.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), torp.getObjektumAzonosito());
         }
     }
 
@@ -86,15 +86,15 @@ public abstract class ToronyKo {
     public void sebez(Tunde tunde) {
         if(Jatek.randomKettevagas == Jatek.Random.ON){
             tunde.sebzodik(250, true);
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), tunde.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), tunde.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
             tunde.sebzodik(250, false);
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), tunde.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), tunde.getObjektumAzonosito());
         }
         else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
             tunde.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
-            System.out.format("%s megsebezte %s-et 250 sebzessel.%n", getObjektumAzonosito(), tunde.getObjektumAzonosito());
+            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), tunde.getObjektumAzonosito());
         }
     }
 
@@ -123,5 +123,12 @@ public abstract class ToronyKo {
      */
     public String getObjektumAzonosito() {
         return objektumAzonosito;
+    }
+    
+    /**
+     * Objektum törlése, ha nem sikerült lerakni.
+     */
+    public void dispose() {
+    	objektumDarabszam--;
     }
 }
