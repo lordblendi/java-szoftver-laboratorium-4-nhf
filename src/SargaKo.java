@@ -23,7 +23,6 @@ public class SargaKo {
      * @return a sárgakő ára
      */
     public int getAr() {
-        KonzolSeged.kiirFuggvenyVisszateres("1000");
         return 100;
     }
     
