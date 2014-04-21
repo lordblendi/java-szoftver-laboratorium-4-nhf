@@ -385,7 +385,7 @@ public class Jatek {
     	ellensegek.remove(ellenseg);
     	
         // ha elfogytak az ellenségek, nyertünk
-        if (maradekEllenseg == 0) 
+        if (ellensegek.size() == 0 && maradekEllenseg == 0) 
             vege(true);
     }
 
