@@ -1,5 +1,10 @@
 public class KekKo extends ToronyKo {
+
+    private static int objektumDarabszam = 0;
+    private String objektumAzonosito;
+
     public KekKo() {
+        objektumAzonosito = "KekKo" + ++objektumDarabszam;
     }
 
     /**

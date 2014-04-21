@@ -1,6 +1,10 @@
 public class ZoldKo extends ToronyKo {
 
+    private static int objektumDarabszam = 0;
+    private String objektumAzonosito;
+
     public ZoldKo() {
+        objektumAzonosito = "ZoldKo" + ++objektumDarabszam;
     }
 
     /**
