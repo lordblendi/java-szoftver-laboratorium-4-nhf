@@ -1,10 +1,38 @@
 public abstract class Ellenseg {
-    int elet;
-    double helyzet;
-    Jatek jatek;
-    Ut kovetkezoPozicio;
-    Ut pozicio;
-    double sebesseg;
+	/**
+	 * Ellenség életereje.
+	 */
+    protected int elet;
+    
+    /**
+     * Cellán belüli helyzet.
+     */
+    protected double helyzet;
+    
+    /**
+     * Játék.
+     */
+    protected Jatek jatek;
+    
+    /**
+     * Az ellenség erre megy tovább.
+     */
+    protected Ut kovetkezoPozicio;
+    
+    /**
+     * Ellenség jelenlegi pozíciója.
+     */
+    protected Ut pozicio;
+    
+    /**
+     * Ellenség sebessége.
+     */
+    protected double sebesseg;
+    
+    /**
+     * Ellenség azonosítója.
+     */
+    protected String objektumAzonosito;
 
     /**
      * Ellenség konstruktora
@@ -14,46 +42,49 @@ public abstract class Ellenseg {
     public Ellenseg(Jatek jatek) {
         this.jatek = jatek;
     }
+    
+    /**
+     * Kettévágott ellenség létrehozása
+     * 
+     * @param jatek játék, melyben az ellenség részt vesz.
+     * @param ellenseg ennek a mintájára jön létre az új ellenség
+     */
+    public Ellenseg(Jatek jatek, Ellenseg ellenseg) {
+    	this.jatek = jatek;
+    	elet = ellenseg.elet;
+    }
 
     /**
-     * Toronykő segítségével sebzi az ellenséget
+     * Toronykő segítségével sebzi az ellenséget.
      * @param toronyKo
      */
-    public void acceptToronyKoSebez(ToronyKo toronyKo) {
-
-    }
+    public abstract void acceptToronyKoSebez(ToronyKo toronyKo);
 
     /**
      * aktuális pozíció visszaadása
      * @return aktuális pozíció
      */
     public Ut getPozicio() {
-        KonzolSeged.kiirFuggvenyVisszateres("ut");
         return pozicio;
     }
 
     /**
      * Beállítja az új pozíciót,
-     * valamit az új következő pozíciót.
+     * valamint az új következő pozíciót.
      *
      * @param pozicio kovetkezo pozicio
      */
     public void setPozicio(Ut pozicio) {
-//        KonzolSeged.kiirFuggvenyHivas("Ellenseg", "setPozicio", "pozicio: Ut");
-//        KonzolSeged.kiirMegjegyzes("Beallitodik az uj pozicio, es a kovetkezo pozicio.");
-        KonzolSeged.kiirFuggvenyHivas("ut", "getKovetkezoLepes");
+    	System.out.format("%s ralepett az (%d, %d) cellara%n", objektumAzonosito, pozicio.pozicio.x, pozicio.pozicio.y);
         kovetkezoPozicio = pozicio.getKovetkezoLepes();
         this.pozicio = pozicio;
-
-        KonzolSeged.kiirFuggvenyHivas("kovetkezoPozicio", "ralep", "hobbit");
         pozicio.ralep(this);
-
-        KonzolSeged.kiirFuggvenyVisszateres();
     }
-
-    public void initElet() {
-    	
-    }
+    
+    /**
+     * Ellenség kezdő életerejének beállítása.
+     */
+    public abstract void initElet();
 
     /**
      * Ellenség sebességének a beállítása a kapott értékre
@@ -62,47 +93,39 @@ public abstract class Ellenseg {
      */
     public void setSebesseg(double sebesseg) {
         this.sebesseg = sebesseg;
-        KonzolSeged.kiirFuggvenyVisszateres();
     }
 
     /**
      * Ellenség léptetése.
      * Ha a pozíciói >1, akkor lelép a jelenlegi pozícióról.
-     * Beállítja az új pocíviónak a következő pozíciót.
-     * Rálép az új pocícióra.
+     * Beállítja az új pozíciónak a következő pozíciót.
+     * Rálép az új pozícióra.
      */
     public void leptet() {
-        String valasz = KonzolSeged.beolvas("helyzet >= 1.0?", "[in]");
-        if("i".equals(valasz)){
-            KonzolSeged.kiirFuggvenyHivas("ut", "lelep", "hobbit");
-            pozicio.lelep(this);
-
-            KonzolSeged.kiirFuggvenyHivas("hobbit", "setPozicio", "kovetkezoPozicio");
-            setPozicio(kovetkezoPozicio);
-
-        }
-        KonzolSeged.kiirFuggvenyVisszateres();
+        helyzet += sebesseg;
+    	if (helyzet >= 1.0) {
+    		helyzet -= 1.0;
+    		pozicio.lelep(this);
+    		setPozicio(kovetkezoPozicio);
+    	}
     }
 
     /**
-     * ennyivel sebződik az ellenség
-     * @param sebzes
+     * Ellenség sebzése.
+     * 
+     * @param sebzes ennyivel sebződik az ellenség
      */
     public void sebzodik(int sebzes, boolean kettevagas) {
-
-        String valasz = KonzolSeged.beolvas("Meghalt az ellenseg?", "[in]");
-        if("n".equals(valasz)){
-        }
-        else{
-            KonzolSeged.kiirFuggvenyHivas("jatek", "meghalEllenseg", "legkozelebbi");
-            jatek.meghalEllenseg(this,100);
-        }
-        KonzolSeged.kiirFuggvenyVisszateres();
+    	elet -= sebzes;
     }
 
-    // TODO
+    /**
+     * Visszaadja az objektum azonosítóját.
+     * 
+     * @return objektum azonosítója
+     */
     public String getObjektumAzonosito() {
-    	return null;
+    	return objektumAzonosito;
     }
 }
 
