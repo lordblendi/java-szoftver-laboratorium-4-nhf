@@ -37,26 +37,38 @@ public abstract class Cella {
      * Akadály elhelyezése a cellán
      *
      * @param akadaly az elhelyezendő Akadály
+     * @return sikeres-e
      */
-    public void lerakAkadaly(Akadaly akadaly) {
+    public boolean lerakAkadaly(Akadaly akadaly) {
+    	return false;
     }
 
     /**
      * Sárgakő elhelyezése a cellán
      *
      * @param sargaKo elhelyezendő sárgakő
+     * @return sikeres-e
      */
-    public void lerakAkadalyKo(SargaKo sargaKo) {
+    public boolean lerakAkadalyKo(SargaKo sargaKo) {
+    	return false;
     }
     /**
-     * Toronx elhelyezése a cellán
+     * Torony elhelyezése a cellán
      *
      * @param torony az elhelyezendő torony
+     * @return sikeres-e
      */
     public boolean lerakTorony(Torony torony) {
         return false;
     }
 
-    public void lerakToronyKo(ToronyKo toronyKo) {
+    /**
+     * Toronykő elhelyezése a cellán.
+     * 
+     * @param toronyKo
+     * @return sikeres-e
+     */
+    public boolean lerakToronyKo(ToronyKo toronyKo) {
+    	return false;
     }
 }

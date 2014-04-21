@@ -21,23 +21,34 @@ public class Ut extends Cella {
      * Sárgakő elhelyezése az úton
      *
      * @param sargaKo elhelyezendő sárgakő
+     * @return sikeres-e
      */
     @Override
-    public void lerakAkadalyKo(SargaKo sargaKo) {
+    public boolean lerakAkadalyKo(SargaKo sargaKo) {
     	if (akadaly != null){
     		akadaly.lerakAkadalyKo(sargaKo);
+    		return true;
     	}
+    	return false;
     }
 
+    /**
+     * Sárgakő elhelyezése a cellán
+     *
+     * @param sargaKo elhelyezendő sárgakő
+     * @return sikeres-e
+     */
      @Override
-    public void lerakAkadaly(Akadaly akadaly) {
+    public boolean lerakAkadaly(Akadaly akadaly) {
     	 if (this.akadaly == null){
     		 this.akadaly=akadaly;
     		 for (Ellenseg ellenseg : ellensegek)
     		 {
     			 this.akadaly.ralep(ellenseg);
     		 }
+    		 return true;
     	 }
+    	 return false;
     }
 
     /**
@@ -93,7 +104,6 @@ public class Ut extends Cella {
      * @param ut következő út
      */
     public void setKovetkezoLepesek(List<Ut> utak) {
-    	kovetkezoLepesek = new ArrayList<Ut>(utak.size());
-    	Collections.copy(kovetkezoLepesek,utak);
+    	kovetkezoLepesek = utak;
     }
 }

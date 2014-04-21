@@ -282,10 +282,11 @@ public class Jatek {
      * @param akadaly ezt az akadályt akarjuk elhelyezni
      */
     public void lerakAkadaly(Cella cella, Akadaly akadaly) {
-        if (varazsero >= akadaly.getAr())
-            cella.lerakAkadaly(akadaly);
-        else
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet akadalyt rakni%n", cella.getPozicio().x, cella.getPozicio().y);
+        if (varazsero >= akadaly.getAr() && cella.lerakAkadaly(akadaly)) {
+        	varazsero -= 300;
+        	System.out.format("Sikerult lerakni az akadalyt az (%d, %d) koordinataju cellara.%n", cella.getPozicio().x, cella.getPozicio().y);
+        } else
+        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet akadalyt rakni.%n", cella.getPozicio().x, cella.getPozicio().y);
     }
 
     /**
@@ -295,10 +296,11 @@ public class Jatek {
      * @param sargaKo ezt a sárgakövet akarjuk rátenni a cellára
      */
     public void lerakAkadalyKo(Cella cella, SargaKo sargaKo) {
-        if (varazsero >= sargaKo.getAr())
-            cella.lerakAkadalyKo(sargaKo);
-        else
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet sargakovet rakni%n", cella.getPozicio().x, cella.getPozicio().y);
+        if (varazsero >= sargaKo.getAr() && cella.lerakAkadalyKo(sargaKo)) {
+        	varazsero -= 100;
+        	System.out.format("Sikerult lerakni a sargakovet az (%d, %d) koordinataju cellan levo akadalyra.%n", cella.getPozicio().x, cella.getPozicio().y);
+        } else
+        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet sargakovet rakni.%n", cella.getPozicio().x, cella.getPozicio().y);
     }
 
     /**
@@ -308,9 +310,12 @@ public class Jatek {
      * @param torony ezt a tornyot akarjuk elhelyezni
      */
     public void lerakTorony(Cella cella, Torony torony) {
-    	if (varazsero >= torony.getAr())
-            cella.lerakTorony(torony);
-    	else
+    	if (varazsero >= torony.getAr() && cella.lerakTorony(torony)) {
+    		// torony berakása a listába
+    		tornyok.add(torony);
+    		varazsero -= 400;
+    		System.out.format("Sikerult lerakni a tornyot az (%d, %d) koordinataju cellara.%n", cella.getPozicio().x, cella.getPozicio().y);
+    	} else
         	System.out.format("Az (%d, %d) koordinataju cellara nem lehet tornyot rakni%n", cella.getPozicio().x, cella.getPozicio().y);
     }
     
@@ -321,34 +326,34 @@ public class Jatek {
      * @param toronyKo ezt a toronykövet akarjuk rárakni a cellán lévő toronyra
      */
     public void lerakToronyKo(Cella cella, ToronyKo toronyKo) {
-    	if (varazsero >= toronyKo.getAr())
-    		cella.lerakToronyKo(toronyKo);
-    	else {
-    		// toronykő típusának meghatározása az üzenet kiírásához
-    		String ko = null;
-    		switch (toronyKo.getClass().getName()) {
-    			case "ZoldKo":
-    				ko = "zoldkovet";
-    				break;
-    			case "KekKo":
-    				ko = "kekkovet";
-    				break;
-    			case "TorpPirosKo":
-    				ko = "torp piroskovet";
-    				break;
-    			case "HobbitPirosKo":
-    				ko = "hobbit piroskovet";
-    				break;
-    			case "TundePirosKo":
-    				ko = "tunde piroskovet";
-    				break;
-    			case "EmberPirosKo":
-    				ko = "ember piroskovet";
-    				break;
-    		}
-    		
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet %s rakni%n", cella.getPozicio().x, cella.getPozicio().y, ko);
-    	}
+    	// toronykő típusának meghatározása az üzenet kiírásához
+		String ko = null;
+		switch (toronyKo.getClass().getName()) {
+			case "ZoldKo":
+				ko = "zoldkovet";
+				break;
+			case "KekKo":
+				ko = "kekkovet";
+				break;
+			case "TorpPirosKo":
+				ko = "torp piroskovet";
+				break;
+			case "HobbitPirosKo":
+				ko = "hobbit piroskovet";
+				break;
+			case "TundePirosKo":
+				ko = "tunde piroskovet";
+				break;
+			case "EmberPirosKo":
+				ko = "ember piroskovet";
+				break;
+		}
+		
+    	if (varazsero >= toronyKo.getAr() && cella.lerakToronyKo(toronyKo)) {
+    		varazsero -= 100;
+    		System.out.format("Sikerult lerakni a %s az (%d, %d) koordinataju cellan levo toronyra.%n", ko, cella.getPozicio().x, cella.getPozicio().y);
+    	} else
+        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet %s rakni.%n", cella.getPozicio().x, cella.getPozicio().y, ko);
     }
 
     /**

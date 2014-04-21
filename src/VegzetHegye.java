@@ -11,18 +11,24 @@ public class VegzetHegye extends Ut {
 
     /**
      * Akadálykő lerakása
+     * 
      * @param sargaKo elhelyezendő sárgakő
+     * @return sikeres-e
      */
     @Override
-    public void lerakAkadalyKo(SargaKo sargaKo) {
+    public boolean lerakAkadalyKo(SargaKo sargaKo) {
+    	return false;
     }
 
     /**
      * Akadály lerakása
+     * 
      * @param akadaly
+     * @return sikeres-e
      */
     @Override
-    public void lerakAkadaly(Akadaly akadaly) {
+    public boolean lerakAkadaly(Akadaly akadaly) {
+    	return false;
     }
 
     /**
@@ -32,6 +38,7 @@ public class VegzetHegye extends Ut {
      */
     @Override
     public void ralep(Ellenseg ellenseg) {
+    	jatek.vege(false, ellenseg);
     }
 
     /**

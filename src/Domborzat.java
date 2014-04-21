@@ -7,9 +7,10 @@ public class Domborzat extends Cella {
     /**
      * Kapott torony eltárolása, ha még nem tárolunk eggyet sem.
      * @param torony ezt a tornyot akarjuk eltárolni
+     * @return sikeres-e
      */
     @Override
-    public boolean  lerakTorony(Torony torony) {
+    public boolean lerakTorony(Torony torony) {
     	if (torony != null){
 	    	return false;    	
     	}
@@ -26,12 +27,15 @@ public class Domborzat extends Cella {
      * akkor lerakja rá a toronykövet.
      * 
      * @param toronyKo ezt rakja rá a toronyra
+     * @return sikeres-e
      */
     @Override
-    public void lerakToronyKo(ToronyKo toronyKo) {
+    public boolean lerakToronyKo(ToronyKo toronyKo) {
     	if (torony != null)
     	{
     		torony.lerakToronyKo(toronyKo);
+    		return true;
     	}
+    	return false;
     }
 }
