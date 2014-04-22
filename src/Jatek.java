@@ -253,8 +253,6 @@ public class Jatek {
 	    				maradekEllenseg--;
 	    				lerakottEllenseg++;
 	    				
-	    				//System.out.format("jatek letrehozta %s-et%n", e.getObjektumAzonosito());
-	    				
 	    				// az új ellenség lerakásáig hátralévő idő beállítása
 	    				if (lerakottEllenseg <= kezdok || (lerakottEllenseg % 2) == 1)
 	    					// egyesével
@@ -378,8 +376,6 @@ public class Jatek {
      * @param jutalom
      */
     public void meghalEllenseg(Ellenseg ellenseg, int jutalom) {
-    	//System.out.format("%s meghalt%n", ellenseg.getObjektumAzonosito());
-    	
     	// varázserő növelése
     	varazsero += jutalom;
     	ellensegek.remove(ellenseg);

@@ -1,6 +1,6 @@
 @echo off
 
-set PATH=%PATH%;C:\Program Files\Java\jdk1.7.0_40\bin
+::set PATH=%PATH%;C:\Program Files\Java\jdk1.7.0_40\bin
 
 echo Takaritas...
 del ..\bin\*.class 2>NUL
