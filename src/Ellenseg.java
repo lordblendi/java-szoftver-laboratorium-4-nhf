@@ -108,9 +108,8 @@ public abstract class Ellenseg {
     	if (helyzet >= 9.999) {
     		helyzet -= 10;
     		pozicio.lelep(this);
-    		Ut tmp = kovetkezoPozicio;
     		setPozicio(kovetkezoPozicio);
-    		jatek.atlep(this, tmp);
+    		jatek.atlep(this, pozicio);
     	}
     }
 
