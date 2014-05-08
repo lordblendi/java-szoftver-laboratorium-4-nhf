@@ -55,7 +55,7 @@ public class GameController implements MouseListener {
     /**
      * Időzítő felbontása másodpercben (konstans)
      */
-    private static final int INTERVAL = 60 * 1000;
+    private static final int INTERVAL = 1000;
 	
 	/**
 	 * A program belépési pontja
@@ -211,12 +211,11 @@ public class GameController implements MouseListener {
 			}
 			
 			// időzítő elindítása a léptetéshez
-			final GameController that = this;
 			timer = new Timer(true);
 			timer.scheduleAtFixedRate(new TimerTask() {
 				@Override
 				public void run() {
-					that.leptet(1);
+					leptet(1);
 				}
 			}, INTERVAL, INTERVAL);
 		} catch (FileNotFoundException e) {
