@@ -12,7 +12,6 @@ public class Ember extends Ellenseg {
         super(jatek);
         objektumDarabszam++;
         objektumAzonosito = "Ember" + objektumDarabszam;
-        System.out.format("jatek letrehozta %s-et%n", objektumAzonosito);
     }
     
     /**
@@ -52,13 +51,11 @@ public class Ember extends Ellenseg {
     public void sebzodik(int sebzes, boolean kettevagas) {
         super.sebzodik(sebzes, kettevagas);
         if (elet <= 0) {
-        	System.out.format("%s meghalt%n", objektumAzonosito);
         	jatek.meghalEllenseg(this, 100);
         } else if (kettevagas) {
-        	System.out.format("%s kettevagva%n", objektumAzonosito);
         	Ember uj = new Ember(jatek, this);
         	uj.setPozicio(pozicio);
-        	jatek.addEllenseg(uj);
+        	jatek.kettevagva(uj);
         }
     }
 }

@@ -1,9 +1,4 @@
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-import java.util.regex.MatchResult;
 
 /**
  * Játék osztály
@@ -16,30 +11,10 @@ public class Jatek {
 	 */
     public Cella[][] cellak;
     
-    /**
+	/**
      * Ellenségek listája
      */
     List<Ellenseg> ellensegek;
-    
-    /**
-     * Az ellenségek kezdő pozícióinak listája
-     */
-    List<Ut> kezdoPoziciok;
-    
-    /**
-     * A játék végéig még ennyi ellenség fog létrejönni
-     */
-    int maradekEllenseg;
-    
-    /**
-     * Hátrelévő idő a következő ellenség létrehozásáig
-     */
-    int idoLerakasig;
-    
-    /**
-     * Tornyok listája
-     */
-    List<Torony> tornyok;
     
     /**
      * A játékos varázsereje
@@ -47,32 +22,95 @@ public class Jatek {
     int varazsero;
     
     /**
-     * Az idő múlását tartja nyilván
+     * Tornyok listája
      */
-    int ido;
+    List<Torony> tornyok;
     
     /**
-     * Véletlenszerű elemek lehetséges üzemmódjai
+	 * Referencia a kontrollerre
+	 */
+	private GameController controller;
+    
+    /**
+     * Konstruktor
+     * 
+     * @param controller referencia a kontrollerre
      */
-    public enum Random {
-    	ON, OFF, AUTO
+    public Jatek(GameController controller) {
+    	this.controller = controller;
     }
     
     /**
-     * A kettévágás véletlenszerűsége
+     * Cellák beállítása
+     * 
+     * @param cellak cellák
      */
-    public static Random randomKettevagas = Random.AUTO;
+    public void setCellak(Cella[][] cellak) {
+    	this.cellak = cellak;
+    }
     
     /**
-     * Az útválasztás véletlenszerűsége
+     * Ellenségek beállítása
+     * @param ellensegek ellenségek
      */
-    public static Random randomUtvalasztas = Random.AUTO;
+    public void setEllensegek(List<Ellenseg> ellensegek) {
+    	this.ellensegek = ellensegek;
+    }
     
     /**
-     * Játék konstruktora
+     * Varázserő beállítása
+     * 
+     * @param varazsero varázserő
      */
-    public Jatek() { 
-    	// az attribútumokat az indit függvényben inicializáljuk a térkép alapján
+    public void setVarazsero(int varazsero) {
+    	this.varazsero = varazsero;
+    }
+    
+    /**
+     * Varázserő lekérdezése
+     * 
+     * @return varázserő
+     */
+    public int getVarazsero() {
+    	return varazsero;
+    }
+    
+    /**
+     * Tornyok beállítása
+     * 
+     * @param tornyok tornyok
+     */
+    public void setTornyok(List<Torony> tornyok) {
+    	this.tornyok = tornyok;
+    }
+    
+    /**
+     * Az ellenségek léptetése
+     */
+    public void ellensegLep() {
+    	for (int j = 0; j < 10; j++) {
+			// ellenségek léptetése
+			for (Ellenseg e: ellensegek)
+				e.leptet();
+		}
+    }
+    
+    /**
+     * A tornyok tüzelése
+     */
+    public void toronyTuzel() {
+    	for (int j = 0; j < 10; j++) {
+			for (Torony t: tornyok)
+				t.tuzel();
+		}
+    }
+    
+    /**
+     * Köd leeresztése a tornyokra
+     */
+    public void kodosit() {
+    	for (Torony t: tornyok)
+			t.kodosit();
     }
 
     /**
@@ -85,213 +123,20 @@ public class Jatek {
     }
     
     /**
-     * Játék indítása
-     * A térképfájl betöltése
-     * 
-     * @param terkep A térképfájl elérési útvonala
-     */
-    public void indit(String terkep) {
-		try {
-			Scanner f = new Scanner(new FileReader(terkep));
-			
-			// szélesség és magasság
-			f.findInLine("(\\d),(\\d)");
-			MatchResult m = f.match();
-			int magassag = Integer.parseInt(m.group(1)), szelesseg = Integer.parseInt(m.group(2));
-			f.nextLine();
-			
-			// cellák, első koordináta a sor, második koordináta az oszlop
-			cellak = new Cella[magassag][szelesseg];
-			for (int i = 0; i < magassag; i++) {
-				String s = f.nextLine();
-				
-				for (int j = 0; j < szelesseg; j++) {
-					Cella c = null;
-					
-					// cella létrehozása a betűjel alapján
-					switch (s.charAt(j)) {
-						case 'U':
-							c = new Ut();
-							break;
-						case 'D':
-							c = new Domborzat();
-							break;
-						case 'V':
-							c= new VegzetHegye(this);
-							break;
-					}
-					
-					c.setPozicio(new Pont(i + 1, j + 1));
-					cellak[i][j] = c;
-				}
-			}
-			
-			// ellenségek kezdő pozíciói
-			kezdoPoziciok = new ArrayList<Ut>();
-			
-			int k = f.nextInt();
-			f.nextLine();
-			
-			for (int i = 0; i < k; i++) {				
-				f.findInLine("(\\d),(\\d)");
-				MatchResult koordinata = f.match();
-				int x = Integer.parseInt(koordinata.group(1)), y = Integer.parseInt(koordinata.group(2));
-				f.nextLine();
-				
-				kezdoPoziciok.add((Ut)cellak[x - 1][y - 1]);
-			}
-			
-			// következő lépések
-			int l = f.nextInt();
-			f.nextLine();
-			
-			for (int i = 0; i < l; i++) {
-				String s = f.nextLine();
-				String[] koordinatak = s.split(";");
-				
-				// a kezdőpont meghatározása
-				Scanner sor = new Scanner(koordinatak[0]);
-				sor.findInLine("(\\d),(\\d)");
-				MatchResult koordinata = sor.match();
-				int x = Integer.parseInt(koordinata.group(1)), y = Integer.parseInt(koordinata.group(2));
-				sor.close();
-				
-				Ut ut = (Ut)cellak[x - 1][y - 1];
-				List<Ut> vegpontok = new ArrayList<Ut>();
-				
-				// a végpontok meghatározása
-				for (int j = 1; j < koordinatak.length; j++) {
-					sor = new Scanner(koordinatak[j]);
-					sor.findInLine("(\\d),(\\d)");
-					koordinata = sor.match();
-					x = Integer.parseInt(koordinata.group(1));
-					y = Integer.parseInt(koordinata.group(2));
-					sor.close();
-					
-					vegpontok.add((Ut)cellak[x - 1][y - 1]);
-				}
-				
-				ut.setKovetkezoLepesek(vegpontok);
-			}
-			f.close();
-			
-			// további attribútumok inicializálása
-			ellensegek = new ArrayList<Ellenseg>();
-			maradekEllenseg = k * 3;
-			idoLerakasig = 0;
-			tornyok = new ArrayList<Torony>();
-			varazsero = 1000;
-			ido = 1;
-			
-			System.out.format("%s betoltese sikerult, jatek inditasa.%n", terkep);
-		} catch (FileNotFoundException e) {
-			System.out.format("%s betoltese nem sikerult.%n", terkep);
-			return;
-		}
-    }
-    
-    /**
-     * A játék léptetése
-     * 
-     * @param mennyi Ennyi egységgel léptetünk
-     */
-    public void leptet(int mennyi) {
-    	for (int i = 0; i < mennyi; i++) {
-    		System.out.format("%d varazseronk van%n", varazsero);
-    		
-    		// a játék szereplőit a folytonosság biztosítása céljában nagyobb felbontással léptetjük
-    		// először az ellenségek lépnek
-    		for (int j = 0; j < 10; j++) {
-    			// ellenségek léptetése
-    			for (Ellenseg e: ellensegek)
-    				e.leptet();
-    		}
-    		
-    		// majd a tornyok tüzelnek
-    		for (int j = 0; j < 10; j++) {
-    			for (Torony t: tornyok)
-    				t.tuzel();
-    		}
-    		
-    		// ezután új ellenséget rakunk le, ha szükséges
-    		for (int j = 0; j < 10; j++) {
-    			// új ellenségek lerakása, ha van még ellenség és eljött az ideje
-    			if (maradekEllenseg > 0) {
-    				if (idoLerakasig == 0) {
-    					// minden kezdő pozícióra 3 ellenség kerül, először egyedül, majd párban
-    					int kezdok = kezdoPoziciok.size();
-    					
-    					// lerakott ellenségek számának kiszámítása
-    					int lerakottEllenseg = 3 * kezdok - maradekEllenseg;
-    					
-    					// az ellenség kezdő pozíciójának meghatározása
-    					int melyikKezdoPozicio = lerakottEllenseg < kezdok ? lerakottEllenseg : (int)((lerakottEllenseg - kezdok) / 2);
-    					Ut kezdoPozicio = kezdoPoziciok.get(melyikKezdoPozicio);
-    					
-    					// az ellenség létrehozása
-	    				Ellenseg e = null;
-	    				
-	    				// a típus a kezdő pozíciókon ciklikusan váltakozik
-	    				switch (melyikKezdoPozicio % 4) {
-	    					case 0:
-	    						e = new Ember(this);
-	    						break;
-	    					case 1:
-	    						e = new Hobbit(this);
-	    						break;
-	    					case 2:
-	    						e = new Tunde(this);
-	    						break;
-	    					case 3:
-	    						e = new Torp(this);
-	    						break;
-	    				}
-	    				
-	    				e.setPozicio(kezdoPozicio);
-	    				e.initElet();
-	    				ellensegek.add(e);
-	    				maradekEllenseg--;
-	    				lerakottEllenseg++;
-	    				
-	    				// az új ellenség lerakásáig hátralévő idő beállítása
-	    				if (lerakottEllenseg <= kezdok || (lerakottEllenseg % 2) == 1)
-	    					// egyesével
-	    					idoLerakasig = 50 - lerakottEllenseg;
-	    				else
-	    					// párban
-	    					idoLerakasig = 10;
-    				} else
-    					// csökkentjük a következő ellenség lerakásásig hátralévő időt
-    					idoLerakasig--;
-    			}
-    			
-    			// regisztráljuk az idő múlását
-    			ido++;
-    		}
-    		
-    		// végül ködöt eresztünk el a tornyokra, ha szükséges
-    		if (ido % 100 == 1) {
-    			for (Torony t: tornyok)
-    				t.kodosit();
-    			
-    			System.out.println("a tornyokra kod szallt");
-    		}
-    	}
-    }
-    
-    /**
      * Kapott akadály elhelyezése a kapott cellán, ha van elég varázserőnk.
      *
      * @param cella   ezen a cellán akarjuk elhelyezni az akadályt
      * @param akadaly ezt az akadályt akarjuk elhelyezni
+     * @return sikeres-e
      */
-    public void lerakAkadaly(Cella cella, Akadaly akadaly) {
+    public boolean lerakAkadaly(Cella cella, Akadaly akadaly) {
         if (varazsero >= akadaly.getAr() && cella.lerakAkadaly(akadaly)) {
         	varazsero -= 300;
-        	System.out.format("Sikerult lerakni az akadalyt az (%d, %d) koordinataju cellara.%n", cella.getPozicio().x, cella.getPozicio().y);
+        	return true;
         } else {
         	akadaly.dispose();
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet akadalyt rakni.%n", cella.getPozicio().x, cella.getPozicio().y);
+        	controller.alert(String.format("Az (%d, %d) koordinataju cellara nem lehet akadalyt rakni.%n", cella.getPozicio().x, cella.getPozicio().y));
+        	return false;
         }
     }
 
@@ -300,14 +145,16 @@ public class Jatek {
      *
      * @param cella   ezen a cellán akarjuk elhelyezni a sárgakövet
      * @param sargaKo ezt a sárgakövet akarjuk rátenni a cellára
+     * @return sikeres-e
      */
-    public void lerakAkadalyKo(Cella cella, SargaKo sargaKo) {
+    public boolean lerakAkadalyKo(Cella cella, SargaKo sargaKo) {
         if (varazsero >= sargaKo.getAr() && cella.lerakAkadalyKo(sargaKo)) {
         	varazsero -= 100;
-        	System.out.format("Sikerult lerakni a sargakovet az (%d, %d) koordinataju cellan levo akadalyra.%n", cella.getPozicio().x, cella.getPozicio().y);
+        	return true;
         } else {
         	sargaKo.dispose();
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet sargakovet rakni.%n", cella.getPozicio().x, cella.getPozicio().y);
+        	controller.alert(String.format("Az (%d, %d) koordinataju cellara nem lehet sargakovet rakni.%n", cella.getPozicio().x, cella.getPozicio().y));
+        	return false;
         }
     }
 
@@ -316,16 +163,18 @@ public class Jatek {
      *
      * @param cella  ezen a cellán akarjuk elhelyezni a tornyot
      * @param torony ezt a tornyot akarjuk elhelyezni
+     * @return sikeres-e
      */
-    public void lerakTorony(Cella cella, Torony torony) {
+    public boolean lerakTorony(Cella cella, Torony torony) {
     	if (varazsero >= torony.getAr() && cella.lerakTorony(torony)) {
     		// torony berakása a listába
     		tornyok.add(torony);
     		varazsero -= 400;
-    		System.out.format("Sikerult lerakni a tornyot az (%d, %d) koordinataju cellara.%n", cella.getPozicio().x, cella.getPozicio().y);
+    		return true;
     	} else {
     		torony.dispose();
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet tornyot rakni%n", cella.getPozicio().x, cella.getPozicio().y);
+    		controller.alert(String.format("Az (%d, %d) koordinataju cellara nem lehet tornyot rakni%n", cella.getPozicio().x, cella.getPozicio().y));
+    		return false;
     	}
     }
     
@@ -334,8 +183,9 @@ public class Jatek {
      * 
      * @param cella ezen a cellán van a torony
      * @param toronyKo ezt a toronykövet akarjuk rárakni a cellán lévő toronyra
+     * @return sikeres-e
      */
-    public void lerakToronyKo(Cella cella, ToronyKo toronyKo) {
+    public boolean lerakToronyKo(Cella cella, ToronyKo toronyKo) {
     	// toronykő típusának meghatározása az üzenet kiírásához
 		String ko = null;
 		switch (toronyKo.getClass().getName()) {
@@ -361,10 +211,11 @@ public class Jatek {
 		
     	if (varazsero >= toronyKo.getAr() && cella.lerakToronyKo(toronyKo)) {
     		varazsero -= 100;
-    		System.out.format("Sikerult lerakni a %s az (%d, %d) koordinataju cellan levo toronyra.%n", ko, cella.getPozicio().x, cella.getPozicio().y);
+    		return true;
     	} else {
     		toronyKo.dispose();
-        	System.out.format("Az (%d, %d) koordinataju cellara nem lehet %s rakni.%n", cella.getPozicio().x, cella.getPozicio().y, ko);
+        	controller.alert(String.format("Az (%d, %d) koordinataju cellara nem lehet %s rakni.%n", cella.getPozicio().x, cella.getPozicio().y, ko));
+        	return false;
     	}
     }
 
@@ -380,11 +231,10 @@ public class Jatek {
     	varazsero += jutalom;
     	ellensegek.remove(ellenseg);
     	
-        // ha elfogytak az ellenségek, nyertünk
-        if (ellensegek.size() == 0 && maradekEllenseg == 0) 
-            vege(true);
+    	// a kontroller értesítése
+    	controller.meghal(ellenseg, ellensegek.size());
     }
-
+    
     /**
      * Ha a Játéknak vége, akkor meghívódik ez a függvény.
      * 
@@ -392,25 +242,48 @@ public class Jatek {
      * @param ellenseg az ellenség, aki miatt elvesztettük a játékot; megnyert játéknál null
      */
     public void vege(boolean nyertunk, Ellenseg ellenseg) {
-        if (nyertunk)
-        	System.out.println("minden ellenseg meghalt, nyertunk");
-        else
-        	System.out.format("%s ralepett a Vegzet Hegyere, vesztettunk%n", ellenseg.getObjektumAzonosito());
+    	controller.vege(nyertunk);
     }
     
     /**
-     * @see Jatek#vege(boolean, Ellenseg)
-     */
-    public void vege(boolean nyertunk) {
-    	vege(nyertunk, null);
-    }
-    
-    /**
-     * Új ellenség lerakása (kettévágáskor).
+     * Új ellenség lerakása
      * 
-     * @param e Az új ellenség
+     * @param ellenseg az új ellenség
+     * @param ut helye
      */
-    public void addEllenseg(Ellenseg e) {
-    	ellensegek.add(e);
+    public void addEllenseg(Ellenseg ellenseg, Ut ut) {
+    	ellensegek.add(ellenseg);
+    }
+    
+    /**
+     * Kettévágás jelzése
+     * 
+     * @param ellenseg keletkezett ellenség
+     */
+    public void kettevagva(Ellenseg ellenseg) {
+    	controller.addEllenseg(ellenseg);
+    }
+    
+    /**
+     * Adott koordinátájú cellát adja vissza
+     * 
+     * @param x
+     * @param y
+     * @return
+     */
+    public Cella getCella(int i, int j) {
+    	if (cellak == null || i > cellak.length || j > cellak[0].length)
+    		return null;
+    	return cellak[i - 1][j - 1];
+    }
+    
+    /**
+     * Jelzi a kontrollernek, ha egy ellenség helyet változtatott
+     * 
+     * @param ellenseg ellenség
+     * @param ut új helye
+     */
+    public void atlep(Ellenseg ellenseg, Ut ut) {
+    	controller.atlep(ellenseg, ut);
     }
 }

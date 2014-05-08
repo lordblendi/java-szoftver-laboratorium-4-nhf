@@ -51,18 +51,7 @@ public class Torony {
      * @param ellenseg
      */
     public void sebez(Ellenseg ellenseg) {
-        if(Jatek.randomKettevagas == Jatek.Random.ON){
-            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), ellenseg.getObjektumAzonosito());
-            ellenseg.sebzodik(250, true);
-        }
-        else  if(Jatek.randomKettevagas == Jatek.Random.OFF){
-            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), ellenseg.getObjektumAzonosito());
-            ellenseg.sebzodik(250, false);
-        }
-        else  if(Jatek.randomKettevagas == Jatek.Random.AUTO){
-            System.out.format("%s megsebezte %s-et 250 sebzessel%n", getObjektumAzonosito(), ellenseg.getObjektumAzonosito());
-            ellenseg.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
-        }
+        ellenseg.sebzodik(250, ((((new Random()).nextInt(100))%7) == 0));
     }
 
     /**
@@ -132,7 +121,6 @@ public class Torony {
 	                else{
 	                    toronyKo.setHatotavolsag(this);
 	                }
-	                System.out.format("%s-rol a kod felszallt%n", getObjektumAzonosito());
 	            }
 	            
 	            //varakozas visszaallitasa

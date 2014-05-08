@@ -15,7 +15,6 @@ public class SargaKo {
      */
     public void ralep(Ellenseg ellenseg) {
     	ellenseg.setSebesseg(2.1);
-    	System.out.format("%s lelassitotta %s-et 2.1-re%n", objektumAzonosito, ellenseg.getObjektumAzonosito());
     }
     
     /**

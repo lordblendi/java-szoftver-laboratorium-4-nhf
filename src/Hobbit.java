@@ -12,7 +12,6 @@ public class Hobbit extends Ellenseg {
         super(jatek);
         objektumDarabszam++;
         objektumAzonosito = "Hobbit" + objektumDarabszam;
-        System.out.format("jatek letrehozta %s-et%n", objektumAzonosito);
     }
     
     /**
@@ -52,13 +51,11 @@ public class Hobbit extends Ellenseg {
     public void sebzodik(int sebzes, boolean kettevagas) {
     	super.sebzodik(sebzes, kettevagas);
     	if (elet <= 0) {
-    		System.out.format("%s meghalt%n", objektumAzonosito);
         	jatek.meghalEllenseg(this, 150);
         } else if (kettevagas) {
-        	System.out.format("%s kettevagva%n", objektumAzonosito);
         	Hobbit uj = new Hobbit(jatek, this);
         	uj.setPozicio(pozicio);
-        	jatek.addEllenseg(uj);
+        	jatek.kettevagva(uj);
         }
     }
 }

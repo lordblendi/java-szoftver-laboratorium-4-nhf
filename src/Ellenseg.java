@@ -76,7 +76,6 @@ public abstract class Ellenseg {
      * @param pozicio kovetkezo pozicio
      */
     public void setPozicio(Ut pozicio) {
-    	System.out.format("%s ralepett az (%d, %d) cellara%n", objektumAzonosito, pozicio.pozicio.x, pozicio.pozicio.y);
         kovetkezoPozicio = pozicio.getKovetkezoLepes();
         this.pozicio = pozicio;
         pozicio.ralep(this);
@@ -107,9 +106,11 @@ public abstract class Ellenseg {
         
         // kerekítési hiba miatt 10 ~ 9.999
     	if (helyzet >= 9.999) {
-    		helyzet = 0;
+    		helyzet -= 10;
     		pozicio.lelep(this);
+    		Ut tmp = kovetkezoPozicio;
     		setPozicio(kovetkezoPozicio);
+    		jatek.atlep(this, tmp);
     	}
     }
 

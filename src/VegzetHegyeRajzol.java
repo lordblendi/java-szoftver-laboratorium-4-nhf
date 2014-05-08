@@ -9,7 +9,7 @@ public class VegzetHegyeRajzol extends Kirajzolhato{
 	
 	private VegzetHegye vegzetHegye;
 	
-	private VegzetHegyeRajzol(VegzetHegye v){
+	public VegzetHegyeRajzol(VegzetHegye v){
 		vegzetHegye = v;
 	}
 	

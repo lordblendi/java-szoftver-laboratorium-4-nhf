@@ -12,7 +12,6 @@ public class Torp extends Ellenseg {
         super(jatek);
         objektumDarabszam++;
         objektumAzonosito = "Torp" + objektumDarabszam;
-        System.out.format("jatek letrehozta %s-et%n", objektumAzonosito);
     }
     
     /**
@@ -52,13 +51,11 @@ public class Torp extends Ellenseg {
     public void sebzodik(int sebzes, boolean kettevagas) {
     	super.sebzodik(sebzes, kettevagas);
     	if (elet <= 0) {
-    		System.out.format("%s meghalt%n", objektumAzonosito);
         	jatek.meghalEllenseg(this, 200);
         } else if (kettevagas) {
-        	System.out.format("%s kettevagva%n", objektumAzonosito);
         	Torp uj = new Torp(jatek, this);
         	uj.setPozicio(pozicio);
-        	jatek.addEllenseg(uj);
+        	jatek.kettevagva(uj);
         }
     }
 }

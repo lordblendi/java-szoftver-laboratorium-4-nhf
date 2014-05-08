@@ -1,18 +1,202 @@
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.*;
 
-public class Rajzolo extends JFrame{
+public class Rajzolo extends JFrame {
+	/**
+	 * Referencia a kontrollerre
+	 */
+	private GameController controller;
+	
+	/**
+	 * A pálya képe
+	 */
+	private BufferedImage palyaImage;
+	
+	/**
+	 * Varázserőt jelző szövegdoboz
+	 */
+	private JTextField varazseroTextField;
+	
+	/**
+	 * Lenyíló lista a lerakni kívánt elem kiválasztásához
+	 */
+	private JComboBox lerakandoComboBox;
+	
+	/**
+	 * Egy cella mérete (konstans)
+	 */
+	public static final int CELLAMERET = 60;
+	
+	/**
+	 * Pálya hány cellából áll? (konstans)
+	 */
+	public static final int CELLASZAM = 10;
+	
 	HashMap<Cella, Kirajzolhato> palya;
 	
 	HashMap<Ellenseg, EllensegRajzol> ellensegek;
 	
-	public Rajzolo(HashMap<Cella,Kirajzolhato> palya){
-	 this.palya = palya;
+	/**
+     * Konstruktor
+     * 
+     * @param controller referencia a kontrollerre
+     */
+	public Rajzolo(GameController controller) {
+		this.controller = controller;
+		
+		// pálya elkészítése
+		int meret = CELLAMERET * CELLASZAM + 1;
+		palyaImage = new BufferedImage(meret, meret, BufferedImage.TYPE_INT_ARGB);
+		JPanel map = new JPanel() {
+			@Override
+			protected void paintComponent(Graphics g) {
+				super.paintComponent(g);
+				g.drawImage(palyaImage, 0, 0, null);
+			}
+		};
+		map.setPreferredSize(new Dimension(meret, meret));
+		map.setBackground(Color.WHITE);
+		map.addMouseListener(controller);
+		
+		// vezérlők elkészítése
+		JPanel controls = new JPanel();
+		controls.setPreferredSize(new Dimension(200, 600));
+		controls.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		
+		// feliratok
+		JLabel nl = new JLabel("Nagymama lekvárjai");
+		nl.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel nl2 = new JLabel("2014");
+		nl2.setAlignmentX(CENTER_ALIGNMENT);
+		JButton indit = new JButton("Játék indítása...");
+		indit.setAlignmentX(CENTER_ALIGNMENT);
+		final Rajzolo that = this;
+		indit.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// játék indításához fájlnév bekérése
+				String terkep = JOptionPane.showInputDialog(that, "Térkép fájl:", "Játék indítása...", JOptionPane.QUESTION_MESSAGE);
+				that.controller.indit(terkep);
+			}
+		});
+		
+		// varázserő kijelzése
+		JPanel varazs = new JPanel();
+		varazs.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel ve = new JLabel("Varázserő: ");
+		varazseroTextField = new JTextField("1000");
+		varazseroTextField.setEditable(false);
+		varazseroTextField.setMaximumSize(new Dimension(100, varazseroTextField.getPreferredSize().height));
+		varazseroTextField.setMinimumSize(new Dimension(100, varazseroTextField.getPreferredSize().height));
+		varazseroTextField.setPreferredSize(new Dimension(100, varazseroTextField.getPreferredSize().height));
+		varazs.setLayout(new BoxLayout(varazs, BoxLayout.LINE_AXIS));
+		varazs.add(ve);
+		varazs.add(Box.createHorizontalGlue());
+		varazs.add(varazseroTextField);
+		
+		// felirat
+		JPanel lerak = new JPanel();
+		lerak.setAlignmentX(CENTER_ALIGNMENT);
+		JLabel ler = new JLabel("Lerakásra kerülő elem (ár):");
+		lerak.setLayout(new BoxLayout(lerak, BoxLayout.LINE_AXIS));
+		lerak.add(ler);
+		lerak.add(Box.createHorizontalGlue());
+		
+		// legördülő lista az elemek lerakásához
+		lerakandoComboBox = new JComboBox(new String[] {
+			"torony (400)",
+			"zöld kő (100)",
+			"kék kő (100)",
+			"ember piros kő (100)",
+			"hobbit piros kő (100)",
+			"törp piros kő (100)",
+			"tünde piros kő (100)",
+			"akadály (300)",
+			"sárga kő (100)"
+		});
+		lerakandoComboBox.setMaximumSize(new Dimension(Integer.MAX_VALUE, lerakandoComboBox.getPreferredSize().height));
+		
+		// layout elkészítése
+		controls.setLayout(new BoxLayout(controls, BoxLayout.PAGE_AXIS));
+		controls.add(Box.createRigidArea(new Dimension(0, 10)));
+		controls.add(nl);
+		controls.add(nl2);
+		controls.add(Box.createRigidArea(new Dimension(0, 30)));
+		controls.add(indit);
+		controls.add(Box.createRigidArea(new Dimension(0, 30)));
+		controls.add(varazs);
+		controls.add(Box.createRigidArea(new Dimension(0, 10)));
+		controls.add(lerak);
+		controls.add(lerakandoComboBox);
+		controls.add(Box.createVerticalGlue());
+		
+		// ablak megjelenítése
+		setTitle("Nagymama lekvárjai");
+		setLayout(new BorderLayout());
+		add(map, BorderLayout.WEST);
+		add(controls, BorderLayout.EAST);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pack();
 	}
 	
-	public void Rajzol(int varazsEro){
-		//kirajzolja a palya osszes ckirajzolhatojat+ kiirja a varazserot
+	/**
+	 * Pálya beállítása
+	 * 
+	 * @param palya pálya
+	 */
+	public void setPalya(HashMap<Cella,Kirajzolhato> palya) {
+		this.palya = palya;
+	}
+	
+	/**
+	 * Ellensegégek beállítása
+	 * 
+	 * @param ellensegek ellenségek
+	 */
+	public void setEllensegek(HashMap<Ellenseg, EllensegRajzol> ellensegek) {
+		this.ellensegek = ellensegek;
+	}
+	
+	/**
+	 * Figyelmeztetés megjelenítése
+	 * 
+	 * @param str üzenet szövege
+	 */
+	public void alert(String str) {
+		JOptionPane.showMessageDialog(this, str);
+	}
+	
+	/**
+	 * Melyik elem van kiválasztva a lerakáshoz?
+	 * 
+	 * @return elem indexe a listában
+	 */
+	public int getLerakandoElem() {
+		return lerakandoComboBox.getSelectedIndex();
+	}
+	
+	public void rajzol(int varazsEro){
+		//kirajzolja a palya osszes ckirajzolhatojat
+		
+		// varázserő frissítése
+		varazseroTextField.setText(Integer.toString(varazsEro));
 	}
 	public void lerakAkadaly(AkadalyRajzol akadaly, Cella cella){
 		((Kirajzolhato) palya.get(cella)).lerakAkadaly(akadaly);
@@ -27,7 +211,10 @@ public class Rajzolo extends JFrame{
 		((Kirajzolhato) palya.get(cella)).lerakToronyKo(toronyKo);
 	}
 	public void vege(boolean nyertunk){
-		//felugró ablak..
+		if (nyertunk)
+        	alert("Gratulálunk, nyertél!");
+        else
+        	alert("Sajnos vesztettél!");
 	}
 	public void addEllenseg(Ut ut, Ellenseg ellenseg, EllensegRajzol ellensegRajzol){
 		ellensegek.put(ellenseg, ellensegRajzol);
