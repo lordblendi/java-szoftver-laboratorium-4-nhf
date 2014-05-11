@@ -17,15 +17,13 @@ public class VegzetHegyeRajzol extends Kirajzolhato{
 		}
 	}
 	
-	private Pont pozicio;
-	
 	private VegzetHegye vegzetHegye;
 	
 	public VegzetHegyeRajzol(VegzetHegye v){
 		vegzetHegye = v;
 	}
 	
-	public void rarajzol(Graphics kepernyo, int x, int y){
-		
+	public void kirajzol(Graphics kepernyo, int x, int y){
+		kepernyo.drawImage(kep, vegzetHegye.getPozicio().x, vegzetHegye.getPozicio().y, null);
 	}
 }

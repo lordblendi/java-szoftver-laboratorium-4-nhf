@@ -10,8 +10,6 @@ public class DomborzatRajzol extends Kirajzolhato{
 	
 	private ToronyRajzol torony;
 	
-	private Pont pozicio;
-	
 	private Domborzat domborzat;
 	
 	static {
@@ -26,8 +24,9 @@ public class DomborzatRajzol extends Kirajzolhato{
 		this.domborzat = domborzat;
 	}
 	
-	public void rarajzol(Graphics kepernyo, int x, int y){
-		
+	public void kirajzol(Graphics kepernyo){
+		kepernyo.drawImage(kep, domborzat.getPozicio().x, domborzat.getPozicio().y, null);
+		torony.rarajzol(kepernyo, domborzat.getPozicio().x, domborzat.getPozicio().y);
 	}
 	
 	public void lerakTorony(ToronyRajzol torony){

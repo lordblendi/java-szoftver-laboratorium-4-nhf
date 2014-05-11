@@ -24,10 +24,12 @@ public class UtRajzol extends Kirajzolhato{
 	
 	public UtRajzol(Ut ut){
 		this.ut = ut;
+		ellensegek = new ArrayList<EllensegRajzol>();
 	}
 	
 	public void kirajzol(Graphics kepernyo){
-		
+		kepernyo.drawImage(kep, ut.getPozicio().x, ut.getPozicio().y, null);
+		akadaly.rarajzol(kepernyo, ut.getPozicio().x, ut.getPozicio().y);
 	}
 	
 	public void lerakAkadaly(AkadalyRajzol akadaly){

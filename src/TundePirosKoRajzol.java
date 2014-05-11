@@ -18,6 +18,6 @@ public class TundePirosKoRajzol implements ToronyKoRajzol {
 	}
 	
 	public void rarajzol(Graphics kepernyo, int x, int y){
-		
+		kepernyo.drawImage(kep, x, y, null);
 	}
 }

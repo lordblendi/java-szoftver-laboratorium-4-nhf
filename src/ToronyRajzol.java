@@ -18,7 +18,8 @@ public class ToronyRajzol {
 	}
 	
 	public void rarajzol(Graphics kepernyo, int x, int y){
-		
+		kepernyo.drawImage(kep, x, y, null);
+		ko.rarajzol(kepernyo, x, y);
 	}
 	public void lerakToronyKo(ToronyKoRajzol toronyKo){
 		ko = toronyKo;

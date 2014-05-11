@@ -17,6 +17,6 @@ public class SargaKoRajzol {
 	}
 	
 	public void rarajzol(Graphics kepernyo, int x, int y){
-		
+		kepernyo.drawImage(kep, x, y, null);
 	}
 }
