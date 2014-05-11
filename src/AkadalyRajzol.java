@@ -6,10 +6,20 @@ import javax.imageio.ImageIO;
 
 
 public class AkadalyRajzol {
+	
+	/**
+	 * A kirajzolandó képe.
+	 */
 	private static BufferedImage kep;
 	
+	/**
+	 * Az Akadalyon lévő kő képe.
+	 */
 	private SargaKoRajzol ko;
 	
+	/**
+	 * Statikus inicializátor a kirajzolandó képének beolvasásására
+	 */
 	static {
 	    try {
 			kep = ImageIO.read(new File("img\\akadaly.png"));
@@ -17,6 +27,14 @@ public class AkadalyRajzol {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * A képének kirajzolása
+	 * 
+	 * @param kepernyo a palya képe amelyre kirajzolja magát
+	 * @param x a kirajzolás helyének x koordinátája
+	 * @param y a kirajzolás helyének y koordinátája
+	 */
 	public void rarajzol(Graphics kepernyo, int x, int y){
 		kepernyo.drawImage(kep, x, y, null);
 		if (ko != null){
@@ -24,6 +42,11 @@ public class AkadalyRajzol {
 		}
 	}
 	
+	/**
+     * Egy AkadalyKo képének lerakása az Ut képére 
+     * 
+     * @param akadalyKo az AkadalyKo amelynek a kirajzolóját lerakjuk
+     */
 	public void lerakAkadalyKo(SargaKoRajzol akadalyKo){
 		
 	}

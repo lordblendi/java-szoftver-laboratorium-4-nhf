@@ -10,6 +10,13 @@ public class HobbitRajzol extends EllensegRajzol {
 		super(ellenseg);
 	}
 	
+	/**
+	 * A képének kirajzolása
+	 * 
+	 * @param kepernyo a palya képe amelyre kirajzolja magát
+	 * @param x a kirajzolás helyének x koordinátája
+	 * @param y a kirajzolás helyének y koordinátája
+	 */
 	public void rarajzol(Graphics kepernyo, int x, int y){
 		
 	}
