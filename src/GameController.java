@@ -55,7 +55,7 @@ public class GameController implements MouseListener {
     /**
      * Időzítő felbontása másodpercben (konstans)
      */
-    private static final int INTERVAL = 1000 * 3;
+    private static final int INTERVAL = 1000 * 1;
     
     /**
      * A játék állapota
@@ -112,7 +112,7 @@ public class GameController implements MouseListener {
 			Scanner f = new Scanner(new FileReader(terkep));
 			
 			// szélesség és magasság
-			f.findInLine("(\\d),(\\d)");
+			f.findInLine("(\\d+),(\\d+)");
 			MatchResult m = f.match();
 			int magassag = Integer.parseInt(m.group(1)), szelesseg = Integer.parseInt(m.group(2));
 			f.nextLine();
@@ -159,7 +159,7 @@ public class GameController implements MouseListener {
 			f.nextLine();
 			
 			for (int i = 0; i < k; i++) {				
-				f.findInLine("(\\d),(\\d)");
+				f.findInLine("(\\d+),(\\d+)");
 				MatchResult koordinata = f.match();
 				int x = Integer.parseInt(koordinata.group(1)), y = Integer.parseInt(koordinata.group(2));
 				f.nextLine();
@@ -177,7 +177,7 @@ public class GameController implements MouseListener {
 				
 				// a kezdőpont meghatározása
 				Scanner sor = new Scanner(koordinatak[0]);
-				sor.findInLine("(\\d),(\\d)");
+				sor.findInLine("(\\d+),(\\d+)");
 				MatchResult koordinata = sor.match();
 				int x = Integer.parseInt(koordinata.group(1)), y = Integer.parseInt(koordinata.group(2));
 				sor.close();
@@ -188,7 +188,7 @@ public class GameController implements MouseListener {
 				// a végpontok meghatározása
 				for (int j = 1; j < koordinatak.length; j++) {
 					sor = new Scanner(koordinatak[j]);
-					sor.findInLine("(\\d),(\\d)");
+					sor.findInLine("(\\d+),(\\d+)");
 					koordinata = sor.match();
 					x = Integer.parseInt(koordinata.group(1));
 					y = Integer.parseInt(koordinata.group(2));

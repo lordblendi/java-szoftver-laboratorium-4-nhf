@@ -286,7 +286,7 @@ public class Rajzolo extends JFrame {
 	 */
 	public void addEllenseg(Ut ut, Ellenseg ellenseg, EllensegRajzol ellensegRajzol){
 		ellensegek.put(ellenseg, ellensegRajzol);
-		((EllensegRajzol) ellensegek.get(ellenseg)).ralep(((UtRajzol) palya.get(ut)));
+		((EllensegRajzol) ellensegek.get(ellenseg)).ralep(((Kirajzolhato) palya.get(ut)));
 	}
 	
 	/**
