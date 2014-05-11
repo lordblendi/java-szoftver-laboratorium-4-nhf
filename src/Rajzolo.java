@@ -192,38 +192,98 @@ public class Rajzolo extends JFrame {
 		return lerakandoComboBox.getSelectedIndex();
 	}
 	
+	/**
+	 *A pálya összes elemét kirajzolja egy képre, frissíti a kijelzett varázserőt
+	 * 
+	 * @param varazsEro az éppen aktuális varázserő mennyisége
+	 */
 	public void rajzol(int varazsEro){
 		//kirajzolja a palya osszes ckirajzolhatojat
 		
 		// varázserő frissítése
 		varazseroTextField.setText(Integer.toString(varazsEro));
 	}
+	
+	/**
+	 * Lerak egy akadályRajzolt a kapott Utat kirajzoló UtRajzol-ra
+	 * 
+	 * @param akadaly a lerakandó akadaly kirajzolója
+	 * @param cella Az Ut amelyik kirajzoló objektumára tesszük le.
+	 */
 	public void lerakAkadaly(AkadalyRajzol akadaly, Cella cella){
 		((Kirajzolhato) palya.get(cella)).lerakAkadaly(akadaly);
 	}
+	
+	/**
+	 * Lerak egy SargaKoRajzolt a kapott Utat kirajzoló UtRajzol Akadalyara
+	 * 
+	 * @param akadalyKo a lerakandó akadálykő kirajzolója
+	 * @param cella Az Ut amelyik kirajzoló objektumára tesszük le.
+	 */
 	public void lerakAkadalyKo(SargaKoRajzol akadalyKo, Cella cella){
 		((Kirajzolhato) palya.get(cella)).lerakAkadalyKo(akadalyKo);
 	}
+	
+	/**
+	 * Lerak egy ToronyRajzolt a kapott Utat kirajzoló DomborzatRajzol-ra
+	 * 
+	 * @param torony a lerakandó akadaly kirajzolója
+	 * @param cella A Domborzat amelyik kirajzoló objektumára tesszük le.
+	 */
 	public void lerakTorony(ToronyRajzol torony, Cella cella){
 		((Kirajzolhato) palya.get(cella)).lerakTorony(torony);
 	}
+	
+	/**
+	 * Lerak egy ToronykőRajzolt megvalósító objektumot a kapott Domborzatot kirajzoló DomborzatRajzolra
+	 * 
+	 * @param toronyKo a lerakandó ToronyKo kirajzolója
+	 * @param cella A Domborzat amelyik kirajzoló objektumára tesszük le.
+	 */
 	public void lerakToronyKo(ToronyKoRajzol toronyKo, Cella cella){
 		((Kirajzolhato) palya.get(cella)).lerakToronyKo(toronyKo);
 	}
+	
+	/**
+	 * a játék végény kiírja, hogy nyertünk-e?
+	 * 
+	 * @param nyertunk megmutatja hogy nyertünk-e
+	 */
 	public void vege(boolean nyertunk){
 		if (nyertunk)
         	alert("Gratulálunk, nyertél!");
         else
         	alert("Sajnos vesztettél!");
 	}
+	
+	/**
+	 * Egy ellenseget ad hozzá az adott út kirajzolójához, elmenti hogy melyik kirajzoló tartozik hozzá
+	 * 
+	 * @param ut Az út amelyik kirajzolójára letesszük.
+	 * @param ellenseg az ellenseg amely kirajzolóját letesszük.
+	 * @param ellensegRajzol az Ellenseg kirajzolója amelyet leteszünk.
+	 */
 	public void addEllenseg(Ut ut, Ellenseg ellenseg, EllensegRajzol ellensegRajzol){
 		ellensegek.put(ellenseg, ellensegRajzol);
 		((EllensegRajzol) ellensegek.get(ellenseg)).ralep(((UtRajzol) palya.get(ellenseg)));
 	}
+	
+	/**
+	 * Egy ellenseg kirajzolójának átrakása az eggyik Utról a másikra
+	 * 
+	 * @param ut az Ut amelyre az Ellenseg átlép
+	 * @param elleneg Az Ellenseg aki átlép
+	 */
 	public void atlep(Ut ut, Ellenseg ellenseg){
 		((EllensegRajzol) ellensegek.get(ellenseg)).lelep();
 		((EllensegRajzol) ellensegek.get(ellenseg)).ralep(((UtRajzol) palya.get(ellenseg)));
 	}
+	
+	/**
+	 * Egy halott ellenség kirajzolójának levétele
+	 * 
+	 * @param ellenseg A meghalt Ellenseg.
+	 */
 	public void meghalEllenseg(Ellenseg ellenseg){
 		((EllensegRajzol) ellensegek.get(ellenseg)).lelep();
 		ellensegek.remove(ellenseg);

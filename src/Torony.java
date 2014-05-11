@@ -156,4 +156,13 @@ public class Torony {
     public void dispose() {
     	objektumDarabszam--;
     }
+    
+    /**
+     * Visszaadja hogy van-e köd a tornyon.
+     *
+     * @return van köd a tornyon
+     */
+    public boolean getKod() {
+    	return this.hatotavolsag == 1.375;
+    }
 }

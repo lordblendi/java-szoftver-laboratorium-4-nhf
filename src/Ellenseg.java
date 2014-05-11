@@ -130,5 +130,14 @@ public abstract class Ellenseg {
     public String getObjektumAzonosito() {
     	return objektumAzonosito;
     }
+  
+    /**
+     * Visszaadja az az ellenség életpontjainak mennyiségét.
+     * 
+     * @return az ellenseg életpontjai
+     */
+    public int getElet(){
+    	return elet;
+    }
 }
 
