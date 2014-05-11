@@ -1,7 +1,7 @@
 import java.awt.Graphics;
 
 public class EllensegRajzol{
-	private UtRajzol pozicio;
+	private Kirajzolhato pozicio;
 	
 	/**
 	 * A kirajzolandó ellenség referenciája
@@ -20,7 +20,7 @@ public class EllensegRajzol{
 	public void rarajzol(Graphics kepernyo, int x, int y){
 		
 	}
-	public void ralep(UtRajzol pozicio){
+	public void ralep(Kirajzolhato pozicio){
 		this.pozicio = pozicio;
 		pozicio.ralep(this);
 	

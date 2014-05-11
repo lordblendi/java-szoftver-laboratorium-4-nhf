@@ -198,7 +198,12 @@ public class Rajzolo extends JFrame {
 	 * @param varazsEro az éppen aktuális varázserő mennyisége
 	 */
 	public void rajzol(int varazsEro){
+		Graphics g = palyaImage.getGraphics();
+		
 		//kirajzolja a palya osszes ckirajzolhatojat
+		for (Kirajzolhato k : palya.values()) {
+			k.kirajzol(g);
+		}
 		
 		// varázserő frissítése
 		varazseroTextField.setText(Integer.toString(varazsEro));
@@ -276,7 +281,7 @@ public class Rajzolo extends JFrame {
 	 */
 	public void atlep(Ut ut, Ellenseg ellenseg){
 		((EllensegRajzol) ellensegek.get(ellenseg)).lelep();
-		((EllensegRajzol) ellensegek.get(ellenseg)).ralep(((UtRajzol) palya.get(ut)));
+		((EllensegRajzol) ellensegek.get(ellenseg)).ralep(((Kirajzolhato) palya.get(ut)));
 	}
 	
 	/**

@@ -26,7 +26,8 @@ public class DomborzatRajzol extends Kirajzolhato{
 	
 	public void kirajzol(Graphics kepernyo){
 		kepernyo.drawImage(kep, domborzat.getPozicio().x, domborzat.getPozicio().y, null);
-		torony.rarajzol(kepernyo, domborzat.getPozicio().x, domborzat.getPozicio().y);
+		if (torony != null)
+			torony.rarajzol(kepernyo, domborzat.getPozicio().x, domborzat.getPozicio().y);
 	}
 	
 	public void lerakTorony(ToronyRajzol torony){

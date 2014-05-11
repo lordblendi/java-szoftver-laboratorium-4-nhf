@@ -17,4 +17,7 @@ public abstract class Kirajzolhato {
 	public void lerakToronyKo(ToronyKoRajzol toronyKo){
 		
 	}
+	
+	public void ralep(EllensegRajzol e) {}
+	public void lelep(EllensegRajzol e) {}
 }
