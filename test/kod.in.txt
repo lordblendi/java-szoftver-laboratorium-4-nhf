@@ -1,6 +1,0 @@
-indit kod.map.txt
-random kettevagas off
-tick 1
-addTorony 6 2
-tick 13
-quit

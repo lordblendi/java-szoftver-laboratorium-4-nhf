@@ -1,6 +1,0 @@
-indit elagazas.map.txt
-random utvalasztas off
-tick 1
-random utvalasztas on
-tick 2
-quit

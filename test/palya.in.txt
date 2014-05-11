@@ -1,2 +1,0 @@
-indit palya.map.txt
-quit

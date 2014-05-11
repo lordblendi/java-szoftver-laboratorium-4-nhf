@@ -1,3 +1,0 @@
-indit kekko.map.txt
-tick 4
-quit

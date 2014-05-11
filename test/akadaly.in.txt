@@ -1,6 +1,0 @@
-indit palya.map.txt
-tick 1
-addAkadaly 1 2
-addAkadaly 2 1
-tick 3
-quit

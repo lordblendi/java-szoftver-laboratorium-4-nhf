@@ -1,7 +1,0 @@
-indit meghal.map.txt
-random kettevagas off
-tick 1
-addTorony 4 2
-addTorony 6 2
-tick 5
-quit
