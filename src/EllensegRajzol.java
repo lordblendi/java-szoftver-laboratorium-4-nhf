@@ -41,6 +41,8 @@ public class EllensegRajzol{
 		
 		kepernyo.setColor(Color.LIGHT_GRAY);
 		kepernyo.drawRect(x, y, 48, 8);
+		kepernyo.setColor(Color.WHITE);
+		kepernyo.fillRect(x + 1, y + 1, 47, 7);
 		kepernyo.setColor(szin);
 		kepernyo.fillRect(x + 1, y + 1, (int)Math.ceil(47 * ellenseg.getElet()), 7);
 	}
