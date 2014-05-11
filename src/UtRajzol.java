@@ -29,7 +29,13 @@ public class UtRajzol extends Kirajzolhato{
 	
 	public void kirajzol(Graphics kepernyo){
 		kepernyo.drawImage(kep, ut.getPozicio().x, ut.getPozicio().y, null);
-		akadaly.rarajzol(kepernyo, ut.getPozicio().x, ut.getPozicio().y);
+		if (akadaly != null){
+			akadaly.rarajzol(kepernyo, ut.getPozicio().x, ut.getPozicio().y);
+		}
+		for (EllensegRajzol ellenseg : ellensegek)
+		{
+			ellenseg.rarajzol(kepernyo, ut.getPozicio().x, ut.getPozicio().y);
+		}
 	}
 	
 	public void lerakAkadaly(AkadalyRajzol akadaly){
