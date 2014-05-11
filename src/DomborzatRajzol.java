@@ -1,15 +1,26 @@
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 
 public class DomborzatRajzol extends Kirajzolhato{
-	private BufferedImage kep;
+	private static BufferedImage kep;
 	
 	private ToronyRajzol torony;
 	
 	private Pont pozicio;
 	
 	private Domborzat domborzat;
+	
+	static {
+	    try {
+			kep = ImageIO.read(new File("img\\domborzat.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	public DomborzatRajzol (Domborzat domborzat){
 		this.domborzat = domborzat;

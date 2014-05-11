@@ -21,8 +21,9 @@ public class EllensegRajzol{
 		
 	}
 	public void ralep(UtRajzol pozicio){
-		pozicio.ralep(this);
 		this.pozicio = pozicio;
+		pozicio.ralep(this);
+	
 	}
 	public void lelep(){
 		pozicio.lelep(this);
