@@ -30,6 +30,11 @@ public class Rajzolo extends JFrame {
 	private BufferedImage palyaImage;
 	
 	/**
+	 * A pályát jelző panel
+	 */
+	private JPanel palyaPanel;
+	
+	/**
 	 * Varázserőt jelző szövegdoboz
 	 */
 	private JTextField varazseroTextField;
@@ -64,16 +69,17 @@ public class Rajzolo extends JFrame {
 		// pálya elkészítése
 		int meret = CELLAMERET * CELLASZAM + 1;
 		palyaImage = new BufferedImage(meret, meret, BufferedImage.TYPE_INT_ARGB);
-		JPanel map = new JPanel() {
+		palyaPanel = new JPanel() {
 			@Override
 			protected void paintComponent(Graphics g) {
 				super.paintComponent(g);
 				g.drawImage(palyaImage, 0, 0, null);
 			}
 		};
-		map.setPreferredSize(new Dimension(meret, meret));
-		map.setBackground(Color.WHITE);
-		map.addMouseListener(controller);
+		
+		palyaPanel.setPreferredSize(new Dimension(meret, meret));
+		palyaPanel.setBackground(getBackground());
+		palyaPanel.addMouseListener(controller);
 		
 		// vezérlők elkészítése
 		JPanel controls = new JPanel();
@@ -150,7 +156,7 @@ public class Rajzolo extends JFrame {
 		// ablak megjelenítése
 		setTitle("Nagymama lekvárjai");
 		setLayout(new BorderLayout());
-		add(map, BorderLayout.WEST);
+		add(palyaPanel, BorderLayout.WEST);
 		add(controls, BorderLayout.EAST);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		pack();
@@ -163,6 +169,13 @@ public class Rajzolo extends JFrame {
 	 */
 	public void setPalya(HashMap<Cella,Kirajzolhato> palya) {
 		this.palya = palya;
+		
+		// pálya képének visszaállítása
+		Graphics graphics = palyaImage.getGraphics();
+		int meret = CELLAMERET * CELLASZAM + 1;
+		graphics.setColor(getBackground());
+		graphics.fillRect(0, 0, meret, meret);
+		graphics.dispose();
 	}
 	
 	/**
@@ -198,12 +211,15 @@ public class Rajzolo extends JFrame {
 	 * @param varazsEro az éppen aktuális varázserő mennyisége
 	 */
 	public void rajzol(int varazsEro){
-		Graphics g = palyaImage.getGraphics();
-		
-		//kirajzolja a palya osszes ckirajzolhatojat
-		for (Kirajzolhato k : palya.values()) {
-			k.kirajzol(g);
+		// elemek kirajzolása
+		Graphics graphics = palyaImage.getGraphics();
+		for (Kirajzolhato k: palya.values()) {
+			k.kirajzol(graphics);
 		}
+		graphics.dispose();
+		
+		// kép újrarajzolása a panelen
+		palyaPanel.repaint();
 		
 		// varázserő frissítése
 		varazseroTextField.setText(Integer.toString(varazsEro));
@@ -292,5 +308,17 @@ public class Rajzolo extends JFrame {
 	public void meghalEllenseg(Ellenseg ellenseg){
 		((EllensegRajzol) ellensegek.get(ellenseg)).lelep();
 		ellensegek.remove(ellenseg);
+	}
+	
+	/**
+	 * Kép kirajzolása a megadott logikai koordinátákra
+	 * 
+	 * @param graphics vászon
+	 * @param i sor száma
+	 * @param j oszlop száma
+	 * @param kep kép
+	 */
+	public static void rajzol(Graphics graphics, int i, int j, BufferedImage kep) {
+		graphics.drawImage(kep, (j - 1) * CELLAMERET, (i - 1) * CELLAMERET, null);
 	}
 }

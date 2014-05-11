@@ -54,13 +54,13 @@ public class UtRajzol extends Kirajzolhato{
 	 * @param kepernyo a palya képe amelyre kirajzolja magát
 	 */
 	public void kirajzol(Graphics kepernyo){
-		kepernyo.drawImage(kep, ut.getPozicio().x, ut.getPozicio().y, null);
+		Rajzolo.rajzol(kepernyo, ut.getPozicio().x, ut.getPozicio().y, kep);
 		if (akadaly != null){
 			akadaly.rarajzol(kepernyo, ut.getPozicio().x, ut.getPozicio().y);
 		}
-		for (EllensegRajzol ellenseg : ellensegek)
+		for (int i = 0; i < ellensegek.size() && i < 4; i++)
 		{
-			ellenseg.rarajzol(kepernyo, ut.getPozicio().x, ut.getPozicio().y);
+			ellensegek.get(i).rarajzol(kepernyo, ut.getPozicio().x, ut.getPozicio().y, i);
 		}
 	}
 	

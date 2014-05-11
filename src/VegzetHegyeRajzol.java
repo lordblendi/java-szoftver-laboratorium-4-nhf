@@ -49,11 +49,11 @@ public class VegzetHegyeRajzol extends Kirajzolhato{
 	 * 
 	 * @param kepernyo a palya képe amelyre kirajzolja magát
 	 */
-	public void kirajzol(Graphics kepernyo, int x, int y){
-		kepernyo.drawImage(kep, vegzetHegye.getPozicio().x, vegzetHegye.getPozicio().y, null);
-		for (EllensegRajzol ellenseg : ellensegek)
+	public void kirajzol(Graphics kepernyo){
+		Rajzolo.rajzol(kepernyo, vegzetHegye.getPozicio().x, vegzetHegye.getPozicio().y, kep);
+		for (int i = 0; i < ellensegek.size() && i < 4; i++)
 		{
-			ellenseg.rarajzol(kepernyo, vegzetHegye.getPozicio().x, vegzetHegye.getPozicio().y);
+			ellensegek.get(i).rarajzol(kepernyo, vegzetHegye.getPozicio().x, vegzetHegye.getPozicio().y, i);
 		}
 	}
 	

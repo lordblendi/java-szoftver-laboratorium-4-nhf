@@ -256,11 +256,38 @@ public class Jatek {
     }
     
     /**
-     * Kettévágás jelzése
+     * Ember kettévágás jelzése
      * 
      * @param ellenseg keletkezett ellenség
      */
-    public void kettevagva(Ellenseg ellenseg) {
+    public void kettevagva(Ember ellenseg) {
+    	controller.addEllenseg(ellenseg);
+    }
+    
+    /**
+     * Hobbit kettévágás jelzése
+     * 
+     * @param ellenseg keletkezett ellenség
+     */
+    public void kettevagva(Hobbit ellenseg) {
+    	controller.addEllenseg(ellenseg);
+    }
+    
+    /**
+     * Törp kettévágás jelzése
+     * 
+     * @param ellenseg keletkezett ellenség
+     */
+    public void kettevagva(Torp ellenseg) {
+    	controller.addEllenseg(ellenseg);
+    }
+    
+    /**
+     * Tünde kettévágás jelzése
+     * 
+     * @param ellenseg keletkezett ellenség
+     */
+    public void kettevagva(Tunde ellenseg) {
     	controller.addEllenseg(ellenseg);
     }
     

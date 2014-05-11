@@ -36,7 +36,7 @@ public class AkadalyRajzol {
 	 * @param y a kirajzolás helyének y koordinátája
 	 */
 	public void rarajzol(Graphics kepernyo, int x, int y){
-		kepernyo.drawImage(kep, x, y, null);
+		Rajzolo.rajzol(kepernyo, x, y, kep);
 		if (ko != null){
 			ko.rarajzol(kepernyo, x, y);
 		}
@@ -48,6 +48,6 @@ public class AkadalyRajzol {
      * @param akadalyKo az AkadalyKo amelynek a kirajzolóját lerakjuk
      */
 	public void lerakAkadalyKo(SargaKoRajzol akadalyKo){
-		
+		ko = akadalyKo;
 	}
 }

@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class EllensegRajzol{
@@ -12,23 +13,36 @@ public class EllensegRajzol{
 	protected Ellenseg ellenseg;
 	
 	/**
+	 * Az ellenség színe
+	 */
+	protected Color szin;
+	
+	/**
 	 * Konstruktor
 	 * 
 	 * @param ellenseg a kirajzolandó ellenség referenciája
 	 */
-	public EllensegRajzol(Ellenseg ellenseg) {
+	public EllensegRajzol(Ellenseg ellenseg, Color szin) {
 		this.ellenseg = ellenseg;
+		this.szin = szin;
 	}
 	
 	/**
 	 * A képének kirajzolása, itt csak a heterogén kollekció miatt van megvalósítva.
 	 * 
 	 * @param kepernyo a palya képe amelyre kirajzolja magát
-	 * @param x a kirajzolás helyének x koordinátája
+	 * @param i a kirajzolás helyének x koordinátája
 	 * @param y a kirajzolás helyének y koordinátája
+	 * @param i hányadik ellenség a cellán?
 	 */
-	public void rarajzol(Graphics kepernyo, int x, int y){
+	public void rarajzol(Graphics kepernyo, int i, int j, int k){
+		int x = (j - 1) * Rajzolo.CELLAMERET + 6;
+		int y = (i - 1) * Rajzolo.CELLAMERET + 8 + k * 12;
 		
+		kepernyo.setColor(Color.LIGHT_GRAY);
+		kepernyo.drawRect(x, y, 48, 8);
+		kepernyo.setColor(szin);
+		kepernyo.fillRect(x + 1, y + 1, (int)Math.ceil(47 * ellenseg.getElet()), 7);
 	}
 	
 	/**

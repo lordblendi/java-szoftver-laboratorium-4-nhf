@@ -55,7 +55,19 @@ public class GameController implements MouseListener {
     /**
      * Időzítő felbontása másodpercben (konstans)
      */
-    private static final int INTERVAL = 1000;
+    private static final int INTERVAL = 1000 * 3;
+    
+    /**
+     * A játék állapota
+     */
+    Allapotok allapot;
+    
+    /**
+     * Lehetséges állapotok
+     */
+    enum Allapotok {
+    	FUT, NYERTUNK, VESZTETTUNK
+    };
 	
 	/**
 	 * A program belépési pontja
@@ -210,6 +222,9 @@ public class GameController implements MouseListener {
 				timer.cancel();
 			}
 			
+			// most kezdünk
+			allapot = Allapotok.FUT;
+			
 			// időzítő elindítása a léptetéshez
 			timer = new Timer(true);
 			timer.scheduleAtFixedRate(new TimerTask() {
@@ -217,7 +232,7 @@ public class GameController implements MouseListener {
 				public void run() {
 					leptet(1);
 				}
-			}, INTERVAL, INTERVAL);
+			}, 0, INTERVAL);
 		} catch (FileNotFoundException e) {
 			alert(String.format("%s betoltese nem sikerult.", terkep));
 			return;
@@ -252,31 +267,34 @@ public class GameController implements MouseListener {
     					// az ellenség kezdő pozíciójának meghatározása
     					int melyikKezdoPozicio = lerakottEllenseg < kezdok ? lerakottEllenseg : (int)((lerakottEllenseg - kezdok) / 2);
     					Ut kezdoPozicio = kezdoPoziciok.get(melyikKezdoPozicio);
-    					
-    					// az ellenség létrehozása
-	    				Ellenseg e = null;
 	    				
 	    				// a típus a kezdő pozíciókon ciklikusan váltakozik
 	    				switch (melyikKezdoPozicio % 4) {
 	    					case 0:
-	    						e = new Ember(jatek);
+	    						Ember ember = new Ember(jatek);
+	    						ember.setPozicio(kezdoPozicio);
+	    						ember.initElet();
+	    						addEllenseg(ember);
 	    						break;
 	    					case 1:
-	    						e = new Hobbit(jatek);
+	    						Hobbit hobbit = new Hobbit(jatek);
+	    						hobbit.setPozicio(kezdoPozicio);
+	    						hobbit.initElet();
+	    						addEllenseg(hobbit);
 	    						break;
 	    					case 2:
-	    						e = new Tunde(jatek);
+	    						Tunde tunde = new Tunde(jatek);
+	    						tunde.setPozicio(kezdoPozicio);
+	    						tunde.initElet();
+	    						addEllenseg(tunde);
 	    						break;
 	    					case 3:
-	    						e = new Torp(jatek);
+	    						Torp torp = new Torp(jatek);
+	    						torp.setPozicio(kezdoPozicio);
+	    						torp.initElet();
+	    						addEllenseg(torp);
 	    						break;
 	    				}
-	    				
-	    				e.setPozicio(kezdoPozicio);
-	    				e.initElet();
-	    				
-	    				// új ellenség hozzáadása a modellhez és a viewhoz
-	    				addEllenseg(e);
 	    				
 	    				// számlálók frissítése
 	    				maradekEllenseg--;
@@ -304,18 +322,65 @@ public class GameController implements MouseListener {
     		}
     		
     		// frissítjük a pálya képét a view-ban
-    		rajzolo.rajzol(jatek.getVarazsero());
+    		rajzol();
+    		
+    		// ha vége a játéknak
+        	if (allapot == Allapotok.NYERTUNK || allapot == Allapotok.VESZTETTUNK) {
+        		// időzítő leállítása
+                timer.cancel();
+                
+                // üzenet megjelenítése
+            	rajzolo.vege(allapot == Allapotok.NYERTUNK);
+            	break;
+        	}
     	}
     }
     
     /**
-     * Új ellenség hozzáadása a játékhoz
+     * Játék felületének frissítése a view-ban
+     */
+    private void rajzol() {
+    	rajzolo.rajzol(jatek.getVarazsero());
+    }
+    
+    /**
+     * Új ember hozzáadása a játékhoz
      * 
      * @param e ellenség
      */
-    public void addEllenseg(Ellenseg e) {
+    public void addEllenseg(Ember e) {
     	jatek.addEllenseg(e, e.getPozicio());
-		rajzolo.addEllenseg(e.getPozicio(), e, new EllensegRajzol(e));
+		rajzolo.addEllenseg(e.getPozicio(), e, new EmberRajzol(e));
+    }
+    
+    /**
+     * Új hobbit hozzáadása a játékhoz
+     * 
+     * @param e ellenség
+     */
+    public void addEllenseg(Hobbit e) {
+    	jatek.addEllenseg(e, e.getPozicio());
+		rajzolo.addEllenseg(e.getPozicio(), e, new HobbitRajzol(e));
+    }
+    
+    /**
+     * Új törp hozzáadása a játékhoz
+     * 
+     * @param e ellenség
+     */
+    public void addEllenseg(Torp e) {
+    	jatek.addEllenseg(e, e.getPozicio());
+		rajzolo.addEllenseg(e.getPozicio(), e, new TorpRajzol(e));
+    }
+    
+    /**
+     * Új tünde hozzáadása a játékhoz
+     * 
+     * @param e ellenség
+     */
+    public void addEllenseg(Tunde e) {
+    	jatek.addEllenseg(e, e.getPozicio());
+		rajzolo.addEllenseg(e.getPozicio(), e, new TundeRajzol(e));
     }
     
     /**
@@ -348,11 +413,7 @@ public class GameController implements MouseListener {
      * @param nyertunk egy bool, mely alapján el lehet dönteni, ki nyerte a játékot.
      */
     public void vege(boolean nyertunk) {
-    	// időzítő leállítása
-        timer.cancel();
-        
-        // üzenet megjelenítése
-    	rajzolo.vege(nyertunk);
+    	allapot = nyertunk ? Allapotok.NYERTUNK : Allapotok.VESZTETTUNK;
     }
     
     /**
@@ -382,48 +443,67 @@ public class GameController implements MouseListener {
 				switch (lerakando) {
 					case 0:
 						// torony (400)
-						if (jatek.lerakTorony(c, new Torony(jatek)))
-							rajzolo.lerakTorony(new ToronyRajzol(), c);
+						Torony torony = new Torony(jatek);
+						if (jatek.lerakTorony(c, torony)) {
+							rajzolo.lerakTorony(new ToronyRajzol(torony), c);
+							rajzol();
+						}
 						break;
 					case 1:
 						// zöld kő (100)
-						if (jatek.lerakToronyKo(c, new ZoldKo()))
+						if (jatek.lerakToronyKo(c, new ZoldKo())) {
 							rajzolo.lerakToronyKo(new ZoldKoRajzol(), c);
+							rajzol();
+						}
 						break;
 					case 2:
 						// kék kő (100)
-						if (jatek.lerakToronyKo(c, new KekKo()))
+						if (jatek.lerakToronyKo(c, new KekKo())) {
 							rajzolo.lerakToronyKo(new KekKoRajzol(), c);
+							rajzol();
+						}
 						break;
 					case 3:
 						// ember piros kő (100)
-						if (jatek.lerakToronyKo(c, new EmberPirosKo()))
+						if (jatek.lerakToronyKo(c, new EmberPirosKo())) {
 							rajzolo.lerakToronyKo(new EmberPirosKoRajzol(), c);
+							rajzol();
+						}
 						break;
 					case 4:
 						// hobbit piros kő (100)
-						if (jatek.lerakToronyKo(c, new HobbitPirosKo()))
+						if (jatek.lerakToronyKo(c, new HobbitPirosKo())) {
 							rajzolo.lerakToronyKo(new HobbitPirosKoRajzol(), c);
+							rajzol();
+						}
 						break;
 					case 5:
 						// törp piros kő (100)
-						if (jatek.lerakToronyKo(c, new TorpPirosKo()))
+						if (jatek.lerakToronyKo(c, new TorpPirosKo())) {
 							rajzolo.lerakToronyKo(new TorpPirosKoRajzol(), c);
+							rajzol();
+						}
 						break;
 					case 6:
 						// tünde piros kő (100)
-						if (jatek.lerakToronyKo(c, new TundePirosKo()))
+						if (jatek.lerakToronyKo(c, new TundePirosKo())) {
 							rajzolo.lerakToronyKo(new TundePirosKoRajzol(), c);
+							rajzol();
+						}
 						break;
 					case 7:
 						// akadály (300)
-						if (jatek.lerakAkadaly(c, new Akadaly()))
+						if (jatek.lerakAkadaly(c, new Akadaly())) {
 							rajzolo.lerakAkadaly(new AkadalyRajzol(), c);
+							rajzol();
+						}
 						break;
 					case 8:
 						// sárga kő (100)
-						if (jatek.lerakAkadalyKo(c, new SargaKo()))
+						if (jatek.lerakAkadalyKo(c, new SargaKo())) {
 							rajzolo.lerakAkadalyKo(new SargaKoRajzol(), c);
+							rajzol();
+						}
 						break;
 				}
 			}

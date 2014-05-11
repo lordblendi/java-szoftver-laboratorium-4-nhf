@@ -132,12 +132,10 @@ public abstract class Ellenseg {
     }
   
     /**
-     * Visszaadja az az ellenség életpontjainak mennyiségét.
+     * Visszaadja az az ellenség életpontjainak százalékos értékét
      * 
      * @return az ellenseg életpontjai
      */
-    public int getElet(){
-    	return elet;
-    }
+    public abstract double getElet();
 }
 

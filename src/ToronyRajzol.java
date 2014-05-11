@@ -11,6 +11,16 @@ public class ToronyRajzol {
 	private static BufferedImage kep;
 	
 	/**
+	 * Kép ködben.
+	 */
+	private static BufferedImage kepKod;
+	
+	/**
+	 * A kirajzolandó torony referenciája
+	 */
+	private Torony torony;
+	
+	/**
 	 * A Tornyon lévő toronykő képe.
 	 */
 	private ToronyKoRajzol ko;
@@ -24,6 +34,20 @@ public class ToronyRajzol {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	    try {
+			kepKod = ImageIO.read(new File("img\\kod.png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Konstruktor
+	 * 
+	 * @param torony a kirajzolandó torony referenciája
+	 */
+	public ToronyRajzol(Torony torony) {
+		this.torony = torony;
 	}
 	
 	/**
@@ -34,7 +58,7 @@ public class ToronyRajzol {
 	 * @param y az kirajzolás helyének y koordinátája
 	 */
 	public void rarajzol(Graphics kepernyo, int x, int y){
-		kepernyo.drawImage(kep, x, y, null);
+		Rajzolo.rajzol(kepernyo, x, y, torony.getKod() ? kepKod : kep);
 		if (ko != null){
 			ko.rarajzol(kepernyo, x, y);
 		}

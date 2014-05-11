@@ -58,4 +58,14 @@ public class Ember extends Ellenseg {
         	jatek.kettevagva(uj);
         }
     }
+    
+    /**
+     * Visszaadja az az ellenség életpontjainak százalékos értékét
+     * 
+     * @return az ellenseg életpontjai
+     */
+    @Override
+    public double getElet() {
+    	return elet / 1000.0;
+    }
 }

@@ -2,6 +2,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+
 import javax.imageio.ImageIO;
 
 
@@ -47,7 +48,7 @@ public class DomborzatRajzol extends Kirajzolhato{
 	 * @param kepernyo a palya képe amelyre kirajzolja magát
 	 */
 	public void kirajzol(Graphics kepernyo){
-		kepernyo.drawImage(kep, domborzat.getPozicio().x, domborzat.getPozicio().y, null);
+		Rajzolo.rajzol(kepernyo, domborzat.getPozicio().x, domborzat.getPozicio().y, kep);
 		if (torony != null)
 			torony.rarajzol(kepernyo, domborzat.getPozicio().x, domborzat.getPozicio().y);
 	}
