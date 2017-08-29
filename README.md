@@ -1,7 +1,5 @@
 # Szoftver laboratórium 4 nagyházi
 
-## Mérés laboratórium 2 nagyházi
-
 Ezt a nagyházit a Szoftver laboratórium 4 tantárgyhoz készítette a Nagymama Lekvárjai csapat a BME-s tanulmányaik során a 2013/2014/2. félévben. 
 
 ### Csapattagok
