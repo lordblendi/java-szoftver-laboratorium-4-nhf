@@ -1,11 +1,11 @@
 # Szoftver laboratórium 4 nagyházi
 
-Ezt a nagyházit a Szoftver laboratórium 4 tantárgyhoz készítette a Nagymama Lekvárjai csapat a BME-s tanulmányaik során a 2013/2014/2. félévben. 
+Ezt a nagyházit a Szoftver laboratórium 4 tantárgyhoz készítette a Nagymama Lekvárjai csapat a BME-s tanulmányaik során a 2013/2014/2. félévben.
 
 ### Csapattagok
 - Lipták Levente
-- [Sebők Márton](https://github.com/sebokmarton) 
-- [Szepes Nóra](https://github.com/lordblendi) 
+- [Sebők Márton](https://github.com/sebokmarton)
+- [Szepes Nóra](https://github.com/lordblendi)
 - Varga Gergő
 
 ## Feladat
@@ -18,3 +18,7 @@ A játék során az ellenségek folyamatosan jönnek. A játék elején ritkább
 A tornyokra időnként köd ereszkedik, aminek következtében a látás erősen lecsökken. Ez hatással van a lövésre.
 A játékosok által járható útvonalon lehetnek elágazások és becsatlakozások. Az elágazásokon az egyes játékosok véletlenszerűen mennek a különböző irányokba.
 A tornyokban elvétve lehetnek olyan lövedékek, amelyek az eltalált játékost kettőbe vágják. A két játékos egymástól függetlenül él tovább, csökkentett életerővel.
+
+## Dokumentáció
+
+[A pdf dokumentáció megtalálható itt.](https://github.com/lordblendi/java-szoftver-laboratorium-4-nhf/blob/master/docs/dokumentacio.pdf)
